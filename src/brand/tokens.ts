@@ -1,6 +1,6 @@
 export const pichanBrand = {
   brandGuidelinesVersion: '1.0',
-  assetRevision: '2.1',
+  assetRevision: '2.2',
   status: 'locked',
   colors: {
     navy: '#041F5F',
@@ -37,6 +37,7 @@ export const pichanBrand = {
     messagingChanged: false,
     paletteChanged: false,
     singleMasterGeometry: true,
+    productionCleanup: 'beak/head artifact contours removed in asset revision 2.2',
   },
   assets: {
     icon: 'brand/vector/PiChan_Icon_Master.svg',
