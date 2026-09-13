@@ -2,11 +2,11 @@
 
 **Status:** DESIGN HQ — FOUNDATION LOCK  
 **Product version:** V1.0  
-**Design system revision:** 0.2  
+**Design system revision:** 0.3  
 **Date:** 2026-09-13  
 **Owner:** PiChan Design HQ
 
-This document defines the visual and interaction foundation for PiChan V1. Use it with `UI_DESIGN_REQUIREMENTS_V1.md`, `PRODUCT_UI_TOKENS_V1.md`, the locked product specifications and Production Assets 2.2.
+This document defines the visual and interaction foundation for PiChan V1. Use it with `UI_DESIGN_REQUIREMENTS_V1.md`, `PRODUCT_UI_TOKENS_V1.md`, `UI_COMPONENT_LIBRARY_V1.md`, the locked product specifications and Production Assets 2.2.
 
 The product must feel like **an intelligence instrument**, not a generic crypto dashboard or trading terminal.
 
@@ -107,7 +107,7 @@ Purpose: completeness, freshness and consistency of evidence.
 - cyan/blue + neutral empty segments
 - never green
 
-These outputs may share one structural Decision Strip, but they must never become one composite safety/trust score.
+These outputs share one structural Decision Strip, but they never become one composite safety/trust score.
 
 ---
 
@@ -200,7 +200,15 @@ Bottom navigation is locked:
 - Watch
 - Me
 
-Top bar stays compact and contextual.
+Passport and Creator Intelligence are detail routes, not extra tabs.
+
+Detail-screen rules:
+
+- preserve the primary bottom navigation
+- show a back affordance when browser/app navigation history exists
+- deep-link fallback returns to Radar
+- do not falsely hard-code Radar as active on every Passport
+- preserve originating tab state when available; otherwise no tab must be highlighted
 
 ### Desktop
 
@@ -234,6 +242,8 @@ Buttons:
 
 Chips communicate actual filter/status meaning; they are not decoration.
 
+All component behavior is specified in `UI_COMPONENT_LIBRARY_V1.md`.
+
 ---
 
 ## 11. Signature PiChan UI patterns
@@ -247,6 +257,8 @@ One structural component containing three independent segments:
 - Data Confidence
 
 This becomes a recognizable PiChan pattern.
+
+Do not show the internal system label `Decision Strip` in production UI.
 
 ### PiChan Brief
 
@@ -284,9 +296,27 @@ Full precision belongs in detail where needed.
 
 Market data is context, not the product hero.
 
+Project/token artwork is content, not brand decoration. When no verified project image exists, use a deterministic neutral identicon before falling back to initials. Never substitute the PiChan bird as a token icon.
+
 ---
 
-## 13. Motion
+## 13. Iconography
+
+Production uses one consistent vector icon family.
+
+Do not ship Unicode placeholder glyphs from mockups.
+
+Target sizes:
+
+- 16 px metadata
+- 18–20 px controls
+- 22–24 px primary navigation
+
+The PiChan bird is a brand asset, not a system icon.
+
+---
+
+## 14. Motion
 
 Use short motion only for orientation/state change:
 
@@ -302,56 +332,53 @@ Respect reduced motion.
 
 ---
 
-## 14. Passport flagship direction
+## 15. Passport flagship direction
 
-The optimized Passport anatomy is now defined in:
+The optimized Passport anatomy is defined in:
 
 `docs/PASSPORT_UI_SPEC_V1.md`
 
-Key V0.2 corrections:
+The first high-fidelity mobile pass validates the core direction:
 
 - unified Decision Strip
-- fewer nested cards
-- open research sections
-- sticky desktop context rail
-- stronger desktop global search
-- no contradictory Claim action states
-- no duplicated Watch blocks
-- standardized Evidence Footer
-- Risk displayed primarily as evidence rows rather than cards inside cards
+- PiChan Brief as the primary brand moment
+- open research sections rather than nested cards
+- evidence/freshness language as a repeated pattern
+- Market Pulse as secondary context
+- Risk urgency without exchange/casino styling
 
-Passport is the first high-fidelity screen because it contains most reusable system primitives.
+The next visual pass removes internal/mockup-only labels and placeholder glyph icons, adds final detail-route navigation behavior and uses deterministic project artwork fallback rules.
 
 ---
 
-## 15. First reusable component set
+## 16. Reusable component source
+
+The production component contract now lives in:
+
+`docs/UI_COMPONENT_LIBRARY_V1.md`
+
+Core families include:
 
 1. App shell
 2. Global search / command field
 3. Project identity block
-4. Chain badge
-5. Verification/status badge
-6. Unified Decision Strip
-7. Reputation segment
-8. Risk summary segment
-9. Data Confidence segment
-10. Risk Finding row/card
-11. Evidence Footer / source row
-12. Freshness label
-13. Metric tile/row
-14. PiChan Brief
-15. Radar event card
-16. Timeline event
-17. Watch control
-18. Address row
-19. Filter/segmented control
-20. Loading/empty/error/partial states
-21. Modal/bottom sheet
-22. Crypto invoice/payment status components
+4. Chain + verification/status badges
+5. Unified Decision Strip
+6. PiChan Brief
+7. Evidence Footer
+8. Risk Finding row/card
+9. Metric/data row
+10. Holder/entity record
+11. Creator preview
+12. Flight Recorder event
+13. Watch control
+14. Button system
+15. Modal/bottom sheet
+16. Loading/empty/unknown/error states
 
 ---
 
-## 16. Design QA rules
+## 17. Design QA rules
 
 A screen fails Design HQ if:
 
@@ -365,16 +392,18 @@ A screen fails Design HQ if:
 - mascot usage becomes noise
 - UI resembles an exchange terminal
 - terminology differs from locked product language
-- logo assets are reconstructed instead of consuming Production Assets 2.2
+- placeholder glyph icons ship to production
+- the PiChan logo or bird is reconstructed instead of consuming Production Assets 2.2
 
 ---
 
-## 17. Current lock and next step
+## 18. Current lock and next step
 
 **Direction:** dark-first evidence intelligence product.  
 **Visual character:** quiet intelligence, bright signals.  
 **Passport structure:** V0.2 structure-lock candidate.  
 **Product tokens:** V0.2 foundation locked.  
+**Component library:** V0.3 foundation defined.  
 **Brand assets:** Production Assets 2.2.
 
-Next Design HQ step: **build the first high-fidelity mobile Project Passport**, validate it against the state matrix, then derive desktop and finalize the component library.
+Next Design HQ step: **complete the desktop high-fidelity Passport from the same system, review mobile + desktop together, then lock Passport and use the extracted components to design Radar.**
