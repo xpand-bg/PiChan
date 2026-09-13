@@ -12,9 +12,10 @@ Implementation authority for V1:
 
 1. [`docs/PRODUCT_SPEC_V1.md`](./docs/PRODUCT_SPEC_V1.md) — locked V1 features, screens, user flows, launch boundaries and acceptance criteria
 2. [`docs/INTELLIGENCE_MODEL_V1.md`](./docs/INTELLIGENCE_MODEL_V1.md) — locked Reputation, Risk Signals, Data Confidence, evidence and event semantics
-3. [`docs/ADR-001-MULTICHAIN-FOUNDATION.md`](./docs/ADR-001-MULTICHAIN-FOUNDATION.md) — locked multi-chain/domain architecture decision
-4. [`docs/PRODUCT_ARCHITECTURE.md`](./docs/PRODUCT_ARCHITECTURE.md) — high-level product/system architecture
-5. [`docs/V1_BUILD_PLAN.md`](./docs/V1_BUILD_PLAN.md) — implementation sequence for Developer HQ
+3. [`docs/MONETIZATION_V1.md`](./docs/MONETIZATION_V1.md) — locked business model, claimed-project monetization and crypto-only payment rule
+4. [`docs/ADR-001-MULTICHAIN-FOUNDATION.md`](./docs/ADR-001-MULTICHAIN-FOUNDATION.md) — locked multi-chain/domain architecture decision
+5. [`docs/PRODUCT_ARCHITECTURE.md`](./docs/PRODUCT_ARCHITECTURE.md) — high-level product/system architecture
+6. [`docs/V1_BUILD_PLAN.md`](./docs/V1_BUILD_PLAN.md) — implementation sequence for Developer HQ
 
 ### V1 product pillars
 
@@ -47,6 +48,21 @@ Supporting drill-down: **Creator Intelligence**.
 - Telegram scan
 - share cards
 - report/dispute + admin review
+
+### V1 monetization
+
+- research users: free core intelligence
+- automatic Passport: free
+- project claim and authority verification: free
+- official links/wallet declarations and factual corrections: free
+- Passport Pro: paid recurring project tools
+- Priority Review: paid faster review workflow, never guaranteed approval
+- Launch Pack: paid one-time project setup/bundle
+- Sponsored Sighting: paid visibility, always separated from organic Radar
+- all paid PiChan products: **crypto-only settlement**
+- exact prices and accepted crypto assets/networks: **TBD**
+
+Payment can never directly improve Reputation, suppress Risk Signals, increase Data Confidence, alter Flight Recorder history, buy a transparency designation or change organic Radar ranking.
 
 ### Locked network direction
 
