@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+<title>PiChan Icon Monochrome Navy</title>
+<defs>
+  <filter id="monoNavy" color-interpolation-filters="sRGB">
+    <feColorMatrix type="matrix" values="0 0 0 0 0.0157  0 0 0 0 0.1216  0 0 0 0 0.3725  0 0 0 1 0"/>
+  </filter>
+</defs>
+<image href="PiChan_Icon_Master.svg" x="0" y="0" width="1024" height="1024" filter="url(#monoNavy)"/>
+</svg>
