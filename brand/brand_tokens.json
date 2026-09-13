@@ -1,7 +1,7 @@
 {
   "brand": "PiChan",
   "brandGuidelinesVersion": "1.0",
-  "assetRevision": "2.1",
+  "assetRevision": "2.2",
   "status": "locked",
   "colors": {
     "navy": "#041F5F",
@@ -45,6 +45,7 @@
     "wordmarkChanged": false,
     "messagingChanged": false,
     "paletteChanged": false,
-    "singleMasterGeometry": true
+    "singleMasterGeometry": true,
+    "productionCleanup": "beak/head artifact contours removed in asset revision 2.2"
   }
 }
