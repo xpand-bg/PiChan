@@ -1,6 +1,6 @@
 export const pichanBrand = {
-  version: '1.1',
-  logoMasterVersion: '2.0',
+  brandGuidelinesVersion: '1.0',
+  assetRevision: '2.1',
   status: 'locked',
   colors: {
     navy: '#041F5F',
@@ -18,6 +18,7 @@ export const pichanBrand = {
     css: 'linear-gradient(90deg, #153FE9 0%, #12B6F6 100%)',
     from: '#153FE9',
     to: '#12B6F6',
+    logoAllowed: false,
   },
   typography: {
     primary: 'Plus Jakarta Sans',
@@ -26,13 +27,15 @@ export const pichanBrand = {
   messaging: {
     tagline: 'See what others miss.',
     positioning: 'Onchain intelligence & market discovery.',
-    personality: 'PiChan is watching.',
     community: 'PiChan | The Flock',
+    personality: 'PiChan is watching.',
+    tone: 'Curious. Data-driven. Independent. Forward-thinking.',
   },
   identity: {
     birdMaster: 'brand/vector/PiChan_Icon_Master.svg',
-    birdDirection: 'Curious PiChan / Concept B — final refinement',
     wordmarkChanged: false,
+    messagingChanged: false,
+    paletteChanged: false,
     singleMasterGeometry: true,
   },
   assets: {
