@@ -1,257 +1,255 @@
 # PiChan V1 — Watch & Alerts UI Spec
 
-**Status:** DESIGN HQ — RESEARCH / CONCEPT DRAFT  
+**Status:** DESIGN HQ — LOCKED  
 **Product version:** V1.0  
 **Date:** 2026-09-13  
 **Owner:** PiChan Design HQ
 
 Watch answers:
 
-> **What changed from now on?**
+> **What changed while I wasn't looking?**
 
 Alert detail answers:
 
 > **What changed, why did PiChan alert me, and what evidence proves it?**
 
-Watch is one of the four primary public product pillars. Alerts are the monitoring output of Watch, not a separate primary pillar.
+Watch is a primary product pillar. Alerts are the monitoring output of Watch, not a separate pillar.
 
 V1 delivery channels:
 
-- in-app alert centre
+- in-app alert history / centre
 - Telegram
 
-No price-target alerts exist in V1.
+No price-target alerts, trading calls, balances, P&L, or buy/sell recommendations exist in Watch V1.
 
 ---
 
-## 1. Locked product requirements
+## 1. Core product contract
 
-From `PRODUCT_SPEC_V1.md` and `V1_BUILD_PLAN.md`, Watch V1 must support:
+Watch V1 supports:
 
 - watch / unwatch
-- alert preferences
+- one-tap Recommended monitoring
+- optional Custom event-family preferences
 - material-event evaluation
 - deduplication / cooldowns
-- in-app notification centre
+- in-app alert history
 - Telegram delivery
 - configuration-driven materiality thresholds
+- corrections / superseded alerts
+- stale / partial-provider states
 
-High-value alert classes:
+High-value supported alert classes include:
 
-- critical risk/control finding appears or changes
-- contract upgrade / owner / authority change
-- material mint/burn event
-- material liquidity removal/change
-- LP/lock condition change when reliably detectable
-- material holder/related-wallet concentration change
-- official link/identity change
-- dispute/lifecycle change
-- creator launches another project
-- Reputation Grade changes
-- Data Confidence changes materially
-
-Watch must never become a price-alert or trading-call product.
-
----
-
-## 2. Research conclusions
-
-### A. Existing crypto alerts are mostly condition builders
-
-Etherscan Watch List monitors selected addresses and sends notifications for matching address/token-transfer activity.
-
-Arkham Alerts can monitor addresses/entities using transaction/token/value/chain criteria and deliver through Telegram/email/webhooks.
-
-Nansen Smart Alerts similarly monitor wallets/tokens/labels and deliver real-time notifications through messaging channels.
-
-Tenderly/OpenZeppelin monitoring systems expose low-level transaction/event/function conditions, severity, thresholds and delivery channels.
-
-**PiChan opportunity:** do not compete by creating another transaction-rule builder. PiChan already has normalized intelligence, evidence, materiality and Flight Recorder events. Watch should alert on **interpreted project state changes**, not raw blockchain noise.
-
-### B. Alert fatigue is a product failure, not only an infrastructure problem
-
-PagerDuty and Grafana both emphasize deduplication/grouping/suppression because repeated notifications create alert fatigue and obscure important events.
-
-**PiChan implication:**
-
-- an event should not create multiple user alerts because providers repeat the same observation
-- cooldown/dedup logic happens before delivery
-- related updates should update/group into one understandable alert where the event model supports it
-- suppressed/deduplicated observations remain operationally auditable, but do not become duplicate user notifications
-
-### C. Immediate setup beats configuration-first setup
-
-Competitive products often require filters, thresholds and destinations before monitoring becomes useful.
-
-**PiChan implication:**
-
-- `Watch` is one tap from Passport
-- default profile is **Recommended**
-- project starts monitoring immediately after successful identity/account requirement
-- customization is optional after Watch is active
-- no threshold slider maze in V1
+- critical/warning risk or control finding appears or changes
+- owner / authority / upgrade / control change
+- material mint / burn event
+- material liquidity removal / change
+- LP lock / burn / control change where reliable
+- material holder / related-wallet concentration change
+- official identity / link / dispute / lifecycle change
+- connected creator launches another supported project
+- Reputation Grade change
+- material Data Confidence change
 
 ---
 
-## 3. Chosen direction — Watchtower
+## 2. Chosen direction — Watchtower
 
 `Watchtower` is an internal design pattern name. Public UI remains **Watch**.
 
-The primary Watch destination is a **monitoring inbox**, not a settings page.
+Watch is a monitoring inbox plus watched-project management.
 
-Recommended information architecture:
+Primary IA:
 
 ```text
 WATCH
 PiChan is watching.
-12 projects · 3 unread alerts · Telegram connected
+12 projects · 3 unread · Telegram connected
 
 [ Alerts 3 ] [ Watching 12 ]
 ```
 
 ### Alerts
 
-Cross-project material changes, newest first.
+Chronological cross-project material changes, newest first.
 
 ### Watching
 
-Projects the user actively monitors plus concise monitoring state/preferences.
+Projects the user actively monitors plus profile, delivery state, unread count and latest selected material alert.
 
-No third primary tab is required. Global notification/Telegram settings live behind a settings action or Me → Notification Settings.
+No third primary tab is required.
 
 ---
 
-## 4. One-tap Watch behavior
+## 3. One-tap Watch behavior
 
 From Passport:
 
 1. user presses `Watch`
-2. if identity/account requirement is satisfied, project is immediately watched using **Recommended** preferences
-3. action confirms with selected `Watching` state + toast
-4. optional secondary action: `Customize alerts`
+2. if account / identity requirement is satisfied, project becomes watched immediately
+3. default profile is **Recommended**
+4. action confirms as `Watching ✓`
+5. optional next action: `Customize alerts`
 
 If login/connect is required:
 
-- preserve the project context
+- preserve project context
 - explain why identity is required
-- after successful connect, return to the same project/watch action
+- after connect, return to the same project/watch action
 
-Do not make every user configure categories before Watch becomes useful.
+Selecting `Watching` opens Watch settings; it does not immediately remove the Watch.
 
-`Watching` uses selected cyan treatment, not safety green.
+`Stop watching` is explicit inside settings.
 
-Selecting `Watching` opens project Watch settings/details; it does not immediately unwatch.
+Watch states:
 
-`Stop watching` is explicit inside settings to avoid accidental removal.
+- available
+- adding
+- watching
+- removing
+- login/connect required
+- action error / retry
 
 ---
 
-## 5. Default monitoring profile
+## 4. Monitoring profiles
 
 ### Recommended — default
 
-PiChan monitors all supported **material** V1 event classes using centrally configured/calibrated thresholds.
+PiChan monitors all supported material V1 event families using centrally calibrated materiality rules.
 
-User does not configure arbitrary percentages/amounts in V1.
+Required behavior:
 
-Recommended copy:
-
-> PiChan alerts you when evidence-backed project changes cross its materiality rules.
+- starts immediately after Watch succeeds
+- six event families stay visible for transparency
+- category controls are **managed / read-only**
+- helper: `Switch to Custom to choose event families.`
 
 ### Custom
 
-User may enable/disable event families, not raw technical predicates.
+User may enable/disable event families:
 
-Recommended category model:
+1. Risk & Control
+2. Liquidity
+3. Supply & Holders
+4. Identity & Lifecycle
+5. Creator Activity
+6. Reputation & Confidence
 
-1. **Risk & Control**
-   - critical/warning risk finding
-   - owner/authority/control/upgrade change
-   - LP lock/burn/control state where reliable
+Custom changes event-family selection only.
 
-2. **Liquidity**
-   - material liquidity removal/change
-
-3. **Supply & Holders**
-   - material mint/burn
-   - material holder/related-wallet concentration change
-
-4. **Identity & Lifecycle**
-   - official/canonical/authority state
-   - official links
-   - dispute/lifecycle change
-
-5. **Creator Activity**
-   - creator/origin wallet launches another supported project
-
-6. **Reputation & Confidence**
-   - Reputation Grade change
-   - material Data Confidence change
-
-This keeps preferences understandable without turning Watch into an expert rule-builder.
+V1 does **not** expose arbitrary percentage, amount, wallet, price, or raw event-signature rule builders.
 
 ---
 
-## 6. Delivery model
+## 5. Alert generation model
 
-An **Alert record** and a **Delivery** are separate concepts.
+PiChan alerts on interpreted project state changes, not raw provider messages.
 
-### In-app
+Locked conceptual pipeline:
 
-Every generated user alert remains in the in-app Watch alert history.
+```text
+Observation
+  ↓
+Evidence
+  ↓
+Flight Recorder event / normalized state transition
+  ↓
+Materiality evaluation
+  ↓
+Dedup / cooldown
+  ↓
+Alert
+  ↓
+In-app + Telegram delivery
+```
 
-### Telegram
+Required trust rule:
 
-Optional external delivery channel after connection.
+> **One normalized material transition should create one understandable user alert.**
 
-Telegram delivery can be enabled/disabled without deleting Watch history.
+Provider retries, repeated observations, refreshes and unchanged conditions must not generate duplicate notifications.
 
-This separation prevents delivery failures from making an alert disappear from PiChan.
-
-V1 does not require native mobile push, email, Slack, Discord or webhooks for end users.
+Suppressed / deduplicated records may remain operationally auditable without appearing as duplicate user Alerts.
 
 ---
 
-## 7. Alert feed — signature list pattern
+## 6. Alert vs materiality vs risk severity
 
-The Alerts tab is a chronological cross-project monitoring feed.
+These remain separate concepts.
 
-Each Alert Row contains:
+### Alert
+
+A user-facing historical notification because a watched project experienced a selected material event.
+
+### Materiality
+
+Whether the change is important enough to notify according to configured rules.
+
+### Risk severity
+
+Critical / Warning / Unknown semantics only where an underlying Risk Finding supports them.
+
+Do not invent a universal red/yellow/green Alert Severity score.
+
+`Material` does not automatically mean `Warning`.
+
+---
+
+## 7. Alerts feed
+
+The Alerts tab is a date-grouped chronological feed (`Today`, `Yesterday`, date).
+
+Each Alert Row contains where applicable:
 
 - unread/read state
 - project identity
-- chain
-- event family
-- factual alert headline
-- compact reason/context
+- ticker + chain
 - timestamp
-- optional underlying risk severity when applicable
-- evidence freshness state when relevant
+- event-family label
+- factual headline
+- compact state/change context
+- signature `Why PiChan alerted you`
+- optional underlying risk/material context
+- evidence freshness when relevant
 
-Example:
+Unread must not rely on color alone. Use structural marker + stronger hierarchy + accessible unread state.
 
-```text
-● Signal Bird  $BIRD · Robinhood Chain       14m
-  LIQUIDITY
-  Liquidity decreased 18.6%
-  Primary pool moved $752K → $612K.
-```
+Read alerts preserve facts while reducing emphasis.
 
-Rules:
+Corrected alerts remain in chronology with explicit correction treatment.
 
-- unread state uses a non-color marker plus stronger hierarchy
-- read state reduces emphasis but preserves all facts
-- red/amber appears only when the underlying Risk/event semantics justify it
-- `Material` is not automatically styled as `Warning`
-- market price movement alone does not create a PiChan Watch alert
+Controls remain minimal:
 
-Group the feed by date (`Today`, `Yesterday`, date) rather than by project.
+- All
+- Unread
+- Filter
+- Mark all read
+
+`Mark all read` must provide clear success feedback; on failure, restore prior unread state and offer retry.
 
 ---
 
-## 8. Signature alert detail — Why PiChan alerted you
+## 8. Signature alert detail
 
-Alert detail reuses the locked Flight Recorder **State Delta** where applicable.
+`Why PiChan alerted you` is the signature Watch explanation.
+
+Alert Detail order:
+
+1. project identity
+2. event family + optional underlying risk semantics
+3. factual alert title
+4. observed time
+5. occurred-onchain time where known
+6. What Changed
+7. State Delta / factual change / relationship change
+8. **Why PiChan alerted you**
+9. evidence + freshness
+10. delivery status
+11. Open Flight Recorder
+12. Open Passport
+13. correction/history context where relevant
 
 Example:
 
@@ -260,263 +258,153 @@ LIQUIDITY
 Liquidity decreased 18.6%
 
 WHAT CHANGED
-$752K  →  $612K
+$752K → $612K
 
 WHY PICHAN ALERTED YOU
-The change crossed PiChan's configured material-liquidity threshold.
+Liquidity changed materially enough to cross PiChan's configured threshold.
 
 EVIDENCE
 Onchain · primary pool · observed 14:33
-View evidence
 
 Open Flight Recorder →
 Open Passport →
 ```
 
-`Why PiChan alerted you` is the signature Watch explanation.
-
-It must explain the alert trigger in factual product language without exposing internal implementation jargon unnecessarily.
-
-Examples:
-
-- `Liquidity changed materially enough to cross PiChan's configured threshold.`
-- `A relevant current authority changed.`
-- `Top-holder concentration crossed the configured material-change threshold.`
-- `The creator/origin wallet linked to this project launched another supported deployment.`
-- `Data Confidence moved from Medium to Low because a supporting source became stale.`
+For first observations with no prior value, use a factual initial-observation block rather than inventing a fake Before value.
 
 ---
 
-## 9. Alert detail anatomy
+## 9. Alert and delivery are separate records
 
-Required where applicable:
+An Alert exists in PiChan independently from channel delivery.
 
-1. project identity
-2. event family + optional Risk severity
-3. alert title
-4. observed time
-5. occurred-onchain time where known
-6. `What changed`
-7. State Delta / relationship change / factual change block
-8. `Why PiChan alerted you`
-9. Evidence Footer
-10. freshness/source state
-11. delivery status where useful
-12. `Open Flight Recorder`
-13. `Open Passport`
+### In-app
 
-For creator alerts, relationship context can replace numeric Before/After.
+Every generated user alert remains in Watch history while applicable to the account/project relationship.
 
-For first-time states where no prior value exists, use the locked factual initial-observation pattern rather than inventing a fake `Before` state.
+States:
 
----
+- unread
+- read
+- corrected / superseded
+- stale supporting evidence
+- conflicting evidence
 
-## 10. Corrections and superseded alerts
+### Telegram delivery
 
-Alerts are historical notifications and must preserve truth over time.
+States:
 
-If evidence later corrects the underlying event:
+- pending
+- delivered
+- failed / retry
+- disconnected
 
-- original alert remains in Alert history
-- original alert receives `Corrected` / `Superseded` treatment
-- alert detail links to the correcting event
-- current Passport/Flight Recorder state reflects the corrected evidence
-- external Telegram notification cannot be retroactively deleted, but the in-app alert record is updated with the correction context
+Telegram failure never removes, recreates or duplicates the underlying Alert.
 
-Never silently rewrite or remove the original alert.
+Channel reconnect/retry acts on Delivery, not Alert creation.
 
 ---
 
-## 11. Alerts vs Risk severity vs materiality
+## 10. Corrections and historical integrity
 
-These concepts remain separate.
+If later evidence corrects an alert:
 
-### Alert
+- original Alert remains in history
+- original receives `Corrected` / `Superseded` treatment
+- detail links to the correcting event / correction chain
+- current Passport and Flight Recorder reflect current evidence
+- Telegram message cannot be retroactively erased, so its deep-link must show correction context
 
-A user-facing notification because a watched project experienced a selected material event.
+Never silently rewrite or delete a historical alert.
 
-### Materiality
-
-Whether the change is important enough to trigger Watch according to configured rules.
-
-### Risk severity
-
-Underlying Critical/Warning/Unknown semantics from a Risk Finding where applicable.
-
-Do not invent a universal red/yellow/green `Alert Severity` score that collapses these concepts.
+Conflicting evidence is shown as unresolved context rather than collapsed into false certainty.
 
 ---
 
-## 12. Noise control
+## 11. Stale evidence and provider outage behavior
 
-Noise control is part of product trust.
-
-Required behavior:
-
-- deduplicate repeat observations for the same normalized change
-- cooldown repeat notifications where the same condition remains active
-- avoid multiple alerts for provider retries/reprocessing
-- if several evidence updates describe the same material state transition, prefer one alert with the best current evidence
-- maintain suppressed/deduplicated records operationally where needed for debugging/audit
-
-Potential implementation key:
-
-`user + watched project + normalized event/finding identity + meaningful state transition`
-
-Exact logic remains an Intelligence/Developer HQ implementation detail, but the UI assumes the user receives one understandable alert, not repeated provider noise.
-
----
-
-## 13. Watching tab
-
-The Watching tab is management + monitoring status, not a token portfolio.
-
-Each watched project row should show:
-
-- project identity
-- chain
-- Watching state
-- monitoring profile (`Recommended` / `Custom`)
-- enabled delivery (`In-app`, `Telegram`)
-- unread alert count when non-zero
-- latest material alert/event summary
-- Passport destination
-- project Watch settings action
-
-Do not show portfolio balance, P&L, price targets or trading position.
-
----
-
-## 14. Watch project settings
-
-Mobile: bottom sheet or nested detail.  
-Desktop: side panel/context rail.
+Stale or unavailable provider enrichment must affect only the evidence/conclusion it supports.
 
 Required:
+
+- already-created onchain-backed Alerts stay visible
+- evidence footer shows stale/unavailable freshness state
+- unrelated alerts do not disappear during partial provider outage
+- provider-only conclusions are visibly weakened / unavailable
+- previously loaded Watch history remains intact during refresh failure
+- retry refreshes affected regions without inserting demo data
+
+---
+
+## 12. Watching tab
+
+The Watching tab is monitoring management, not a portfolio.
+
+Each row shows:
+
+- project identity
+- ticker + chain
+- Recommended / Custom profile
+- enabled delivery (`In-app`, `Telegram`)
+- unread count when non-zero
+- latest selected material alert summary or quiet state
+- Watch settings
+- Passport destination
+
+Forbidden:
+
+- balances
+- holdings
+- P&L
+- price targets
+- trading position
+
+Quiet state copy:
+
+> **Quiet is useful too.**  
+> PiChan is watching your projects. No selected material changes have triggered an alert yet.
+
+---
+
+## 13. Watch project settings
+
+Mobile: bottom sheet / nested detail.  
+Desktop: context rail / side panel.
+
+Required sections:
 
 ### Monitoring profile
 
 - Recommended
 - Custom
 
-### Custom event-family toggles
+### Alert families
 
-- Risk & Control
-- Liquidity
-- Supply & Holders
-- Identity & Lifecycle
-- Creator Activity
-- Reputation & Confidence
+Visible in both modes.
+
+- Recommended: managed / read-only
+- Custom: user-selectable
 
 ### Delivery
 
-- In-app alert history: always available while watched
+- in-app alert history: always available while watched
 - Telegram: enabled/disabled if connected
 
-### Watch state
+### Monitoring state
 
 - watched since
-- last evaluated / monitoring health where useful
-- `Stop watching`
+- last evaluated where useful
+- Stop watching
 
-No price-target input.
-
----
-
-## 15. Alerts tab controls
-
-Keep controls minimal.
-
-Recommended:
-
-- `All`
-- `Unread`
-- optional event-family filter through one Filter action
-- `Mark all read`
-
-Desktop may expose more inline filter chips if space allows.
-
-Do not make the monitoring inbox look like an analytics query builder.
+No threshold slider maze or raw technical predicate builder.
 
 ---
 
-## 16. Desktop composition
+## 14. Telegram alert composition
 
-Reference width: 1440 px.
+Telegram uses the same event vocabulary and explanation model as web.
 
-Use locked PiChan shell.
-
-Main research column: ~780–830 px.  
-Context rail: ~300–340 px.
-
-### Alerts selected
-
-Main:
-
-- Watch header/status
-- Alerts / Watching segmented control
-- alert filters
-- chronological Alert feed
-
-Right rail:
-
-- selected **Alert Inspector**
-- What changed
-- Why PiChan alerted you
-- delivery status
-- evidence/destinations
-
-### Watching selected
-
-Main:
-
-- watched-project list
-
-Right rail:
-
-- selected project's Watch settings
-- monitoring profile
-- categories
-- channel state
-
----
-
-## 17. Mobile composition
-
-Reference width: 390 px.
-
-```text
-Watch
-PiChan is watching.
-12 watching · 3 unread · Telegram connected
-
-[ Alerts 3 ] [ Watching 12 ]
-
-TODAY
-● Signal Bird                        14m
-  LIQUIDITY
-  Liquidity decreased 18.6%
-  $752K → $612K
-
-  Nova Protocol                     31m
-  CREATOR
-  Linked creator launched another project
-
-YESTERDAY
-...
-
-[ Radar ] [ Search ] [ Watch ] [ Me ]
-```
-
-Alert tap opens deep-linkable detail/nested route or the approved mobile detail pattern.
-
----
-
-## 18. Telegram alert composition
-
-Keep Telegram messages concise and evidence-oriented.
-
-Recommended anatomy:
+Reference:
 
 ```text
 PiChan Alert · Signal Bird ($BIRD)
@@ -533,190 +421,115 @@ Observed 14:33 · Onchain evidence
 [Open Passport] [View event]
 ```
 
-Rules:
+Forbidden:
 
-- no `BUY`, `SELL`, `APE`, `DUMP NOW`, or fake urgency
-- no price-target language
-- same event vocabulary as web
-- exact project/chain identity remains visible
-- if evidence is stale/conflicting, Telegram output says so
+- BUY / SELL / APE / DUMP NOW
+- price targets
+- fake urgency
+- safety implications from color alone
+
+If evidence is stale or conflicting, Telegram output must say so.
 
 ---
 
-## 19. Navigation / unread badges
+## 15. Navigation and responsive behavior
 
-Primary mobile navigation remains:
+Primary navigation remains:
 
 - Radar
 - Search
 - Watch
 - Me
 
-Watch may display a small numeric unread badge when unread alerts exist.
+Watch may show a numeric unread badge. Badge means unread notifications, not risk severity.
 
-The badge indicates unread notifications, not risk severity.
+### Desktop
 
-`Me` may still contain shortcuts to Watches / Alerts / Telegram settings as required by the product spec, but those shortcuts route into the same Watch/notification system rather than create duplicate implementations.
+Alerts selected:
 
----
+- main: Watch header, tabs, filters, chronological feed
+- right rail: selected Alert Inspector
 
-## 20. Required states
+Watching selected:
 
-### Watch action
+- main: watched-project list
+- right rail: selected project Watch settings
 
-- available
-- adding
-- watching
-- removing
-- login/connect required
-- action error
-- preferences unavailable while Watch remains active
+### Mobile
 
-### Alert
-
-- unread
-- read
-- corrected/superseded
-- stale supporting evidence
-- conflicting evidence
-- delivery pending
-- delivered
-- Telegram delivery error
-- deduplicated/suppressed operational state where surfaced
-- alert detail error/partial data
-
-### Notification centre
-
-- loading
-- no alerts yet
-- all read
-- provider partial outage
-- error/retry
-
-### Watching list
-
-- no watched projects
-- normal
-- project partial-data state
-- Telegram disconnected while Watch remains active
-- settings save pending/error
+- Alerts and Watching use one-column flow
+- Alert Detail is a dedicated/nested route
+- Watch settings use bottom sheet or nested route
+- settings content must scroll independently when sheet height exceeds viewport
+- bottom app navigation must never obscure content
 
 ---
 
-## 21. Empty states
+## 16. Required empty / loading / error states
 
-### No watched projects
-
-Recommended:
+### No watches
 
 > **PiChan isn't watching anything yet.**  
 > Watch a Passport and PiChan will notify you when something material changes.
 
-Primary CTA: `Find a project`  
-Secondary path: Radar
+CTA: `Find a project`
 
-### Watching projects, no alerts yet
-
-Recommended:
+### Watches exist, no alerts
 
 > **Quiet is useful too.**  
 > PiChan is watching your projects. No selected material changes have triggered an alert yet.
 
-Avoid fake sample alerts in production.
+Other required states:
+
+- notification-centre loading
+- all read
+- provider partial outage
+- alert-detail partial data
+- alert/detail error + retry
+- Telegram disconnected
+- settings save pending / error
+- Watch add/remove pending / error
+
+No demo alerts or fake activity in production empty states.
 
 ---
 
-## 22. Accessibility
+## 17. Accessibility
 
 Required:
 
-- Alerts list uses semantic list/feed structure
-- unread/read is available to assistive technology and not color-only
+- Alerts use semantic list/feed structure
+- unread/read is textual/structural and not color-only
 - risk severity is textual
-- State Delta has textual Before/After labels
-- alert inspector is keyboard reachable
-- selected alert row has visible focus/selected state
-- settings toggles have explicit labels and states
+- State Delta exposes Before / After labels
+- alert rows and inspector are keyboard reachable
+- selected alert has visible focus/selected state
+- settings toggles have explicit labels/states
+- Recommended managed state is exposed as read-only/disabled, not simply visual
 - Telegram/channel status is textual
-- reduced motion removes animated alert-entry/highlight effects
+- reduced motion removes alert-entry/highlight effects
 
 ---
 
-## 23. Research differentiation
+## 18. Final V1 lock
 
-Competitors are strong at raw-condition monitoring:
+Public name: **Watch**  
+Internal pattern: **Watchtower**  
+Primary modes: **Alerts / Watching**  
+Signature explanation: **Why PiChan alerted you**  
+Default monitoring: **Recommended**  
+Custom monitoring: **event-family selection only**  
+Delivery: **In-app + Telegram**
 
-- Etherscan: address/token transfer watch
-- Arkham: entity/address/token/value/chain transaction alerts
-- Nansen: wallet/token/label Smart Alerts
-- Tenderly/OpenZeppelin: transaction/event/function monitor rules
+Non-negotiables:
 
-PiChan V1 differentiates by monitoring **interpreted evidence-backed project state**:
+- Alert ≠ Delivery
+- Materiality ≠ Risk severity
+- Watch ≠ Portfolio
+- Telegram failure ≠ lost Alert
+- correction ≠ deletion
+- provider message ≠ user Alert
+- dedup/cooldown is part of product trust
+- no price alerts or trading calls
 
-```text
-raw observations
-      ↓
-normalized evidence
-      ↓
-Flight Recorder event / state change
-      ↓
-materiality evaluation
-      ↓
-dedup / cooldown
-      ↓
-Watch alert
-      ↓
-in-app + Telegram
-```
-
-The user does not need to know which event signature, wallet transfer amount or provider field to monitor.
-
----
-
-## 24. Lock direction
-
-Recommended concept to take into high fidelity:
-
-### Public name
-
-**Watch**
-
-### Internal pattern
-
-**Watchtower**
-
-### Signature alert element
-
-**Why PiChan alerted you** + reused Flight Recorder **State Delta**
-
-### Core IA
-
-**Alerts / Watching**
-
-### Default Watch profile
-
-**Recommended** — all selected evidence-backed material V1 event classes using PiChan-configured thresholds.
-
-### Customization philosophy
-
-Choose event families and delivery channels; do not build a raw rule engine or price-target system in V1.
-
-### Primary product advantage
-
-PiChan tells the user **what changed and why it matters enough to interrupt them**, then links directly to evidence and historical context.
-
----
-
-## 25. Next design pass
-
-Build and review:
-
-1. mobile Alerts inbox
-2. mobile Watching tab + project settings sheet
-3. mobile Alert Detail
-4. desktop Alerts + Alert Inspector
-5. desktop Watching + Watch Settings rail
-6. Telegram alert template
-7. component/state QA board
-
-Do not lock until noise-control, correction, stale/conflict, delivery-error and empty states have all been visually tested.
+**DESIGN HQ LOCKED — implementation should preserve these semantics and information hierarchy.**
