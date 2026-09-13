@@ -1,39 +1,37 @@
 # PiChan Vector Assets
 
-**Brand Guidelines:** Version 1.0 · September 2026  
-**Production asset revision:** 2.1  
+**Brand Guidelines:** v1.0  
+**Production asset revision:** v2.2  
 **Status:** FINAL LOCKED
 
 ## Source hierarchy
 
-`PiChan_Icon_Master.svg` is the canonical approved PiChan bird geometry.
+`PiChan_Icon_Master.svg` is the one canonical PiChan bird geometry.
 
-`PiChan_Wordmark_LightBG.svg` and `PiChan_Wordmark_DarkBG.svg` are the canonical approved wordmark vectors. The wordmark design and color construction are unchanged from the approved brand kit.
+`PiChan_Wordmark_LightBG.svg` and `PiChan_Wordmark_DarkBG.svg` are the canonical approved wordmark vectors. Their design and color construction are unchanged.
 
-The final production refinement replaced only the bird. All other brand decisions remain locked.
+All other bird-based assets must derive from the canonical bird master.
 
-## Final bird
+## Production 2.2 cleanup
 
-The approved bird is the final Curious PiChan refinement:
+Revision 2.2 removes unintended white vector artifacts at the beak/head junction that became visible in circular/avatar exports. This is not a redesign.
 
-- observant, not angry
-- curious and intelligent
-- confident, not overly cute
-- balanced head/body relationship
-- full cyan wing
-- signature feather sweeps
-- blue cheek patch and three throat dots
-- neutral beak
-- no external white halo or accidental keyline on dark surfaces
+Do not reintroduce:
+
+- white spikes/slivers next to the beak
+- accidental white micro-contours around the mouth
+- artificial outer white halos around the full-color bird
+
+The white ring in the **Circular Badge** is an intentional badge border; it is not an outline around the bird.
 
 ## Files
 
 - `PiChan_Icon_Master.svg` — full-color bird source of truth
-- `PiChan_Icon_LightBG_Keyline.svg` — light-surface contrast treatment only
-- `PiChan_Icon_Monochrome_Navy.svg` — approved navy monochrome mark
-- `PiChan_Icon_Monochrome_White.svg` — approved white reverse mark
-- `PiChan_Wordmark_LightBG.svg` — approved light-background wordmark
-- `PiChan_Wordmark_DarkBG.svg` — approved dark-background wordmark
+- `PiChan_Icon_LightBG_Keyline.svg` — approved light-surface treatment
+- `PiChan_Icon_Monochrome_Navy.svg` — one-color navy variant
+- `PiChan_Icon_Monochrome_White.svg` — one-color white variant
+- `PiChan_Wordmark_LightBG.svg` — locked navy/cyan wordmark
+- `PiChan_Wordmark_DarkBG.svg` — locked white/cyan wordmark
 - `PiChan_Primary_Horizontal_LightBG.svg` — primary light-surface lockup
 - `PiChan_Primary_Horizontal_DarkBG.svg` — primary dark-surface lockup
 - `PiChan_Secondary_Stacked_LightBG.svg` — stacked light-surface lockup
@@ -42,25 +40,20 @@ The approved bird is the final Curious PiChan refinement:
 - `PiChan_App_Icon.svg` — app icon composition
 - `PiChan_Official_Digital_Gradient.svg` — gradient reference only
 
-## Linked derivatives
+## Usage rule
 
-Composite repository SVGs may reference the canonical bird and wordmark masters from this directory. This is intentional: changing the locked source master updates linked product derivatives without introducing a second bird geometry.
+When using the repository as a complete asset folder, composite SVGs may reference the canonical master/wordmark files in the same directory. External handoff packages must provide self-contained production vectors and rendered PNG exports.
 
-For external handoff and archiving, use the self-contained production package `PiChan_Brand_FINAL_LOCKED.zip`.
+For social use, render the circular badge from the production vector; do not screenshot or regenerate the logo.
 
-## Locked rules
+## Do not
 
-Do not:
+- edit a derivative and treat it as a new master
+- redraw the eye, beak, feathers, cheek dots or wing
+- crop the wing in the circular badge
+- change colors
+- apply the official digital gradient to the core logo
+- use legacy PiChan bird variants
+- use generated raster artwork as the vector source
 
-- redraw or reinterpret the bird
-- alter the wordmark
-- add a white halo around the bird on dark backgrounds
-- use the light-background keyline treatment on dark surfaces
-- change the eye, beak, feather rhythm, cheek patch, throat dots or wing
-- change the locked colors
-- stretch, rotate or distort the logo
-- apply the digital gradient to the core logo
-- rewrite the permanent brand messaging
-- use legacy PiChan variants
-
-Any future identity redesign must be an explicit new brand version with synchronized assets, documentation and implementation tokens.
+Any future identity change requires a new brand version and synchronized changes to the brand documentation and implementation tokens.
