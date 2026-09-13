@@ -1,26 +1,22 @@
 # PiChan Brand Guidelines
 
-**Version 1.1 | September 2026**  
-**Logo Master 2.0 | Identity LOCKED**
+**Version 1.0 | September 2026**  
+**Production asset revision 2.1 | Identity FINAL LOCKED**
 
-> This document preserves the approved PiChan brand system. The final update replaces only the bird geometry with the locked Curious PiChan master. The wordmark, colors, typography, gradient, messaging and usage system remain unchanged.
+This document preserves the approved PiChan brand kit. The final production update replaces only the bird icon. The approved wordmark, permanent copy, palette, typography, gradient rules, spacing rules, supporting elements and brand-kit structure remain unchanged.
 
 ## 1. Logo System
 
 One consistent mark. All logo variations use the same PiChan bird geometry.
 
 - **Primary Logo (Horizontal):** use as the primary logo for web, product, documents and headers.
-- **Secondary Logo (Stacked):** use for vertical formats and limited horizontal space.
-- **Circular Badge:** for avatars, app/social profiles and compact placements.
+- **Secondary Logo (Stacked):** for vertical formats and limited horizontal space.
+- **Circular Badge:** for avatars, app icons and social profiles.
 - **Icon Only:** for small spaces, favicons and UI icons.
-- **Monochrome Mark:** single-color version for limited-use applications.
-- **Wordmark Only:** for text-based applications where the icon is not needed.
+- **Monochrome Mark:** single-color version for limited use.
+- **Wordmark Only:** for text-based applications when the icon is not needed.
 
-All logo versions derive from `vector/PiChan_Icon_Master.svg`. Do not redraw, reshape or recreate the bird.
-
-### Final bird character
-
-The locked bird should read as curious, observant, intelligent and confident. It must not be made angry, childish, overly cute or generic. The final construction uses an organic silhouette with stronger body/wing balance and keeps the full wing visible in circular/avatar applications.
+All bird applications derive from `vector/PiChan_Icon_Master.svg`. Do not redraw, reshape or recreate the bird.
 
 ## 2. Minimum Size
 
@@ -31,9 +27,7 @@ The locked bird should read as curious, observant, intelligent and confident. It
 
 ## 3. Clear Space
 
-Keep clear space around the full logo equal to the height of the wordmark **i-dot (x)** on all sides.
-
-For icon-only use, preserve at least 12% of the icon width as clear space.
+Keep clear space around the logo equal to the height of the wordmark **i-dot (x)** on all sides.
 
 ## 4. Color Palette
 
@@ -41,23 +35,23 @@ For icon-only use, preserve at least 12% of the icon width as clear space.
 
 | Color | Hex | Usage |
 |---|---|---|
-| Deep Navy | `#041F5F` | Primary / background / headers / dark UI |
-| Cyan Blue | `#12B6F6` | Brand / accent / buttons / links |
-| Royal Blue | `#153FE9` | Secondary accent / charts / highlights |
-| White | `#FFFFFF` | Base / background / clean space |
+| Deep Navy | `#041F5F` | Primary / Background / Headers / UI |
+| Cyan Blue | `#12B6F6` | Brand / Accent / Buttons / Links |
+| Royal Blue | `#153FE9` | Secondary Accent / Charts / Highlights |
+| White | `#FFFFFF` | Base / Background / Clean Space |
 
-### Extended palette - UI states
+### Extended palette (UI states)
 
 | Color | Hex | Usage |
 |---|---|---|
-| Success | `#22C55E` | Success state |
-| Warning | `#F59E0B` | Warning state |
-| Error | `#EF4444` | Error state |
-| Border / Divider | `#E5E7EB` | Borders and dividers |
-| Muted Text | `#6B7280` | Secondary text |
-| Surface | `#0B1220` | Dark product surfaces |
+| Success | `#22C55E` | Success |
+| Warning | `#F59E0B` | Warning |
+| Error | `#EF4444` | Error |
+| Border / Divider | `#E5E7EB` | Border / Divider |
+| Muted Text | `#6B7280` | Muted Text |
+| Surface | `#0B1220` | Surface |
 
-## 5. Gradient - Digital Only
+## 5. Gradient (Digital Only)
 
 Official digital gradient:
 
@@ -65,55 +59,51 @@ Official digital gradient:
 
 Direction: **left to right (0deg)**.
 
-Use only for backgrounds, selected accents, UI elements, charts and hero surfaces.
+Use for backgrounds, accents, charts and hero sections.
 
-**Never alter the logo with the gradient.** Do not change gradient colors, angle or application rules inside the core bird or wordmark.
+**Do not use gradients on the logo.** Do not change the approved colors, angle or application rules.
 
 ## 6. Typography
 
 ### Plus Jakarta Sans
 
-Primary brand, website and product UI typeface.
+Primary typeface for brand, UI and all text. Use a mix of weights.
 
-- Bold 700 - Headlines
-- SemiBold 600 - Subheadings
-- Medium 500 - UI / Buttons
-- Regular 400 - Body Text
-- Light 300 - Secondary Text
+- Bold 700 — Headlines
+- SemiBold 600 — Subheadings
+- Medium 500 — UI / Buttons
+- Regular 400 — Body Text
+- Light 300 — Secondary Text
 
 ### JetBrains Mono
 
-Data / mono typeface.
+Data / mono typeface for numbers, addresses, code and data elements.
 
-Use for numbers, addresses, code and market data.
-
-- Regular 400 - Data
-- Medium 500 - Emphasis
-- Bold 700 - Key values
+- Regular 400 — Data
+- Medium 500 — Emphasis
+- Bold 700 — Key values
 
 ## 7. Logo on Backgrounds
 
-- **Dark background:** use the approved dark-background horizontal/stacked logo with the full-color bird.
-- **Light background:** use the approved light-background logo. Use the keyline bird where required to preserve the white head silhouette.
-- **Image background:** only use the full-color logo where sufficient contrast and clear space are available.
+- Dark background: use full color logo.
+- Light background: use the approved light-background treatment where required for visibility.
+- Image background: use full color logo with sufficient contrast.
 
 ## 8. App Icons & Favicons
 
-All platform icons derive from the same locked bird geometry.
+Optimized versions for all platforms, derived from the same master geometry.
 
-- App icon master: 1024 x 1024
-- iOS icon: 180 x 180 export
-- Android icon: 512 x 512 export
-- Favicon: 32 x 32 export
-
-Do not create an alternate mascot for small sizes.
+- App icon: 1024 x 1024
+- iOS icon: 180 x 180
+- Android icon: 512 x 512
+- Favicon: 32 x 32
 
 ## 9. Usage Examples
 
 Approved usage families:
 
-- full logo on dark background
-- full logo on light background with appropriate separation
+- logo on dark background
+- logo on light background
 - icon only
 - circular badge
 - app icon
@@ -123,28 +113,22 @@ Approved usage families:
 Do not:
 
 - stretch or distort
-- change brand colors
+- change colors
 - add effects or shadows
 - rotate
 - change proportions
-- place on uncontrolled busy backgrounds
-- alter the eye, beak, feather rhythm, throat dots or wing
-- use legacy PiChan bird versions
+- place on busy backgrounds without sufficient contrast
+- alter the bird
+- use old versions
 
 ## 11. Design Elements
 
-Supporting PiChan design elements remain unchanged:
-
-- **P element:** use as a design accent in UI, buttons, loaders and related brand applications.
-- **Feather shapes:** use for patterns, backgrounds and accent graphics.
-- **Gradient circle:** use for data visualizations and highlights.
-- **Pattern dots:** subtle patterns for backgrounds and sections.
-
-Supporting elements must not be confused with or used to redraw the core logo.
+- **P Element:** use as a design accent in UI, buttons, loaders, etc.
+- **Feather Shapes:** for patterns, backgrounds and accent graphics.
+- **Gradient Circle:** for data visualizations and highlights.
+- **Pattern Dots:** subtle patterns for backgrounds and sections.
 
 ## 12. Brand Messaging
-
-These messages are locked:
 
 | Role | Copy |
 |---|---|
@@ -152,23 +136,21 @@ These messages are locked:
 | Positioning Line | **Onchain intelligence & market discovery.** |
 | Community Line | **PiChan | The Flock** |
 | Personality Line | **PiChan is watching.** |
-| Tone of Voice | Curious. Data-driven. Independent. Forward-thinking. |
+| Tone of Voice | **Curious. Data-driven. Independent. Forward-thinking.** |
 
-Do not replace these permanent brand lines with generated alternatives.
+These permanent lines are locked. Do not rewrite them in core brand surfaces.
 
 ## 13. File Formats
 
 Official production delivery includes:
 
-- SVG - vector, recommended
-- PNG - transparent background
-- PNG - with background where required
-- PDF - vector / brand documentation
-- JPG - social use where appropriate
-- ICO / favicon exports where required
-
-The repository contains canonical source vectors and linked derivatives under `brand/vector/`. The official self-contained production export package is **PiChan Brand Master FINAL v2.0**.
+- SVG — vector, recommended
+- PNG — transparent background
+- PNG — with background
+- JPG — social media
+- ICO — favicon
+- PDF — brand guide
 
 ---
 
-**PiChan Brand Guidelines | Version 1.1 | September 2026**
+**PiChan Brand Guidelines | Version 1.0 | September 2026**
