@@ -7,200 +7,341 @@
 
 PiChan is an **onchain intelligence and market discovery product** focused on project identity, evidence, history, reputation and monitoring.
 
-Primary user loop:
+Primary product loop:
 
-> Paste an address → understand the project → inspect evidence and history → assess reputation and confidence → watch important changes.
+> Radar / Search → Passport → understand evidence → Flight Recorder → Watch → Alert → return.
 
-PiChan is not intended to become a full trading terminal, custody product or generic analytics dashboard.
+PiChan is not a full trading terminal, custody product, portfolio tracker or generic analytics dashboard.
 
-## Flagship product system
+## V1 launch networks
 
-### 1. Project Passport
+PiChan V1 launches with:
 
-Answers: **What is this project?**
+- **Robinhood Chain**
+- **Solana**
 
-Core capabilities:
+The core remains multi-chain. Base, BNB Chain, Ethereum and additional networks are V2 candidates.
 
-- project identity
-- chain and deployment identity
-- official links
-- project verification
-- Reputation Grade
+See [`ADR-001-MULTICHAIN-FOUNDATION.md`](./ADR-001-MULTICHAIN-FOUNDATION.md).
+
+## Four public product pillars
+
+### 1. Radar
+
+Answers: **What should I investigate?**
+
+Radar surfaces evidence-backed intelligence events rather than only price movement.
+
+V1 groups:
+
+- Signals
+- New
+- Verified
+
+Every Radar item explains why it appears.
+
+### 2. Project Passport
+
+Answers: **What is this and what matters?**
+
+Passport combines:
+
+- project/asset identity
+- chain/deployment identity
+- canonical/claim/verification state
+- Reputation Grade / Unrated
+- Risk Signals
 - Data Confidence
-- creator/deployer context
-- important warnings
-- share / watch / action entry points
+- PiChan Brief
+- Market Pulse
+- official links and declared wallets
+- supply/holder intelligence
+- liquidity intelligence
+- Creator Intelligence preview
+- recent Flight Recorder events
+- Watch / Share / action / report entry points
 
-### 2. Flight Recorder
+### 3. Flight Recorder
 
-Answers: **What happened to this project?**
+Answers: **What happened?**
 
-Core capabilities:
+Flight Recorder preserves historical truth rather than overwriting old states.
 
-- meaningful historical events
-- ownership/authority changes
-- official-link changes
-- verification events
-- reputation changes
-- creator/deployer events
-- evidence history
+It records meaningful events across identity, authority/control, supply/holders, liquidity, creator/origin relationships, reputation/confidence and lifecycle/disputes.
 
-PiChan should preserve historical truth rather than overwrite old states.
-
-### 3. Watch
+### 4. Watch
 
 Answers: **What changes from now on?**
 
-Core capabilities:
+Watch monitors material intelligence changes rather than simple price targets.
 
-- watchlists
-- material-change detection
-- reputation/confidence changes
-- official-link changes
-- authority/ownership changes
-- creator/deployer activity
-- alerts
-- Telegram delivery
+V1 delivery:
 
-## Supporting capabilities
+- in-app alerts
+- Telegram alerts
 
-- chain-aware search
-- wallet-signed project claims
-- official-link verification
-- creator/deployer intelligence
-- evidence-first reputation engine
-- explainable Reputation Grade
-- separate Data Confidence score/state
-- shareable Passport cards
-- Telegram bot and group distribution
-- Drones/action integration where relevant
-- My PiChan area for watches, claims and alerts
-- private admin/review system
+## Supporting product: Creator Intelligence
 
-## Evidence-first rule
+Creator Intelligence is a drill-down shared by Passport, Flight Recorder, Radar and Watch.
 
-PiChan should not store only conclusions such as `reputation = B+`.
+It models typed roles such as deployer, creator, owner/admin, token authorities, funder and project-declared wallet roles.
 
-It must preserve the evidence and events that produced the conclusion.
+It shows known projects/deployments, funding relationships, historical events and source-attributed labels.
 
-Conceptual flow:
+## Product identity model
+
+PiChan separates:
 
 ```text
-Chain / Claim / External Source
-            ↓
-         Evidence
-            ↓
-          Events
-            ↓
-   Reputation Engine
-            ↓
- Reputation + Confidence
-            ↓
- Passport / Flight Recorder / Watch
+Project
+   ↓
+Asset
+   ↓
+Deployment
 ```
 
-This allows scoring logic to evolve without losing historical truth.
+A Project is the broader identity. An Asset is a fungible onchain asset associated with that project. A Deployment is the chain-specific contract/mint.
 
-## Multi-chain foundation
-
-PiChan launches RH-first but is multi-chain by design.
-
-See: [`ADR-001-MULTICHAIN-FOUNDATION.md`](./ADR-001-MULTICHAIN-FOUNDATION.md)
-
-Planned product expansion:
-
-1. RH
-2. Solana
-3. Base
-4. BNB Chain
-5. Ethereum
-6. Additional chains based on demand and data quality
-
-Core product systems must remain chain-agnostic. Chain-native behavior belongs in adapters and chain-specific evidence modules.
-
-## Canonical identity rule
-
-An onchain deployment is identified by at least:
+Canonical deployment identity is:
 
 ```text
 chain_id + address
 ```
 
-An address alone must never be treated as globally unique.
+Address alone is never globally unique.
 
-PiChan should also support a parent **Project** identity containing multiple official chain deployments.
+## V1 asset scope
 
-## Reputation architecture
+First-class V1 support:
 
-Reputation consists of:
+- Robinhood Chain ERC-20 fungible assets
+- Solana SPL Token
+- Solana Token-2022
 
-### Chain-independent framework
+Architecture may ingest canonical registry metadata for recognized official assets.
 
-- identity
-- verification
-- history
-- creator/deployer reputation
-- transparency
-- evidence quality and freshness
+NFTs, arbitrary contracts and broad protocol auditing are outside V1.
 
-### Chain-specific evidence
+## Three intelligence outputs
 
-Examples differ by network and are interpreted through chain modules.
+PiChan keeps these separate.
 
-The public grade remains simple and explainable. The underlying evidence may be network-specific.
+### Reputation Grade
 
-## V1 launch scope
+Answers:
 
-V1 remains **RH-first**.
+> What does identity, transparency, history and creator behavior tell us?
 
-Planned V1 product capabilities:
+Public output:
 
-- RH contract search
-- Project Passport
-- Reputation Grade
-- Data Confidence
-- project verification
-- official links
-- deployer intelligence
-- Flight Recorder
-- historical records
+- A+ through F when evidence is sufficient
+- `Unrated` when evidence is insufficient
+
+### Risk Signals
+
+Answers:
+
+> What current technical, control, supply or liquidity conditions deserve attention?
+
+Public severity:
+
+- Critical
+- Warning
+- Info
+- Unknown
+
+Risk Signals are findings, not a universal safety score.
+
+### Data Confidence
+
+Answers:
+
+> How complete, fresh and consistent is the supporting evidence?
+
+Public output:
+
+- High
+- Medium
+- Low
+
+See [`INTELLIGENCE_MODEL_V1.md`](./INTELLIGENCE_MODEL_V1.md) for locked semantics.
+
+## Evidence-first architecture
+
+PiChan does not store only conclusions.
+
+```text
+Chain / Registry / Signature / Provider
+                  ↓
+              Observation
+                  ↓
+               Evidence
+                  ↓
+        Finding / Event / Snapshot
+                  ↓
+ Reputation + Confidence + PiChan Brief
+                  ↓
+ Passport / Flight Recorder / Watch / Radar
+```
+
+This allows scoring and provider logic to evolve without destroying historical truth.
+
+## Provenance and conflicts
+
+Every important evidence item should know its source, source type/tier, observation time, freshness and subject.
+
+Material source conflicts are preserved and may reduce confidence; PiChan must not silently overwrite disagreement.
+
+## Chain adapters
+
+```text
+PiChan Core
+   │
+   ▼
+Normalized Evidence Layer
+   │
+   ├── Robinhood Chain Adapter
+   └── Solana Adapter
+```
+
+Future networks add adapters/evidence modules rather than rebuild Passport, Flight Recorder, Watch or Radar.
+
+External data providers sit behind replaceable source adapters.
+
+## Chain-specific evidence
+
+Robinhood Chain and Solana use different native evidence modules, but both map to the same normalized PiChan concepts.
+
+Robinhood Chain focuses on contract/source state, administrative controls, supply behavior, creator history, holder structure and liquidity behavior.
+
+Solana focuses on SPL/Token-2022 type, token authorities and extensions, creator/funder relationships, holder/funding structure and liquidity behavior.
+
+Capabilities are explained in context rather than automatically treated as malicious.
+
+## Verification model
+
+PiChan distinguishes:
+
+- Unclaimed
+- Claimed
+- Authority Verified
+- Canonical
+- Disputed
+
+A wallet signature proves control of that wallet, not automatically ownership of a whole project.
+
+Projects may declare official links and typed wallets. Signed declarations remain distinct from stronger direct/authoritative evidence.
+
+## Lifecycle model
+
+V1 project lifecycle vocabulary includes:
+
+- Active
+- Inactive
+- Community-led
+- Disputed
+- Abandoned only when supported by evidence/review
+
+Lifecycle changes are historical events, not silent state replacements.
+
+## Search architecture
+
+V1 search supports:
+
+- deployment/mint address
+- project/token name
+- ticker
+- creator/deployer wallet
+
+Search is chain-aware and exposes same-name/copy ambiguity rather than assuming a ticker identifies one asset.
+
+## PiChan Brief
+
+V1 Brief is generated from structured normalized evidence using deterministic rules/templates.
+
+AI language generation may improve presentation later, but it must never become the factual source of truth.
+
+## Core V1 domain objects
+
+- Project
+- Asset
+- Deployment
+- Chain
+- Wallet/Entity
+- EntityRelationship
+- Claim
+- Verification
+- OfficialLink
+- ProjectWallet
+- Observation
+- Evidence
+- RiskFinding
+- Event
+- Snapshot
+- ReputationSnapshot
+- ConfidenceSnapshot
+- MarketSnapshot
+- HolderSnapshot
+- LiquiditySnapshot
 - Watch
-- alerts
-- Telegram lookup/distribution
-- share cards
-- Drones/action integration point
-- My PiChan foundation
-- admin/review tools
+- Alert
+- Report/Dispute
+
+## V1 screens/routes
+
+- `/` — Radar + Search
+- `/p/{chain}/{address}` — Passport
+- `/p/{chain}/{address}/history` — Flight Recorder
+- `/creator/{chain}/{address}` — Creator Intelligence
+- `/watch` — Watchlist
+- `/alerts` — Alerts
+- `/me` — My PiChan
+- `/claim/...` — claim/verification flow
+- `/admin` — private operations/review
+
+Mobile primary navigation:
+
+- Radar
+- Search
+- Watch
+- Me
+
+## Distribution loop
+
+V1 distribution includes:
+
+- Telegram scan/bot
+- Telegram alerts
+- shareable Passport cards
+- external market/action links / Drones integration point
 
 ## Explicitly outside V1
 
+- additional chains beyond Robinhood Chain + Solana
 - native trade execution
-- auto trading
+- auto/copy trading
 - custody
 - portfolio management
-- giant trading-chart suite
-- full social sentiment terminal
-- complex analytics dashboards
+- price-target alerts
+- giant charting suite
+- full interactive holder graph
+- arbitrary wallet P&L terminal
+- KOL/social sentiment terminal
+- public comments/social network
+- public developer API
+- native mobile app
+- autonomous AI investigator
 - PiChan token
-- broad social-network features
-- multi-chain launch at the same time as RH
 
-## Expansion principle
+## Scope hierarchy
 
-Adding a new chain should mean:
+For V1 implementation, authority order is:
 
-1. implement a chain adapter
-2. implement chain-specific evidence modules
-3. map data into the normalized PiChan model
-4. validate reputation behavior for that network
-5. expose the network through existing Passport / Flight Recorder / Watch interfaces
+1. `PRODUCT_SPEC_V1.md`
+2. `INTELLIGENCE_MODEL_V1.md`
+3. `ADR-001-MULTICHAIN-FOUNDATION.md`
+4. this `PRODUCT_ARCHITECTURE.md`
+5. `V1_BUILD_PLAN.md` for implementation order
+6. brand/design source-of-truth docs for visual execution
 
-It should **not** require rebuilding the core PiChan product.
-
-## Development rule
-
-Before adding a new core field, table, route or service, ask:
-
-> Would this still make sense when PiChan supports RH, Solana and Base?
-
-If not, it likely belongs in a chain-specific adapter/module rather than the core model.
+New ideas found during implementation go to V1.1/V2 unless Product HQ explicitly changes the locked V1 scope.
