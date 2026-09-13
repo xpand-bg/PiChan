@@ -1,12 +1,20 @@
 # PiChan V1 — Project Passport UI Spec
 
-**Status:** DESIGN HQ — STRUCTURE LOCK CANDIDATE  
+**Status:** DESIGN HQ — REFERENCE LOCK CANDIDATE  
 **Product version:** V1.0  
-**Design system revision:** 0.2  
+**Design system revision:** 0.4  
 **Date:** 2026-09-13  
 **Owner:** PiChan Design HQ
 
-This is the optimized Passport structure for visual design. It preserves the locked product hierarchy while removing generic dashboard patterns and making PiChan feel like an intelligence instrument.
+This document defines the optimized Project Passport composition. It preserves the locked product hierarchy and turns it into the reference screen for the PiChan UI system.
+
+Use with:
+
+- `UI_DESIGN_SYSTEM_V1.md`
+- `PRODUCT_UI_TOKENS_V1.md`
+- `UI_COMPONENT_LIBRARY_V1.md`
+- `PASSPORT_STATE_MATRIX_V1.md`
+- Production Assets 2.2
 
 ---
 
@@ -20,7 +28,7 @@ The Passport must answer, in order:
 4. **What changed?**
 5. **What should I watch next?**
 
-The first viewport must prioritize identity and intelligence over market price.
+The first viewport prioritizes identity and intelligence over market price.
 
 ---
 
@@ -35,14 +43,12 @@ Use:
 - grouped evidence rows
 - a small number of elevated signature components
 
-Reserve real card treatment for:
+Reserve elevated surfaces for:
 
 - the unified Decision Strip
 - PiChan Brief
-- important Risk Findings when elevation helps urgency
-- interactive contextual objects
-
-Do not wrap every section inside a rounded container.
+- materially important Risk Findings when needed
+- interactive/context objects
 
 ---
 
@@ -55,17 +61,20 @@ Do not wrap every section inside a rounded container.
 - one-column flow
 - no primary horizontal scrolling
 - bottom navigation: Radar / Search / Watch / Me
+- explicit Back affordance on detail-route navigation when history exists
+- bottom-tab state preserves actual origin when known
 
 ### Desktop
 
 - reference width: 1440 px
 - left product rail
-- canvas max width: ~1220 px
-- main/context split: ~68/32
+- product canvas max width: ~1220 px
+- research/context split: ~68/32
 - 24 px column gap
-- context rail becomes sticky after the identity/decision area
+- context rail sticks below the identity/decision area
+- global search is a primary top-bar control
 
-Desktop extra space is used for context and scanability, not decorative emptiness.
+Desktop uses extra width for context and scanability, not decorative emptiness.
 
 ---
 
@@ -83,139 +92,104 @@ Desktop extra space is used for context and scanability, not decorative emptines
 10. Recent Flight Recorder events
 11. Contextual actions
 
-Desktop may move Market Pulse, links, verification details and Creator preview into the sticky context rail while preserving semantic order.
+Desktop may place Market Pulse, official identity, Creator preview and secondary actions in the sticky context rail while preserving semantic order.
 
 ---
 
-## 5. Product top bar
+## 5. Identity header
 
-### Mobile
-
-Compact:
-
-- PiChan compact identity/context title
-- overflow/context action
-
-### Desktop
-
-Use a proper global search / command field in the top product bar.
-
-Do not show a redundant generic `Passport` title beside search.
-
-Search is a core PiChan entry point and must not appear secondary.
-
----
-
-## 6. Identity header
-
-### Required content
+Required:
 
 - project/token icon
-- name
+- project/token name
 - ticker
-- chain badge
-- deployment address/mint
+- chain
+- deployment/mint address
 - copy
 - explorer action
-- lifecycle state if relevant
+- lifecycle state when relevant
 - Unclaimed / Claimed / Authority Verified / Canonical / Disputed states where applicable
 - Watch control
 - overflow/context actions
 
-### Mobile pattern
+Rules:
 
-```text
-[icon] Project Name                         [Watch]
-       $TICKER
-[Chain] [Canonical] [Claimed]
-0x90b4…e887   [copy] [explorer]
-```
-
-### Rules
-
-- project name leads
+- name leads
 - ticker is secondary
-- verification chips support identity rather than competing with it
 - address is technical metadata
-- Watch remains visible in the header
+- verification/claim chips support identity rather than competing with it
+- Watch remains visible at the top
+- token/project image fallback follows verified image → deterministic identicon → initials
+- never use the PiChan bird as token artwork
 
 ---
 
-## 7. Unified Decision Strip — signature component
+## 6. Unified Decision Strip — signature component
 
-Reputation, Risk Signals and Data Confidence remain independent outputs but share one structural container.
+One shared structure with three independent outputs:
 
-```text
-┌──────────────────────────────────────────────┐
-│ Reputation  │ Risk Signals │ Data Confidence│
-│ B+          │ 2 Warning    │ Medium         │
-│ evidence…   │ 1 Unknown    │ ▮ ▮ ▮ ▯       │
-└──────────────────────────────────────────────┘
-```
+### Reputation
 
-### Reputation segment
-
-- `Reputation`
+- label `Reputation`
 - grade or `Unrated`
-- neutral branded treatment
+- optional coverage helper
+- neutral brand treatment
 - no green/red grade scale
 
-### Risk segment
+### Risk Signals
 
-- `Risk Signals`
+- label `Risk Signals`
 - compact severity summary
-- strong severity color allowed here only
+- Critical / Warning / Info / Unknown remain explicit
+- strongest semantic color belongs here
 
-### Confidence segment
+### Data Confidence
 
-- `Data Confidence`
+- label `Data Confidence`
 - High / Medium / Low
-- segmented evidence-coverage meter
-- cyan/blue + neutral segments; no green
+- segmented evidence coverage meter
+- cyan/blue + neutral segments
+- never green
 
-### Interaction
+Public UI does **not** show the internal label `Decision Strip`.
 
-Each segment can reveal/scroll to its deeper explanation.
-
-### Mobile
-
-Prefer one three-segment strip when readable. If content/localization becomes cramped, use a 2 + 1 layout inside the same shared component — never horizontal carousel.
+Each segment may reveal/scroll to deeper explanation.
 
 ---
 
-## 8. PiChan Brief — signature component
+## 7. PiChan Brief — primary brand moment
 
 Directly after the Decision Strip.
 
-### Anatomy
+Required:
 
 - small approved PiChan mark
 - `PiChan Brief`
-- one concise summary sentence
-- 3–6 prioritized findings
-- last checked/evidence count where useful
+- short descriptor such as `3 things worth your attention`
+- one concise conclusion sentence
+- 3–6 prioritized evidence-backed findings
+- evidence/freshness footer
 - `View evidence` / `Why?`
 
-### Visual treatment
+Visual treatment:
 
-- elevated surface
+- raised research surface
 - subtle cyan/royal accent
 - no full-card gradient
-- no chat bubble
-- no assistant typing treatment
+- no speech bubble
+- no fake AI typing treatment
 
-The tone is: **PiChan investigated this asset; here is what is worth knowing.**
+Tone: **PiChan investigated this asset; here is what is worth knowing.**
 
 ---
 
-## 9. Market Pulse
+## 8. Market Pulse
 
-Important context, not hero content.
+Market data is context, not the hero.
 
-### Mobile
+Mobile:
 
-Two-column compact metric grid:
-
+- compact two-column metric grid
 - Price
 - Market Cap / FDV
 - Liquidity
@@ -223,24 +197,24 @@ Two-column compact metric grid:
 - Holders
 - Age
 
-### Desktop
+Desktop:
 
-Place in sticky context rail.
+- compact context rail module
 
-### Rules
+Rules:
 
-- JetBrains Mono values
-- no oversized green/red trading UI
-- Unknown is explicit
-- freshness is accessible
+- JetBrains Mono for values
+- freshness visible/accessible
+- no giant red/green trading treatment
+- `Unknown` stays explicit
 
 ---
 
-## 10. Identity & official links
+## 9. Identity & official links
 
-Use an open section / compact grouped list, not another large card.
+Use compact open/grouped rows.
 
-Rows may include:
+Possible rows:
 
 - Website
 - X
@@ -248,20 +222,20 @@ Rows may include:
 - Docs / GitHub
 - declared project wallets
 
-Every row may show:
+Evidence states may include:
 
-- Authority / authoritative
+- Authority
 - Declared by project
 - Discovered / unverified
 - Conflicting
 
-Never use one generic checkmark for different evidence strength.
+Do not use one generic blue check for different evidence strength.
 
 ---
 
-## 11. Standard Evidence Footer — signature pattern
+## 10. Standard Evidence Footer
 
-Major findings use one repeated footer pattern:
+Pattern:
 
 `[Source type] · [Freshness] · View evidence`
 
@@ -272,36 +246,21 @@ Examples:
 - `Declared by project · Observed Sep 13 · View evidence`
 - `Conflicting · Needs review · View evidence`
 
-This component is shared by Passport, Radar, Creator Intelligence and Flight Recorder.
+This is shared across Passport, Radar, Creator Intelligence and Flight Recorder.
 
 ---
 
-## 12. Risk Signals
+## 11. Risk Signals
 
-Risk section should feel like an evidence list, not cards nested inside a card.
+Default presentation is an open evidence list, not cards inside cards.
 
-### Section header
+Each finding includes:
 
-- Critical count
-- Warning count
-- Info count
-- Unknown count
-
-### Standard finding row
-
-```text
-[icon] Finding title                         [Warning]
-       Factual capability/condition summary.
-       Onchain · Checked 3m ago · View evidence
-```
-
-### Elevation rule
-
-Only elevate a finding into a stronger card when:
-
-- Critical
-- materially changed recently
-- conflict/unknown is highly consequential
+- severity symbol/rail
+- title
+- severity label
+- concise factual condition description
+- Evidence Footer
 
 Order:
 
@@ -310,13 +269,13 @@ Order:
 3. material Unknown
 4. Info
 
+Elevate to a stronger card only when Critical, recently material, or conflict/unknown is highly consequential.
+
 ---
 
-## 13. Supply & Holder Intelligence
+## 12. Supply & Holder Intelligence
 
-Use an open research section.
-
-Summary:
+Summary can include:
 
 - total supply
 - holder count
@@ -325,40 +284,40 @@ Summary:
 - creator/project wallet holdings
 
 Desktop uses structured rows/table.  
-Mobile converts records into stacked rows.
+Mobile uses compact stacked records.
 
-Every holder/entity row may include:
+Holder/entity record may include:
 
 - rank
 - address/entity
 - share
-- role/category when sourced
-- related-cluster indicator when evidence supports it
-- provider attribution for provider labels
+- role/category
+- related-cluster marker when evidenced
+- provider attribution for provider-derived labels
 
 No full interactive bubble graph in V1.
 
 ---
 
-## 14. Liquidity Intelligence
+## 13. Liquidity Intelligence
 
 Show:
 
 - total known liquidity
-- primary pools
+- primary pool(s)
 - DEX
 - quote asset
 - pool age
 - lock/burn/control state when determinable
 - material recent changes
 
-Unknown states must remain explicit.
+Unknown remains explicit.
 
-Recent change links to Flight Recorder evidence.
+Recent material changes link to Flight Recorder evidence.
 
 ---
 
-## 15. Creator Intelligence preview
+## 14. Creator Intelligence preview
 
 Compact context object:
 
@@ -366,145 +325,78 @@ Compact context object:
 - observed role
 - known project count
 - 1–2 notable evidence-backed observations
-- evidence/source state
+- evidence source
 - `View Creator Intelligence`
 
-Avoid accusatory language from weak correlations.
+Avoid accusatory copy from weak relationships.
 
-On desktop this belongs in the context rail.
+On desktop this sits naturally in the context rail.
 
 ---
 
-## 16. Flight Recorder preview
+## 15. Flight Recorder preview
 
-Show latest 3–5 material events in a chronology pattern.
+Show the latest 3–5 material events as chronology.
 
-Each event:
+Each event may include:
 
 - event type/icon
-- title
 - timestamp
-- before → after when relevant
-- materiality/severity
-- evidence source
+- event title
+- before → after where useful
+- materiality/severity when applicable
+- evidence/source state
 
 Action: `View full Flight Recorder`.
 
-The pattern must feel like history, not a social feed.
+The pattern must read as history, not a social feed.
 
 ---
 
-## 17. Contextual actions and state logic
+## 16. Contextual actions
 
-### Always available when applicable
+Primary:
 
 - Watch / Watching
+
+Secondary where applicable:
+
 - Share
 - external market / Drones destination
 - Report incorrect information
+- Claim this Passport only when eligible and Unclaimed
 
-### Claim
+Never show Claim on an already Claimed Passport.
 
-`Claim this Passport` appears **only when the Passport is eligible and Unclaimed**.
-
-Never show Claim on a Passport already marked Claimed.
-
-### Desktop duplication rule
-
-Watch lives primarily in the identity header. Do not duplicate it as a giant second block in the context rail.
-
-The context rail may contain compact secondary actions.
+Do not display internal state/debug explanations such as `Claim hidden because...` to the user.
 
 ---
 
-## 18. Optimized mobile wireframe
+## 17. High-fidelity reference decisions — v0.4
 
-```text
-┌────────────────────────────────────┐
-│ PiChan                        [•••] │
-├────────────────────────────────────┤
-│ [icon] Project Name         [Watch]│
-│        $TICKER                     │
-│ [RH Chain] [Canonical] [Claimed]   │
-│ 0x90b4…e887 [copy] [↗]            │
-├────────────────────────────────────┤
-│ DECISION STRIP                     │
-│ Reputation │ Risk │ Confidence     │
-│ B+         │ 2W   │ Medium ▮▮▮▯   │
-├────────────────────────────────────┤
-│ PiChan Brief                       │
-│ • finding                          │
-│ • finding                          │
-│ • finding          [View evidence] │
-├────────────────────────────────────┤
-│ Market Pulse                       │
-│ Price        MCap/FDV              │
-│ Liquidity    24h Volume            │
-│ Holders      Age                   │
-├────────────────────────────────────┤
-│ Identity & Official Links          │
-│ Website                 Authority  │
-│ X                       Declared   │
-│ Project wallet          Declared   │
-├────────────────────────────────────┤
-│ Risk Signals                       │
-│ ! Warning finding          Warning │
-│   Onchain · 3m · Evidence          │
-│ ? Unknown finding          Unknown │
-│   Provider · stale · Evidence      │
-├────────────────────────────────────┤
-│ Supply & Holders                   │
-│ summary + stacked records          │
-├────────────────────────────────────┤
-│ Liquidity                          │
-│ pools / control / change           │
-├────────────────────────────────────┤
-│ Creator Intelligence               │
-│ creator summary                [→] │
-├────────────────────────────────────┤
-│ Flight Recorder                    │
-│ ○ event                            │
-│ │ event                            │
-│ ○ event                        [→] │
-├────────────────────────────────────┤
-│ Share · Report · External          │
-├────────────────────────────────────┤
-│ Radar     Search     Watch     Me   │
-└────────────────────────────────────┘
-```
+The refined mobile and desktop passes lock these visual decisions as the current reference candidate:
+
+- no visible internal `Decision Strip` heading
+- vector system icons instead of Unicode/mockup glyphs
+- Back affordance on mobile detail routes
+- Search shown as the originating tab in the static reference only; production preserves actual origin
+- unified Decision Strip stays one component
+- PiChan Brief carries the strongest brand expression
+- Risk rows use narrow severity rails + labels rather than nested cards
+- Market Pulse remains unboxed/open on mobile and compact in the desktop rail
+- holder data uses compact structured rows
+- Unknown states use explicit neutral labels
+- Creator preview is contextual, not a large feature card
+- Actions remain secondary to intelligence
+- desktop context rail contains Market Pulse, identity evidence, Creator preview and actions
 
 ---
 
-## 19. Optimized desktop wireframe
+## 18. Required states
 
-```text
-┌────────────┬────────────────────────────────────────────────────────────────────┐
-│ PiChan     │ [ Global search / command field........................ ] [Alerts] │
-│            ├────────────────────────────────────────────────────────────────────┤
-│ Radar      │ [Identity................................................][Watch]  │
-│ Search     │ [ Reputation | Risk Signals | Data Confidence ]                    │
-│ Watch      ├──────────────────────────────────────────┬─────────────────────────┤
-│ Me         │ PiChan Brief                             │ STICKY CONTEXT RAIL     │
-│            │                                          │ Market Pulse            │
-│            ├──────────────────────────────────────────┤                         │
-│            │ Risk Signals                             │ Official Links          │
-│            │                                          │ Verification            │
-│            ├──────────────────────────────────────────┤                         │
-│            │ Supply & Holder Intelligence             │ Creator Preview         │
-│            │                                          │                         │
-│            ├──────────────────────────────────────────┤ Share / Report / Action │
-│            │ Liquidity Intelligence                   │                         │
-│            │                                          │                         │
-│            ├──────────────────────────────────────────┤                         │
-│            │ Recent Flight Recorder                   │                         │
-└────────────┴──────────────────────────────────────────┴─────────────────────────┘
-```
+Detailed behavior is locked in `PASSPORT_STATE_MATRIX_V1.md`.
 
----
-
-## 20. Required state variants
-
-Before high-fidelity approval, design:
+Design/implementation must support:
 
 - normal complete data
 - new / unknown asset
@@ -517,29 +409,25 @@ Before high-fidelity approval, design:
 - conflicting evidence
 - stale evidence
 - provider partial outage
-- unsupported address
+- unsupported finding/module
 - loading / skeleton
 - error / retry
 
 ---
 
-## 21. Structure lock criteria
+## 19. Reference lock criteria
 
-Passport structure is ready for high fidelity when:
+Passport is ready to become the reusable UI reference when:
 
 1. identity is stronger than price
-2. Decision Strip clearly separates all three intelligence outputs
+2. Reputation, Risk and Confidence cannot be confused
 3. PiChan Brief feels ownable and evidence-first
-4. the page no longer feels like a stack of generic SaaS cards
-5. evidence footer is consistent
-6. Risk hierarchy is clear without casino styling
-7. claim/action logic cannot contradict identity state
-8. desktop context rail improves usability without duplicate actions
-9. mobile works with incomplete/unknown data
-10. Production Assets 2.2 are consumed directly with no logo redraw
+4. evidence provenance remains accessible
+5. Risk hierarchy is clear without casino styling
+6. mobile and desktop use the same semantic model
+7. claim/action logic matches actual state
+8. incomplete/conflicting/stale evidence is designed explicitly
+9. system icons are consistent vectors
+10. Production Assets 2.2 are consumed directly
 
----
-
-## 22. Next step
-
-Create the first high-fidelity mobile Passport using `PRODUCT_UI_TOKENS_V1.md`, then derive desktop and extract final reusable components from the approved screen.
+**Current decision:** cross-device Passport v0.4 is the Design HQ reference-lock candidate. Final lock follows component/state QA, then Radar uses this same system.
