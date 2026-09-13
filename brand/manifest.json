@@ -2,11 +2,16 @@
   "brand": "PiChan",
   "status": "locked",
   "brandGuidelinesVersion": "1.0",
-  "assetRevision": "2.1",
+  "assetRevision": "2.2",
   "sourceOfTruth": "brand/vector/PiChan_Icon_Master.svg",
   "wordmarkDesignChanged": false,
   "messagingChanged": false,
   "paletteChanged": false,
+  "productionCleanup": {
+    "revision": "2.2",
+    "scope": "technical vector cleanup only",
+    "details": "Removed unintended white artifact contours at the bird beak/head junction; no identity redesign."
+  },
   "assets": {
     "iconMaster": "brand/vector/PiChan_Icon_Master.svg",
     "iconLightKeyline": "brand/vector/PiChan_Icon_LightBG_Keyline.svg",
@@ -30,6 +35,7 @@
     "legacyBirdsForbidden": true,
     "wordmarkLocked": true,
     "permanentMessagingLocked": true,
+    "unintendedWhiteArtifactContoursForbidden": true,
     "primaryLogoMinPx": 120,
     "preferredPrimaryLogoMinPx": 140,
     "iconMinPx": 24,
