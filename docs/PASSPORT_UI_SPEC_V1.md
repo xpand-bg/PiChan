@@ -1,71 +1,78 @@
 # PiChan V1 — Project Passport UI Spec
 
-**Status:** DESIGN HQ — VISUAL REVIEW DRAFT  
+**Status:** DESIGN HQ — STRUCTURE LOCK CANDIDATE  
 **Product version:** V1.0  
-**Design system revision:** 0.1  
+**Design system revision:** 0.2  
 **Date:** 2026-09-13  
 **Owner:** PiChan Design HQ
 
-This is the first flagship-screen specification built from the locked product requirements and `UI_DESIGN_SYSTEM_V1.md`. It does not change product scope. The purpose is to turn the locked Passport information hierarchy into a concrete mobile/desktop composition and reusable component anatomy.
+This is the optimized Passport structure for visual design. It preserves the locked product hierarchy while removing generic dashboard patterns and making PiChan feel like an intelligence instrument.
 
 ---
 
 ## 1. Passport design job
 
-The Passport must let a user answer, quickly and in order:
+The Passport must answer, in order:
 
 1. **What is this?**
 2. **What matters right now?**
-3. **Why does PiChan believe that?**
+3. **Why does PiChan believe it?**
 4. **What changed?**
 5. **What should I watch next?**
 
-The page must feel like a research instrument, not a trading page.
+The first viewport must prioritize identity and intelligence over market price.
 
-### Visual priority
+---
 
-The first viewport should establish:
+## 2. Core visual principle
 
-- identity
-- canonical/claim/verification state
-- Reputation / Risk / Confidence as three distinct concepts
+The Passport is not a stack of SaaS cards.
+
+Use:
+
+- open research sections
+- structural dividers
+- grouped evidence rows
+- a small number of elevated signature components
+
+Reserve real card treatment for:
+
+- the unified Decision Strip
 - PiChan Brief
-- a clear Watch action
+- important Risk Findings when elevation helps urgency
+- interactive contextual objects
 
-Price/market data is important but must not dominate identity and intelligence.
+Do not wrap every section inside a rounded container.
 
 ---
 
-## 2. Global composition
+## 3. Responsive composition
 
-### Mobile target
+### Mobile
 
-- reference viewport: 390 px wide
-- page padding: 16 px
-- section gap: 20–24 px
-- card radius: 14–16 px
-- sticky bottom navigation: Radar / Search / Watch / Me
-- no primary horizontal scrolling
+- reference width: 390 px
+- gutter: 16 px
 - one-column flow
+- no primary horizontal scrolling
+- bottom navigation: Radar / Search / Watch / Me
 
-### Desktop target
+### Desktop
 
-- reference viewport: 1440 px
-- left app rail: 80–220 px depending collapsed/expanded state
-- product canvas max width: ~1180–1240 px
-- content gap: 24 px
-- research layout: main column ~68%, context rail ~32%
-- identity header may span both columns
-- decision strip remains a single coherent row
+- reference width: 1440 px
+- left product rail
+- canvas max width: ~1220 px
+- main/context split: ~68/32
+- 24 px column gap
+- context rail becomes sticky after the identity/decision area
+
+Desktop extra space is used for context and scanability, not decorative emptiness.
 
 ---
 
-## 3. Passport section order
-
-Locked semantic order:
+## 4. Locked semantic order
 
 1. Identity header
-2. Decision strip
+2. Unified Decision Strip
 3. PiChan Brief
 4. Market Pulse
 5. Identity / official links / declared wallets
@@ -74,126 +81,140 @@ Locked semantic order:
 8. Liquidity Intelligence
 9. Creator Intelligence preview
 10. Recent Flight Recorder events
-11. Actions
+11. Contextual actions
 
-Desktop may place Market Pulse, identity links and Creator preview in the context rail, but reading order and semantics remain unchanged.
+Desktop may move Market Pulse, links, verification details and Creator preview into the sticky context rail while preserving semantic order.
 
 ---
 
-## 4. Identity header anatomy
+## 5. Product top bar
+
+### Mobile
+
+Compact:
+
+- PiChan compact identity/context title
+- overflow/context action
+
+### Desktop
+
+Use a proper global search / command field in the top product bar.
+
+Do not show a redundant generic `Passport` title beside search.
+
+Search is a core PiChan entry point and must not appear secondary.
+
+---
+
+## 6. Identity header
 
 ### Required content
 
 - project/token icon
-- project/token name
+- name
 - ticker
 - chain badge
 - deployment address/mint
-- copy action
+- copy
 - explorer action
-- lifecycle state when relevant
-- Unclaimed / Claimed / Authority Verified / Canonical / Disputed states when applicable
+- lifecycle state if relevant
+- Unclaimed / Claimed / Authority Verified / Canonical / Disputed states where applicable
 - Watch control
 - overflow/context actions
 
-### Mobile composition
+### Mobile pattern
 
 ```text
-[Token icon] Project Name                 [Watch]
-             $TICKER
+[icon] Project Name                         [Watch]
+       $TICKER
 [Chain] [Canonical] [Claimed]
 0x90b4…e887   [copy] [explorer]
 ```
 
-Rules:
+### Rules
 
-- project name is the primary line
+- project name leads
 - ticker is secondary
-- verification/canonical states do not compete with the name
-- address is technical metadata, not headline content
-- Watch must remain visible without scrolling into a separate action section
-
-### Desktop composition
-
-Use a single horizontal header with identity left and primary actions right. Secondary metadata may sit below the name.
+- verification chips support identity rather than competing with it
+- address is technical metadata
+- Watch remains visible in the header
 
 ---
 
-## 5. Decision strip
+## 7. Unified Decision Strip — signature component
 
-This is the signature Passport intelligence summary.
+Reputation, Risk Signals and Data Confidence remain independent outputs but share one structural container.
 
-It contains **three separate components**:
+```text
+┌──────────────────────────────────────────────┐
+│ Reputation  │ Risk Signals │ Data Confidence│
+│ B+          │ 2 Warning    │ Medium         │
+│ evidence…   │ 1 Unknown    │ ▮ ▮ ▮ ▯       │
+└──────────────────────────────────────────────┘
+```
 
-### Reputation
+### Reputation segment
 
-- label: `Reputation`
-- value: letter grade or `Unrated`
-- optional evidence-coverage helper
-- neutral brand treatment
+- `Reputation`
+- grade or `Unrated`
+- neutral branded treatment
+- no green/red grade scale
 
-### Risk Signals
+### Risk segment
 
-- label: `Risk Signals`
-- summary: e.g. `0 Critical · 2 Warning · 1 Unknown`
-- only this card may use strong red/amber severity accents
+- `Risk Signals`
+- compact severity summary
+- strong severity color allowed here only
 
-### Data Confidence
+### Confidence segment
 
-- label: `Data Confidence`
-- value: High / Medium / Low
-- compact coverage meter
-- cyan/blue + neutral segments, never green
-
-### Mobile
-
-Three equal compact tiles in one row when 390 px allows it. If localization/content makes this unreadable, switch to 2 + 1 grid before allowing horizontal scroll.
-
-### Desktop
-
-Three equal tiles in a single row beneath the identity header.
+- `Data Confidence`
+- High / Medium / Low
+- segmented evidence-coverage meter
+- cyan/blue + neutral segments; no green
 
 ### Interaction
 
-Each tile is clickable/tappable and scrolls or reveals its underlying evidence/detail section.
-
----
-
-## 6. PiChan Brief
-
-Signature panel directly after the decision strip.
-
-### Anatomy
-
-- small approved PiChan bird/brand mark
-- heading: `PiChan Brief`
-- one-sentence summary
-- 3–6 findings, prioritized
-- optional evidence count / last checked line
-- expandable `Why?` / `View evidence` action
-
-### Tone
-
-Concise, factual, calm.
-
-Avoid chat UI, speech bubbles or fake assistant typing indicators.
-
-### Visual treatment
-
-- slightly raised dark surface
-- subtle cyan/royal accent line or corner element
-- no full-card gradient
-- brand mark small enough that content remains dominant
-
----
-
-## 7. Market Pulse
-
-Market data is useful context, not the page hero.
+Each segment can reveal/scroll to its deeper explanation.
 
 ### Mobile
 
-2-column metric grid. Suggested first six:
+Prefer one three-segment strip when readable. If content/localization becomes cramped, use a 2 + 1 layout inside the same shared component — never horizontal carousel.
+
+---
+
+## 8. PiChan Brief — signature component
+
+Directly after the Decision Strip.
+
+### Anatomy
+
+- small approved PiChan mark
+- `PiChan Brief`
+- one concise summary sentence
+- 3–6 prioritized findings
+- last checked/evidence count where useful
+- `View evidence` / `Why?`
+
+### Visual treatment
+
+- elevated surface
+- subtle cyan/royal accent
+- no full-card gradient
+- no chat bubble
+- no assistant typing treatment
+
+The tone is: **PiChan investigated this asset; here is what is worth knowing.**
+
+---
+
+## 9. Market Pulse
+
+Important context, not hero content.
+
+### Mobile
+
+Two-column compact metric grid:
 
 - Price
 - Market Cap / FDV
@@ -202,285 +223,288 @@ Market data is useful context, not the page hero.
 - Holders
 - Age
 
-Transactions can appear in the extended row/detail when available.
-
 ### Desktop
 
-Compact vertical or 2-column block in the context rail.
+Place in sticky context rail.
 
-### Metric tile rules
+### Rules
 
-- label small/muted
-- value prominent, JetBrains Mono
-- change indicators contextual, not giant green/red trading signals
-- unavailable data uses `Unknown` / `—` with reason when important
-- freshness accessible
+- JetBrains Mono values
+- no oversized green/red trading UI
+- Unknown is explicit
+- freshness is accessible
 
 ---
 
-## 8. Identity & official links
+## 10. Identity & official links
 
-Purpose: separate **who the project says it is** from **what PiChan independently verified**.
+Use an open section / compact grouped list, not another large card.
 
-### Structure
+Rows may include:
 
-- Official website
+- Website
 - X
 - Telegram
 - Docs / GitHub
-- Declared project wallets
+- declared project wallets
 
-Every row can carry one of:
+Every row may show:
 
 - Authority / authoritative
 - Declared by project
 - Discovered / unverified
 - Conflicting
 
-Do not use a generic blue check for all levels.
+Never use one generic checkmark for different evidence strength.
 
 ---
 
-## 9. Risk Signals
+## 11. Standard Evidence Footer — signature pattern
 
-### Section summary
+Major findings use one repeated footer pattern:
 
-At section top:
+`[Source type] · [Freshness] · View evidence`
 
-- critical count
-- warning count
-- info count
-- unknown count
+Examples:
 
-### Risk Finding card anatomy
+- `Onchain · Checked 3m ago · View evidence`
+- `Provider · Checked 8m ago · View evidence`
+- `Declared by project · Observed Sep 13 · View evidence`
+- `Conflicting · Needs review · View evidence`
+
+This component is shared by Passport, Radar, Creator Intelligence and Flight Recorder.
+
+---
+
+## 12. Risk Signals
+
+Risk section should feel like an evidence list, not cards nested inside a card.
+
+### Section header
+
+- Critical count
+- Warning count
+- Info count
+- Unknown count
+
+### Standard finding row
 
 ```text
-[severity icon] Finding title            [Warning]
-Short factual description of capability/condition.
-[Onchain] [Checked 3m ago]
-Evidence source / expand details                 >
+[icon] Finding title                         [Warning]
+       Factual capability/condition summary.
+       Onchain · Checked 3m ago · View evidence
 ```
 
-### Priority
+### Elevation rule
+
+Only elevate a finding into a stronger card when:
+
+- Critical
+- materially changed recently
+- conflict/unknown is highly consequential
 
 Order:
 
 1. Critical
 2. Warning
-3. Unknown when important
+3. material Unknown
 4. Info
-
-Unknown cannot be visually weaker than harmless informational notes when it represents missing material evidence.
 
 ---
 
-## 10. Supply & Holder Intelligence
+## 13. Supply & Holder Intelligence
 
-### Summary layer
+Use an open research section.
+
+Summary:
 
 - total supply
 - holder count
 - top-holder concentration
 - largest relevant holder
-- creator/project wallet holdings when known
+- creator/project wallet holdings
 
-### Holder list
+Desktop uses structured rows/table.  
+Mobile converts records into stacked rows.
 
-Desktop: structured table/list.  
-Mobile: stacked holder records.
-
-Each record may contain:
+Every holder/entity row may include:
 
 - rank
-- address/entity label
-- share of supply
-- category/role when sourced
-- related-cluster marker when evidence exists
-- source attribution for provider labels
+- address/entity
+- share
+- role/category when sourced
+- related-cluster indicator when evidence supports it
+- provider attribution for provider labels
 
-Known LP/burn/system addresses excluded from concentration must be explainable.
-
-No full Bubblemaps-style graph in V1.
+No full interactive bubble graph in V1.
 
 ---
 
-## 11. Liquidity Intelligence
+## 14. Liquidity Intelligence
 
-Display:
+Show:
 
 - total known liquidity
-- primary pool(s)
+- primary pools
 - DEX
 - quote asset
 - pool age
-- liquidity control/lock/burn state when determinable
+- lock/burn/control state when determinable
 - material recent changes
 
-Use explicit `Unknown` when lock/control state cannot be determined.
+Unknown states must remain explicit.
 
-Recent material change should link to Flight Recorder evidence.
+Recent change links to Flight Recorder evidence.
 
 ---
 
-## 12. Creator Intelligence preview
+## 15. Creator Intelligence preview
 
-Compact profile card:
+Compact context object:
 
 - creator/origin wallet/entity
 - observed role
 - known project count
-- one or two notable historical observations
+- 1–2 notable evidence-backed observations
 - evidence/source state
-- `View Creator Intelligence` action
+- `View Creator Intelligence`
 
-Do not use accusatory copy from weak relationships.
+Avoid accusatory language from weak correlations.
+
+On desktop this belongs in the context rail.
 
 ---
 
-## 13. Flight Recorder preview
+## 16. Flight Recorder preview
 
-Show the latest 3–5 material events.
+Show latest 3–5 material events in a chronology pattern.
 
-### Event anatomy
+Each event:
 
-- event icon/type
+- event type/icon
 - title
 - timestamp
-- before → after when applicable
-- severity/materiality marker
+- before → after when relevant
+- materiality/severity
 - evidence source
 
 Action: `View full Flight Recorder`.
 
-The timeline should visually communicate chronology, not social-feed engagement.
+The pattern must feel like history, not a social feed.
 
 ---
 
-## 14. Actions
+## 17. Contextual actions and state logic
 
-Primary:
+### Always available when applicable
 
 - Watch / Watching
-
-Secondary:
-
 - Share
-- external market / Drones destination when available
+- external market / Drones destination
 - Report incorrect information
-- Claim this Passport when eligible
 
-Claim must never look like a purchase CTA.
+### Claim
+
+`Claim this Passport` appears **only when the Passport is eligible and Unclaimed**.
+
+Never show Claim on a Passport already marked Claimed.
+
+### Desktop duplication rule
+
+Watch lives primarily in the identity header. Do not duplicate it as a giant second block in the context rail.
+
+The context rail may contain compact secondary actions.
 
 ---
 
-## 15. Mobile wireframe
+## 18. Optimized mobile wireframe
 
 ```text
-┌──────────────────────────────────┐
-│ PiChan                    [•••]  │
-├──────────────────────────────────┤
-│ [icon] Project Name      [Watch] │
-│        $TICKER                   │
-│ [RH Chain] [Canonical] [Claimed] │
-│ 0x90b4…e887 [copy] [↗]          │
-├──────────────────────────────────┤
-│ [Reputation] [Risk] [Confidence]│
-├──────────────────────────────────┤
-│ PiChan Brief                     │
-│ • finding                        │
-│ • finding                        │
-│ • finding                  [Why] │
-├──────────────────────────────────┤
-│ Market Pulse                     │
-│ [Price]       [MCap/FDV]         │
-│ [Liquidity]   [24h Volume]       │
-│ [Holders]     [Age]              │
-├──────────────────────────────────┤
-│ Identity & Official Links        │
-│ Website               [Authority]│
-│ X                     [Declared] │
-│ Project wallet        [Declared] │
-├──────────────────────────────────┤
-│ Risk Signals                     │
-│ [!] Warning finding              │
-│     evidence + freshness         │
-│ [?] Unknown finding              │
-├──────────────────────────────────┤
-│ Supply & Holders                 │
-│ concentration / creator / list   │
-├──────────────────────────────────┤
-│ Liquidity                        │
-│ pools / control / recent change  │
-├──────────────────────────────────┤
-│ Creator Intelligence             │
-│ creator summary            [→]   │
-├──────────────────────────────────┤
-│ Flight Recorder                  │
-│ ○ event                          │
-│ │ event                          │
-│ ○ event                    [→]   │
-├──────────────────────────────────┤
-│ Share · Report · Claim           │
-├──────────────────────────────────┤
-│ Radar   Search   Watch   Me      │
-└──────────────────────────────────┘
+┌────────────────────────────────────┐
+│ PiChan                        [•••] │
+├────────────────────────────────────┤
+│ [icon] Project Name         [Watch]│
+│        $TICKER                     │
+│ [RH Chain] [Canonical] [Claimed]   │
+│ 0x90b4…e887 [copy] [↗]            │
+├────────────────────────────────────┤
+│ DECISION STRIP                     │
+│ Reputation │ Risk │ Confidence     │
+│ B+         │ 2W   │ Medium ▮▮▮▯   │
+├────────────────────────────────────┤
+│ PiChan Brief                       │
+│ • finding                          │
+│ • finding                          │
+│ • finding          [View evidence] │
+├────────────────────────────────────┤
+│ Market Pulse                       │
+│ Price        MCap/FDV              │
+│ Liquidity    24h Volume            │
+│ Holders      Age                   │
+├────────────────────────────────────┤
+│ Identity & Official Links          │
+│ Website                 Authority  │
+│ X                       Declared   │
+│ Project wallet          Declared   │
+├────────────────────────────────────┤
+│ Risk Signals                       │
+│ ! Warning finding          Warning │
+│   Onchain · 3m · Evidence          │
+│ ? Unknown finding          Unknown │
+│   Provider · stale · Evidence      │
+├────────────────────────────────────┤
+│ Supply & Holders                   │
+│ summary + stacked records          │
+├────────────────────────────────────┤
+│ Liquidity                          │
+│ pools / control / change           │
+├────────────────────────────────────┤
+│ Creator Intelligence               │
+│ creator summary                [→] │
+├────────────────────────────────────┤
+│ Flight Recorder                    │
+│ ○ event                            │
+│ │ event                            │
+│ ○ event                        [→] │
+├────────────────────────────────────┤
+│ Share · Report · External          │
+├────────────────────────────────────┤
+│ Radar     Search     Watch     Me   │
+└────────────────────────────────────┘
 ```
 
 ---
 
-## 16. Desktop wireframe
+## 19. Optimized desktop wireframe
 
 ```text
-┌──────────────┬───────────────────────────────────────────────────────────────┐
-│ PiChan       │ [Identity header.....................................][Watch]│
-│              │ [Reputation] [Risk Signals] [Data Confidence]               │
-│ Radar        ├───────────────────────────────────────┬───────────────────────┤
-│ Search       │ PiChan Brief                          │ Market Pulse          │
-│ Watch        │                                       │                       │
-│ Me           ├───────────────────────────────────────┤ Official Links        │
-│              │ Risk Signals                          │                       │
-│              │                                       ├───────────────────────┤
-│              ├───────────────────────────────────────┤ Verification / Status │
-│              │ Supply & Holder Intelligence          │                       │
-│              │                                       ├───────────────────────┤
-│              ├───────────────────────────────────────┤ Creator Preview       │
-│              │ Liquidity Intelligence                │                       │
-│              │                                       ├───────────────────────┤
-│              ├───────────────────────────────────────┤ Watch / Share         │
-│              │ Recent Flight Recorder                │ Report / Claim        │
-│              │                                       │                       │
-└──────────────┴───────────────────────────────────────┴───────────────────────┘
+┌────────────┬────────────────────────────────────────────────────────────────────┐
+│ PiChan     │ [ Global search / command field........................ ] [Alerts] │
+│            ├────────────────────────────────────────────────────────────────────┤
+│ Radar      │ [Identity................................................][Watch]  │
+│ Search     │ [ Reputation | Risk Signals | Data Confidence ]                    │
+│ Watch      ├──────────────────────────────────────────┬─────────────────────────┤
+│ Me         │ PiChan Brief                             │ STICKY CONTEXT RAIL     │
+│            │                                          │ Market Pulse            │
+│            ├──────────────────────────────────────────┤                         │
+│            │ Risk Signals                             │ Official Links          │
+│            │                                          │ Verification            │
+│            ├──────────────────────────────────────────┤                         │
+│            │ Supply & Holder Intelligence             │ Creator Preview         │
+│            │                                          │                         │
+│            ├──────────────────────────────────────────┤ Share / Report / Action │
+│            │ Liquidity Intelligence                   │                         │
+│            │                                          │                         │
+│            ├──────────────────────────────────────────┤                         │
+│            │ Recent Flight Recorder                   │                         │
+└────────────┴──────────────────────────────────────────┴─────────────────────────┘
 ```
 
 ---
 
-## 17. First-pass component dimensions
+## 20. Required state variants
 
-These are design targets, not implementation absolutes.
-
-### Mobile
-
-- top app bar: 56 px
-- bottom navigation: 64–72 px + safe area
-- button/touch target: min ~44 px
-- card internal padding: 16 px
-- feature-card padding: 18–20 px
-- decision tile min height: 88–96 px
-- metric tile min height: 72–80 px
-
-### Desktop
-
-- expanded side rail: ~208–224 px
-- collapsed rail: ~72–80 px
-- content canvas: max ~1180–1240 px
-- card padding: 20–24 px
-- decision tile: ~120–140 px height depending evidence helper content
-
----
-
-## 18. Required state variants before high-fidelity lock
-
-Passport must be designed for:
+Before high-fidelity approval, design:
 
 - normal complete data
 - new / unknown asset
@@ -497,32 +521,25 @@ Passport must be designed for:
 - loading / skeleton
 - error / retry
 
-The normal state alone is not enough to approve the Passport system.
+---
+
+## 21. Structure lock criteria
+
+Passport structure is ready for high fidelity when:
+
+1. identity is stronger than price
+2. Decision Strip clearly separates all three intelligence outputs
+3. PiChan Brief feels ownable and evidence-first
+4. the page no longer feels like a stack of generic SaaS cards
+5. evidence footer is consistent
+6. Risk hierarchy is clear without casino styling
+7. claim/action logic cannot contradict identity state
+8. desktop context rail improves usability without duplicate actions
+9. mobile works with incomplete/unknown data
+10. Production Assets 2.2 are consumed directly with no logo redraw
 
 ---
 
-## 19. Visual review criteria
+## 22. Next step
 
-Before this screen moves to high fidelity, confirm:
-
-1. identity is more prominent than market price
-2. Reputation, Risk and Confidence cannot be mistaken for one score
-3. PiChan Brief is a signature element but not an AI-chat cliché
-4. evidence provenance is visible without overwhelming the page
-5. Risk has urgency without casino/trading-terminal styling
-6. mobile remains easy to scan with incomplete data
-7. desktop uses the extra space for context, not decorative emptiness
-8. the final locked PiChan logo assets are consumed directly with no redraws
-
----
-
-## 20. Next design step
-
-After visual review of this anatomy/wireframe:
-
-1. lock Passport composition
-2. define concrete product-surface color tokens and contrast values
-3. create the first high-fidelity mobile Passport
-4. create desktop from the same component system
-5. extract/refine the reusable components
-6. use the locked components to design Radar next
+Create the first high-fidelity mobile Passport using `PRODUCT_UI_TOKENS_V1.md`, then derive desktop and extract final reusable components from the approved screen.
