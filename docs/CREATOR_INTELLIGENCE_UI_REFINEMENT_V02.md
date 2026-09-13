@@ -1,16 +1,16 @@
 # PiChan V1 — Creator Intelligence High-Fidelity Refinement v0.2
 
-**Status:** DESIGN HQ — REVIEW CANDIDATE  
+**Status:** DESIGN HQ — FINAL LOCK  
 **Date:** 2026-09-13  
 **Parent spec:** `CREATOR_INTELLIGENCE_UI_SPEC_V1.md`
 
-This refinement records the first high-fidelity visual review of the Creator Intelligence `Lineage Ledger` direction.
+This refinement records the final high-fidelity review of the Creator Intelligence `Lineage Ledger` direction and locks the composition for V1 implementation.
 
-## 1. Direction retained
+## 1. Direction locked
 
 Keep the `Lineage Ledger` architecture.
 
-The screen should feel like a relationship investigation surface, not:
+The screen is a relationship-investigation surface, not:
 
 - a wallet portfolio
 - a wallet P&L profile
@@ -22,9 +22,9 @@ The core user question remains:
 
 > What is this wallet connected to, and what evidence proves those relationships?
 
-## 2. Mobile refinement
+## 2. Mobile lock
 
-The mobile layout is explicitly linear and evidence-first.
+The mobile layout is linear and evidence-first.
 
 Order:
 
@@ -37,9 +37,13 @@ Order:
 7. Cross-chain identity state
 8. Evidence Chronology
 
-The full reference must show all sections before the bottom navigation. Mobile never receives a squeezed desktop network graph.
+The locked mobile reference is:
 
-## 3. Desktop refinement
+`PiChan_Creator_Intelligence_Mobile_v03_LOCKED.png`
+
+Mobile never receives a squeezed desktop network graph. Relationships remain understandable in normal reading order.
+
+## 3. Desktop lock
 
 Desktop keeps the 68/32 research/context model established by Passport and Flight Recorder.
 
@@ -58,6 +62,10 @@ Sticky context rail:
 - labels & attribution
 - funding summary
 - cross-chain identity state
+
+The locked desktop reference is:
+
+`PiChan_Creator_Intelligence_Desktop_v03_LOCKED.png`
 
 ## 4. Evidence Link grammar
 
@@ -81,9 +89,9 @@ Connector color/style is never the only semantic indicator.
 
 Funding is always represented as a relationship, never automatic ownership/entity identity.
 
-The UI must preserve the explicit rule:
+Locked rule:
 
-`Funding ≠ ownership`
+> `Funding ≠ ownership`
 
 Any entity merge requires separate strong evidence.
 
@@ -91,13 +99,14 @@ Any entity merge requires separate strong evidence.
 
 External/provider labels remain visibly attributed.
 
-Example structure:
+Required runtime fields where available:
 
-- label: `High-activity wallet`
-- source class: `External provider label`
-- PiChan treatment: `Context only`
+- provider/source name
+- label text
+- freshness / last checked
+- details/evidence access
 
-Provider labels do not silently become PiChan conclusions.
+PiChan does not silently restate provider labels as its own conclusions.
 
 ## 7. Cross-chain rule
 
@@ -109,7 +118,7 @@ A second-chain wallet remains separate unless the strong-evidence threshold is m
 
 Strong-link examples can include cryptographic signed proof plus corroborating project evidence.
 
-Weak coincidences such as naming, timing, branding or funding pattern alone never merge identities.
+Weak coincidences such as naming, timing, branding or funding patterns alone never merge identities.
 
 ## 8. Known Projects rule
 
@@ -119,22 +128,19 @@ Each record prioritizes:
 
 - project
 - chain
+- first observed / deployment date when known
 - creator relationship
 - current lifecycle / identity state
 - one recent/notable evidence-backed event
 - relationship evidence destination
 
-Never add creator ROI, win-rate or project price-performance ranking to V1.
+Never add creator ROI, win-rate or price-performance ranking to V1.
 
 ## 9. Partial-data behavior
 
 A creator with one known project or incomplete enrichment data remains useful.
 
-Explicitly show:
-
-- known projects: `1`
-- funding relationships: `Unknown` when unavailable
-- provider labels: `Unavailable` when unavailable
+Explicitly show Unknown/Unavailable when data is missing.
 
 Do not fill an empty lineage with fake peers or speculative nodes.
 
@@ -149,16 +155,40 @@ If later evidence changes a creator relationship:
 
 This mirrors Flight Recorder historical-integrity rules.
 
-## 11. QA conclusion
+## 11. Final refinements from QA
 
-The current v0.2 direction passes the key conceptual tests:
+The final pass added or clarified:
 
-- direct vs weak/provider relationships are distinguishable
-- funding does not imply ownership
-- provider labels stay attributed
-- cross-chain coincidence does not become identity
-- partial data does not trigger speculative graph completion
-- project history stays factual
-- mobile preserves relationship semantics without horizontal graph navigation
+- first-observed context inside Known Projects
+- source/freshness treatment for external provider labels
+- inspectable transaction/reference information in Relationship Inspector
+- explicit strong-evidence wording for cross-chain identity links
+- conflict state for project declaration vs onchain role evidence
+- stale provider-label state
+- no-known-projects-beyond-entry state
+- loading/error/partial-provider behavior
+- preservation of the originating primary tab at runtime rather than hard-coding Search/Radar
 
-**Decision:** retain `Lineage Ledger` and proceed to final component/state QA before lock.
+## 12. QA conclusion
+
+PASS — direct vs weak/provider relationships are distinguishable.
+
+PASS — funding does not imply ownership.
+
+PASS — provider labels stay attributed and freshness-aware.
+
+PASS — cross-chain coincidence does not become identity.
+
+PASS — strong cross-chain links require inspectable evidence.
+
+PASS — corrected relationships preserve historical context.
+
+PASS — partial data does not trigger speculative graph completion.
+
+PASS — project history stays factual.
+
+PASS — mobile preserves relationship semantics without horizontal graph navigation.
+
+PASS — desktop Relationship Inspector explains why selected nodes are connected.
+
+**Decision:** Creator Intelligence V1 is visually locked. Developer HQ must implement this architecture from the shared PiChan design system and may not replace it with a generic graph explorer or wallet-performance dashboard.
