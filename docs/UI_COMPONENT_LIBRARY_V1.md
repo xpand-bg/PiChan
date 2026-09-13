@@ -1,12 +1,12 @@
 # PiChan V1 — UI Component Library
 
-**Status:** DESIGN HQ — COMPONENT FOUNDATION  
+**Status:** DESIGN HQ — COMPONENT LOCK CANDIDATE  
 **Product version:** V1.0  
-**Design system revision:** 0.3  
+**Design system revision:** 0.4  
 **Date:** 2026-09-13  
 **Owner:** PiChan Design HQ
 
-This document converts the locked UI direction into reusable production component rules. It is derived from `UI_DESIGN_SYSTEM_V1.md`, `PRODUCT_UI_TOKENS_V1.md` and the high-fidelity Passport work.
+This document converts the locked UI direction into reusable production component rules. It is derived from `UI_DESIGN_SYSTEM_V1.md`, `PRODUCT_UI_TOKENS_V1.md`, `PASSPORT_UI_SPEC_V1.md` and `PASSPORT_STATE_MATRIX_V1.md`.
 
 ---
 
@@ -14,7 +14,7 @@ This document converts the locked UI direction into reusable production componen
 
 PiChan is not a generic card-based SaaS dashboard.
 
-The default building blocks are:
+Default building blocks:
 
 - open research sections
 - grouped evidence rows
@@ -22,15 +22,15 @@ The default building blocks are:
 - one strong unified Decision Strip
 - one signature PiChan Brief surface
 - evidence-first rows and timelines
-- restrained action surfaces
+- restrained contextual action surfaces
 
-Elevation is reserved for components that need hierarchy or interaction.
+Elevation is reserved for hierarchy, urgency or interaction.
 
 ---
 
 ## 2. App shell
 
-### Mobile shell
+### Mobile
 
 Primary bottom navigation:
 
@@ -39,35 +39,36 @@ Primary bottom navigation:
 - Watch
 - Me
 
-Height target: `68 px + safe area`.
-
-Detail routes such as Passport are not separate primary tabs.
+Target: `68 px + safe area`.
 
 Rules:
 
-- preserve bottom navigation for orientation and fast escape
-- detail screens must provide an explicit back affordance in the top bar when navigation history exists
-- deep-linked Passport fallback back target is Radar
-- do not hard-code `Radar` as active when the user entered from Search or Watch
-- implementation may preserve the originating primary-tab state during the detail session
-- when origin is unknown, no primary tab needs to be falsely highlighted
+- detail routes preserve primary navigation
+- detail routes show Back when history exists
+- preserve originating tab state when known
+- do not falsely hard-code Radar active
+- deep-link fallback may return to Radar
 
 Top app bar target: 56 px.
 
-### Desktop shell
+### Desktop
 
 - left navigation rail
-- proper global search / command field
-- alerts / account utilities in top bar
+- global search/command field
+- alerts/account utilities
 - research canvas max width ~1220 px
-
-Passport context rail becomes sticky below the identity/decision area.
+- Passport context rail sticky below identity/decision area
 
 ---
 
 ## 3. Global Search / Command Field
 
-Purpose: one fast entry point for project name, ticker, deployment/mint address and creator/deployer wallet.
+Supports:
+
+- project name
+- ticker
+- deployment/mint address
+- creator/deployer wallet
 
 States:
 
@@ -80,10 +81,7 @@ States:
 - no results
 - error
 
-Desktop target height: 44 px.  
-Mobile target height: 48 px.
-
-Search must never imply ticker uniqueness. Same-name/ticker ambiguity is surfaced explicitly.
+Ticker/name ambiguity must be surfaced explicitly.
 
 ---
 
@@ -91,46 +89,31 @@ Search must never imply ticker uniqueness. Same-name/ticker ambiguity is surface
 
 Required:
 
-- project/token icon
+- project/token image
 - name
 - ticker
 - chain
 - deployment/mint
-- verification/canonical/claim states
+- verification/canonical/claim state
 - Watch control
 
-### Token/project icon
+Project image fallback:
 
-The project icon is content, not PiChan branding.
+1. verified project/token image
+2. deterministic neutral identicon
+3. neutral initials
 
-Fallback order:
+Never use the PiChan bird as project artwork.
 
-1. verified project/token image when available
-2. deterministic neutral identicon derived from deployment/mint
-3. neutral initials fallback
-
-Never use the PiChan bird as the fallback token icon.
-
-### Address row
-
-Always include:
-
-- controlled truncation
-- copy
-- full reveal
-- explorer action where available
-
-Technical values use JetBrains Mono in production.
+Address row always provides controlled truncation, copy, full reveal and explorer action where available.
 
 ---
 
 ## 5. Status chips
 
-Base height: 28–32 px.
-
 Families:
 
-- chain/network
+- network
 - Canonical
 - Claimed
 - Authority Verified
@@ -141,100 +124,75 @@ Families:
 
 Rules:
 
-- status must not rely on color alone
-- do not use one generic blue check for all verification strengths
-- semantic label remains readable at compact sizes
+- status never relies on color alone
+- one generic checkmark must not represent different verification strengths
+- labels remain readable at compact size
 
 ---
 
 ## 6. Unified Decision Strip
 
-Signature component containing three independent segments:
+Three independent segments:
 
 1. Reputation
 2. Risk Signals
 3. Data Confidence
 
-The public UI should **not** show an internal heading such as `Decision Strip` above this component.
+Production UI never shows the internal name `Decision Strip`.
 
-### Reputation segment
+### Reputation
 
-Required:
-
-- label `Reputation`
-- grade or `Unrated`
+- grade / `Unrated`
 - optional coverage helper
+- neutral branded treatment
+- no safety color scale
 
-No green/red safety scale.
+### Risk
 
-### Risk segment
+- severity summary
+- explicit Unknown
+- strong semantic color allowed
 
-Required:
+### Confidence
 
-- label `Risk Signals`
-- compact severity summary
-- explicit Unknown where present
-
-Strong severity color is allowed here.
-
-### Confidence segment
-
-Required:
-
-- label `Data Confidence`
 - High / Medium / Low
-- segmented coverage meter
+- segmented evidence meter
+- cyan/blue + neutral empty states
+- never green
 
-No green.
-
-### Responsive behavior
-
-Desktop: three equal segments.  
-Mobile: three segments when readable; 2+1 inside the same shared container if text becomes cramped.
-
-Never horizontal-scroll the Decision Strip.
+Mobile keeps the segments in one shared component; use a 2+1 layout only if content becomes unreadable.
 
 ---
 
 ## 7. PiChan Brief
 
-Signature elevated surface.
-
 Required:
 
 - approved PiChan mark from Production Assets 2.2
 - title `PiChan Brief`
-- short descriptor
-- concise summary / 3–6 prioritized findings
-- evidence/freshness footer
-- `View evidence` / `Why?` action
+- concise descriptor
+- one conclusion sentence
+- 3–6 findings
+- Evidence Footer
+- disclosure action
 
 Rules:
 
-- the bird remains small and secondary to content
+- bird stays small
 - no speech bubble
-- no fake assistant typing
+- no fake typing
 - no full-card gradient
-- factual tone only
+- factual tone
 
 ---
 
 ## 8. Evidence Footer
 
-Shared signature component.
-
 Pattern:
 
 `[Source type] · [Freshness] · View evidence`
 
-Examples:
-
-- `Onchain · Checked 3m ago · View evidence`
-- `Provider · Checked 8m ago · View evidence`
-- `Declared by project · Observed Sep 13 · View evidence`
-- `Conflicting · Needs review · View evidence`
-
-States:
+Supports:
 
 - fresh
 - historical
@@ -243,53 +201,51 @@ States:
 - provider partial outage
 - unknown
 
-The disclosure action opens the evidence detail without changing the underlying conclusion.
+Evidence disclosure opens supporting detail without silently changing the conclusion.
 
 ---
 
 ## 9. Risk Finding Row
 
-Default risk presentation is an open evidence row, not a nested card.
+Default form is an open evidence row.
 
 Required:
 
-- severity icon/symbol
-- finding title
+- severity rail/icon
+- title
 - severity label
-- short factual condition summary where needed
+- concise condition description
 - Evidence Footer
 
-Ordering:
+Order:
 
 1. Critical
 2. Warning
 3. material Unknown
 4. Info
 
-Elevated card variant is reserved for Critical, recently material change, or consequential conflict/unknown.
+Elevated card variant is reserved for Critical, recent material change, or consequential conflict/unknown.
 
 ---
 
-## 10. Data / Metric Row
-
-Used for Market Pulse and compact intelligence summaries.
+## 10. Metric / Market Row
 
 Required:
 
-- small muted label
-- prominent technical value
+- muted label
+- technical value
 - optional contextual delta
-- optional freshness access
+- freshness access
 
-Market price/change styling must remain secondary to PiChan intelligence.
+Market styling remains secondary to intelligence.
 
-Green/red must not dominate the page like an exchange terminal.
+No exchange-style giant red/green treatment.
 
 ---
 
 ## 11. Holder / Entity Record
 
-Desktop table fields can include:
+Desktop may show:
 
 - rank
 - address/entity
@@ -297,24 +253,20 @@ Desktop table fields can include:
 - role/category
 - source/relationship marker
 
-Mobile converts the record into a stacked row/cardless record.
+Mobile converts to compact stacked records.
 
-Addresses use truncation + copy/full reveal.
-
-Provider-derived labels require source attribution.
+Provider-derived labels require attribution.
 
 ---
 
 ## 12. Creator Preview
 
-Compact context component.
-
 Required:
 
-- creator/origin entity or wallet
+- origin wallet/entity
 - observed role
 - known project count
-- one or two notable evidence-backed observations
+- evidence-backed observation summary
 - evidence source
 - `View Creator Intelligence`
 
@@ -324,18 +276,16 @@ Avoid accusatory language when relationship evidence is weak.
 
 ## 13. Flight Recorder Event
 
-Chronology component, not a social feed.
-
 Required:
 
 - event type/icon
 - timestamp
-- event title
+- title
 - before → after where useful
 - materiality/severity where applicable
-- evidence/source access
+- evidence access
 
-Timeline connector remains visually subtle.
+The pattern reads as chronology, not social feed.
 
 ---
 
@@ -347,11 +297,11 @@ States:
 - Watching
 - loading
 - error
-- login/connect required where applicable
+- login/connect required
 
-Primary Watch control remains visible in Passport identity header.
+Primary Watch stays in the Passport identity header.
 
-Do not duplicate it as a second oversized block in the desktop context rail.
+Do not duplicate it as an oversized desktop side-rail block.
 
 ---
 
@@ -360,9 +310,8 @@ Do not duplicate it as a second oversized block in the desktop context rail.
 ### Primary
 
 - cyan fill
-- navy high-contrast label
-- 44 px mobile target
-- 42–44 px desktop
+- navy label
+- ~44 px mobile target
 
 ### Secondary
 
@@ -374,7 +323,9 @@ Do not duplicate it as a second oversized block in the desktop context rail.
 
 - red only for destructive/system-danger actions
 
-`Claim this Passport` is not a purchase CTA and is shown only for eligible Unclaimed Passports.
+`Claim this Passport` is shown only when eligible and Unclaimed.
+
+Internal logic/debug explanations are never public UI copy.
 
 ---
 
@@ -389,16 +340,15 @@ Use for:
 - mobile filters
 - confirmations
 
-Mobile prefers bottom sheet for compact contextual tasks.  
-Desktop prefers modal/popover based on task complexity.
+Mobile prefers bottom sheets for compact contextual tasks. Desktop uses modal/popover based on task complexity.
 
-Must support keyboard focus trap and Escape close where appropriate.
+Must support keyboard focus management and Escape close where appropriate.
 
 ---
 
 ## 17. Loading / Empty / Unknown / Error
 
-Every data-bearing component must support:
+Every data-bearing component supports:
 
 - loading
 - complete
@@ -410,7 +360,7 @@ Every data-bearing component must support:
 - provider partial outage
 - error/retry
 
-Skeletons preserve final layout dimensions to avoid layout shift.
+Skeletons preserve final dimensions.
 
 Unknown is neutral and explicit; never visually positive.
 
@@ -418,68 +368,84 @@ Unknown is neutral and explicit; never visually positive.
 
 ## 18. Iconography
 
-Production UI must use one consistent vector icon family.
+Use one consistent vector icon family.
 
-Do not ship placeholder Unicode symbols such as `⌕`, `◉`, `◇` or text glyph arrows as final icons.
+Do not ship Unicode placeholder symbols.
 
-Rules:
+Targets:
 
-- outline system icons by default
 - 16 px metadata
 - 18–20 px controls
 - 22–24 px primary navigation
-- filled icons only where semantic urgency justifies them
-- PiChan bird remains a brand asset, not a system icon
+
+PiChan bird is a brand asset, not a system icon.
 
 ---
 
-## 19. Accessibility contract
+## 19. Accessibility
 
-All interactive components:
+Interactive components require:
 
 - visible keyboard focus
 - meaningful accessible name
 - approximately 44×44 px touch target where practical
 - status not communicated by color alone
-- appropriate semantic role
+- correct semantic role
 - reduced-motion support
 
-The locked dark tokens meet strong text contrast targets; implementation must preserve WCAG 2.2 AA in real states.
+Target WCAG 2.2 AA.
 
 ---
 
-## 20. High-fidelity Passport learnings
+## 20. High-fidelity learnings — v0.4
 
-The first mobile high-fidelity pass confirms the following decisions:
+Cross-device Passport review confirms:
 
-- dark-first product direction works
-- Decision Strip is distinctive and compact
-- PiChan Brief creates the correct signature brand moment
-- open research sections feel more credible than nested cards
-- market data can stay useful without becoming the page hero
-- standardized evidence/freshness language improves scanability
-
-Corrections for the next visual pass:
-
-- remove visible internal label `Decision Strip` from production UI
-- use final vector system icons rather than mockup glyphs
-- add explicit mobile back behavior for Passport detail routes
-- use verified project image / deterministic identicon instead of a generic letter-circle where real content is unavailable
-- preserve slightly more breathing room between long research sections on desktop while keeping mobile information density high
+- the Decision Strip is distinctive without feeling gimmicky
+- PiChan Brief is the right brand signature moment
+- open research sections outperform nested cards
+- Risk works best with narrow severity rails + labels
+- evidence/freshness can stay visible without overwhelming the page
+- mobile holder records should prioritize share + entity and keep metadata secondary
+- desktop benefits from the 68/32 research/context composition
+- sticky desktop context improves long-form research usability
+- Search is a strong static reference origin; runtime preserves actual entry context
+- system icons must be vectors with one consistent stroke style
+- internal state/debug notes must never appear in public UI
 
 ---
 
-## 21. Component lock gate
+## 21. State validation
 
-The component library is ready for Developer HQ only when:
+Detailed state behavior is in `PASSPORT_STATE_MATRIX_V1.md`.
 
-1. all core states above are visually specified
-2. mobile and desktop variants are defined
-3. evidence and freshness patterns are consistent
+Every reusable intelligence component must support:
+
+- normal
+- Unrated
+- Unknown
+- stale
+- conflicting
+- provider partial outage
+- loading
+- error
+
+The Decision Strip and PiChan Brief must remain semantically correct even when only partial evidence exists.
+
+---
+
+## 22. Component lock gate
+
+Ready for Developer HQ only when:
+
+1. mobile and desktop variants are specified
+2. core state variants are specified
+3. evidence/freshness grammar is consistent
 4. no placeholder glyph iconography remains
-5. project icon fallback behavior is deterministic
-6. Risk/Confidence/Reputation remain unmistakably separate
+5. project artwork fallback is deterministic
+6. Risk / Confidence / Reputation remain unmistakably separate
 7. Production Assets 2.2 are consumed directly
 8. keyboard/touch/accessibility behavior is documented
+9. public copy contains no internal design/debug language
 
-**Current status:** component foundation defined; visual component lock follows Passport mobile + desktop review.
+**Current status:** component system is a v0.4 lock candidate pending final state/component QA; Radar must reuse it rather than introduce a second component language.
