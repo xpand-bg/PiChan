@@ -24,7 +24,7 @@ Core PiChan systems must remain chain-agnostic. Network-specific behavior belong
 
 ## Brand source of truth
 
-The locked **PiChan Brand Guidelines v1.0** and production logo masters live under [`brand/`](./brand/).
+The locked **PiChan Brand Guidelines v1.1** and **Logo Master v2.0** live under [`brand/`](./brand/). The implementation reference is [`docs/BRAND_SYSTEM.md`](./docs/BRAND_SYSTEM.md).
 
 ### Core brand
 
@@ -42,10 +42,14 @@ The locked **PiChan Brand Guidelines v1.0** and production logo masters live und
 - Royal Blue `#153FE9`
 - White `#FFFFFF`
 
-### Brand rule
+### Identity lock
 
-Do not redraw, reshape, recolor, rotate, or recreate the PiChan bird. All approved logo variants derive from the same locked master geometry in `brand/vector/`.
+The final PiChan bird is the approved **Curious PiChan / Concept B** refinement: observant, intelligent, confident and distinctive — never angry, childish or overly cute.
+
+Only the bird geometry changed during the final refinement. The approved wordmark construction and colors, typography, palette, gradient, messaging and system rules remain unchanged.
+
+Do not redraw, reshape, recolor, rotate, add effects to, or recreate the PiChan bird. All approved logo variants derive from the locked master geometry at `brand/vector/PiChan_Icon_Master.svg`.
 
 ---
 
-PiChan Brand Guidelines v1.0 — September 2026
+PiChan Brand Guidelines v1.1 · Logo Master v2.0 · September 2026
