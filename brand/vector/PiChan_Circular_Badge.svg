@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
-<title>PiChan Circular Badge</title>
+<title>PiChan Circular Badge — Production 2.2</title>
+<desc>Locked social/avatar badge. The white circular ring is intentional; the bird contains no decorative white halo. Uses the canonical production 2.2 bird master.</desc>
 <circle cx="512" cy="512" r="500" fill="#041F5F"/>
 <circle cx="512" cy="512" r="486" fill="none" stroke="#FFFFFF" stroke-width="8"/>
 <image href="PiChan_Icon_Master.svg" x="132" y="118" width="758" height="758" preserveAspectRatio="xMidYMid meet"/>
