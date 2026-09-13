@@ -6,235 +6,255 @@
 
 ## Decision
 
-PiChan launches **RH-first**, but the product and data architecture must be **multi-chain by design from day one**.
+PiChan V1 launches with **Robinhood Chain + Solana**.
 
-RH is the first supported network and proving ground. It must never be treated as a permanent hard-coded boundary of the product.
+The product and data architecture are multi-chain by design. Neither launch chain may be hard-coded as the universal PiChan model.
 
-Planned expansion order:
+Planned network direction:
 
-1. **RH** — launch network and initial proving ground
-2. **Solana** — second network and first non-EVM architecture
-3. **Base** — first major EVM expansion after RH
-4. **BNB Chain** — planned expansion
-5. **Ethereum** — planned expansion
-6. Additional chains based on product demand and data quality
+1. **Robinhood Chain + Solana** — V1 launch networks
+2. **Base** — planned V2 EVM expansion
+3. **BNB Chain** — planned V2 expansion
+4. **Ethereum** — planned V2 expansion
+5. Additional chains based on product demand and data quality
 
-The order after Solana may change based on demand, but the architectural rule does not.
+The order after V1 may change based on demand, but the architectural rules in this ADR remain locked.
+
+## Public naming
+
+Public UI/copy must use **Robinhood Chain** rather than unofficial shorthand.
+
+Internal adapters/configuration may use technical identifiers such as `robinhood` / chain ID `4663`.
 
 ## Product positioning
 
-PiChan is not an RH-only explorer.
+PiChan is not a chain-specific explorer.
 
-The long-term product is an **onchain project identity, history, reputation and monitoring layer**.
+PiChan is an **onchain intelligence, identity, history, reputation and monitoring layer**.
 
 Core product loop:
 
-> Paste an address → identify the project → inspect evidence and history → understand reputation and confidence → watch important changes.
+> Radar / Search → Passport → understand evidence → Flight Recorder → Watch → Alert → return.
 
-The core PiChan products remain chain-independent:
+Core public products:
 
-- **Project Passport** — what is this project?
-- **Flight Recorder** — what happened to this project?
-- **Watch** — what changes from now on?
-- Reputation Grade
-- Data Confidence
-- Project verification
-- Official links
-- Historical evidence
-- Deployer / creator intelligence
-- Alerts
-- Share cards
-- Telegram distribution
-- Admin review
+- **Radar** — what should I investigate?
+- **Project Passport** — what is this and what matters?
+- **Flight Recorder** — what happened?
+- **Watch** — what changes next?
+
+Creator Intelligence is a supporting drill-down shared by the core products.
 
 ## Architecture rule
 
 All core product models, APIs and storage must be chain-agnostic unless a feature is inherently chain-specific.
 
-Do **not** build core tables, routes or services around RH-specific naming such as:
+Do **not** build core tables/routes/services around network-specific naming such as:
 
 - `rh_projects`
+- `solana_projects`
 - `rh_contracts`
-- `rh_deployers`
+- `solana_mints`
 
-Prefer neutral concepts such as:
+Prefer normalized concepts:
 
 - `chains`
 - `projects`
+- `assets`
 - `deployments`
-- `addresses`
-- `entities`
+- `wallets` / `entities`
+- `entity_relationships`
+- `observations`
 - `evidence`
+- `risk_findings`
 - `events`
-- `reputation_scores`
-- `watchlists`
+- `snapshots`
+- `reputation_snapshots`
+- `confidence_snapshots`
+- `market_snapshots`
+- `holder_snapshots`
+- `liquidity_snapshots`
+- `watches`
+- `alerts`
+- `claims`
+- `verifications`
+- `reports` / `disputes`
 
-Every onchain deployment identity must include the chain/network as part of its primary identity.
+## Canonical identity
 
-A contract or mint address alone is **not globally unique**.
-
-Canonical identity must conceptually be:
+An onchain deployment identity is at minimum:
 
 ```text
 chain_id + address
 ```
 
-For example:
+An address alone is not globally unique.
+
+Examples:
 
 ```text
-rh      + 0x123...
-base    + 0x123...
-solana  + 8fs2...
+robinhood + 0x123...
+solana    + 8fs2...
+base      + 0x123...
 ```
 
-## Chain adapter layer
+## Project → Asset → Deployment
 
-PiChan must consume chain data through adapters rather than allowing chain-specific logic to spread throughout the application.
+PiChan must separate the real-world/project identity from a token asset and its chain-specific deployment.
+
+```text
+Project
+   └── Asset
+        ├── Robinhood Chain deployment
+        ├── Solana deployment
+        └── future network deployments
+```
+
+V1 first-class asset scope is fungible tokens/assets, but this structure must support future asset types without a core rewrite.
+
+This model enables canonical-deployment and impersonation checks.
+
+## Chain adapter layer
 
 ```text
 PiChan Core
    │
    ▼
-Normalized Chain Layer
+Normalized Evidence Layer
    │
-   ├── RH Adapter
+   ├── Robinhood Chain Adapter
    ├── Solana Adapter
-   ├── Base Adapter
-   ├── BNB Adapter
-   └── Ethereum Adapter
+   ├── Base Adapter (V2)
+   ├── BNB Adapter (V2)
+   └── Ethereum Adapter (V2)
 ```
 
-Each adapter converts native chain information into normalized PiChan evidence and events.
+Each chain/provider adapter converts native data into normalized PiChan observations/evidence/events.
 
-The Reputation Engine consumes normalized evidence rather than raw chain-specific structures.
+Core Passport/Reputation/Watch logic must not consume vendor-native or chain-native response shapes directly.
 
 ## Neutral terminology
 
-Internal data models should avoid assuming every network is EVM.
+Internal models must not assume EVM semantics.
 
 Prefer:
 
-- `address` or `asset_address` instead of only `contract_address`
-- `deployment` instead of assuming `contract`
-- `creator_entity` / `origin_entity` where a universal concept is needed
-- typed roles such as `deployer`, `mint_authority`, `update_authority`, `creator`, `owner`, `program`
+- `address` / `deployment_address` rather than only `contract_address`
+- `deployment` rather than assuming `contract`
+- typed entity roles rather than a universal `deployer`
 
-The user interface can use chain-appropriate friendly labels while the underlying model stays neutral.
+Typed roles may include:
 
-## Reputation model
-
-PiChan must have:
-
-1. A **chain-independent reputation framework**
-2. **Chain-specific evidence modules**
-
-Common evidence can include:
-
-- project ownership verification
-- official links
-- identity consistency
-- project age
-- historical identity changes
-- creator/deployer history
-- transparency signals
-- evidence freshness and quality
-
-Chain-specific evidence may differ.
-
-### EVM / RH / Base / BNB / Ethereum examples
-
-- contract creator
-- ownership state
-- proxy / upgradeability state
-- supply controls
-- deployer history
-- funding relationships
-
-### Solana examples
-
+- deployer
+- creator
+- owner/admin
 - mint authority
 - freeze authority
 - update authority
-- token extensions
-- metadata authority
-- creator wallets
-- program relationships
+- funder
+- project-declared wallet role
 
-PiChan must **not** blindly apply an EVM-specific scoring rule to Solana or vice versa.
+UI may use chain-appropriate labels while the underlying model stays neutral.
 
-The public Reputation Grade stays understandable and consistent, while the evidence behind it respects each network.
+## Intelligence architecture
 
-## Project vs deployment
+PiChan keeps three public outputs separate:
 
-PiChan must support the possibility that one real project exists on multiple networks.
+1. **Reputation Grade** — identity/transparency/history/creator behavior
+2. **Risk Signals** — current technical/control/supply/liquidity findings
+3. **Data Confidence** — evidence completeness, quality, freshness and consistency
 
-Conceptually:
+The Reputation Engine consumes normalized evidence and uses a chain-independent reputation framework plus chain-specific evidence modules.
 
-```text
-Project
-  ├── RH deployment
-  ├── Solana deployment
-  ├── Base deployment
-  └── BNB deployment
-```
+See [`INTELLIGENCE_MODEL_V1.md`](./INTELLIGENCE_MODEL_V1.md).
 
-This allows PiChan to distinguish official deployments from copies or impersonations.
+## Chain-specific evidence
 
-Future Passport capability:
+### Robinhood Chain / future EVM examples
 
-> Official deployments: RH ✓  Solana ✓  Base ✓
+- contract creator
+- ownership/admin state
+- proxy/upgradeability
+- supply controls
+- transfer/trading restrictions
+- taxes/fees where detectable
+- deployer/creator history
+- funding relationships
+- pool/liquidity behavior
 
-and potentially:
+### Solana examples
 
-> Warning: this token is not an official deployment of the verified project.
+- SPL vs Token-2022
+- mint authority
+- freeze authority
+- metadata/update authority
+- Token-2022 extensions
+- creator/funder relationships
+- program/launch context
+- holder/funding relationships
+
+PiChan must not blindly apply an EVM-specific rule to Solana or vice versa.
+
+## Provider independence
+
+External analytics/security/indexing vendors are replaceable source adapters.
+
+PiChan stores normalized observations/evidence and historical events so vendor changes do not erase product history or force a product rewrite.
+
+When sources materially disagree, PiChan preserves the conflict rather than silently choosing one response.
 
 ## Search behavior
 
-Search must evolve toward chain-aware detection.
+V1 search is chain-aware:
 
-Examples:
+- Solana-format mints route to Solana lookup
+- Robinhood Chain EVM addresses route to supported EVM lookup
+- name/ticker search may return multiple same-name assets
+- canonical/claim/verification evidence is shown rather than assuming the first result is official
 
-- Solana-format addresses can be recognized directly.
-- EVM-style `0x...` addresses may exist on multiple supported chains.
-- When ambiguity exists, PiChan should return the matching networks rather than assuming one chain.
+As more EVM chains are added, identical `0x...` addresses may resolve on multiple networks and must remain chain-qualified.
 
-## Creator / deployer intelligence
+## Creator intelligence
 
-Long term, PiChan should support reputation and history across chains where evidence strongly links identities.
+Creator/origin reputation and history are evidence-based.
 
-Example:
+PiChan may connect wallets/projects using typed relationships such as deployer, authority, funder or declared project wallet.
 
-> Creator history: 4 known projects across 2 chains.
-
-Cross-chain identity connections must be evidence-based; PiChan must not infer ownership from weak coincidence alone.
+Cross-chain entity merging requires strong evidence; weak coincidences must never be treated as proven identity.
 
 ## Development requirement
 
 From this decision onward:
 
-> **Developer HQ must build core PiChan systems chain-agnostically unless the implementation is inherently network-specific.**
+> **Developer HQ must build core PiChan systems chain-agnostically. Network-specific implementation belongs in chain/source adapters and chain-specific evidence modules.**
 
-RH-specific code belongs inside the RH adapter or RH evidence module, not inside the core product model.
+Before adding a core field, table, route or service, ask:
 
-## Why this is locked now
+> Would this still make sense for both Robinhood Chain and Solana, and later Base?
 
-Retrofitting multi-chain support after an RH-specific schema would require a major rewrite of:
+If not, it likely belongs in a chain-specific module.
+
+## Why this is locked
+
+Launching with one EVM network and one non-EVM network forces the abstraction boundary to become real in V1 rather than theoretical.
+
+This prevents later rewrites of:
 
 - database identity
 - APIs
+- search
 - evidence models
 - scoring logic
-- search
-- URLs
 - monitoring
 - historical records
+- URL structure
 
-Making the boundary explicit now lets RH remain fast to ship without turning RH assumptions into permanent technical debt.
+## Scope authority
 
-## Launch scope is unchanged
+This ADR defines architecture/network direction only.
 
-This decision does **not** expand V1 scope.
+The locked V1 product scope is defined in:
 
-V1 remains RH-first.
-
-Solana and other chains are subsequent product phases. The requirement is simply that V1's architecture leaves a clean path for those phases.
+- [`PRODUCT_SPEC_V1.md`](./PRODUCT_SPEC_V1.md)
+- [`INTELLIGENCE_MODEL_V1.md`](./INTELLIGENCE_MODEL_V1.md)
+- [`V1_BUILD_PLAN.md`](./V1_BUILD_PLAN.md)
