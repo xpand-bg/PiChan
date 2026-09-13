@@ -4,6 +4,24 @@
 
 PiChan is an onchain intelligence and market discovery product.
 
+## Product source of truth
+
+PiChan launches **RH-first** but is **multi-chain by design**.
+
+- [`docs/PRODUCT_ARCHITECTURE.md`](./docs/PRODUCT_ARCHITECTURE.md) — product system, V1 scope and development rules
+- [`docs/ADR-001-MULTICHAIN-FOUNDATION.md`](./docs/ADR-001-MULTICHAIN-FOUNDATION.md) — locked multi-chain architecture decision
+
+### Locked network direction
+
+1. RH — launch network
+2. Solana — second network / first non-EVM adapter
+3. Base — planned EVM expansion
+4. BNB Chain
+5. Ethereum
+6. Additional chains based on demand and data quality
+
+Core PiChan systems must remain chain-agnostic. Network-specific behavior belongs in chain adapters and chain-specific evidence modules.
+
 ## Brand source of truth
 
 The locked **PiChan Brand Guidelines v1.0** and production logo masters live under [`brand/`](./brand/).
