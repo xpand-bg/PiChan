@@ -1,10 +1,12 @@
 {
   "brand": "PiChan",
-  "brandGuidelinesVersion": "1.1",
-  "logoMasterVersion": "2.0",
   "status": "locked",
+  "brandGuidelinesVersion": "1.0",
+  "assetRevision": "2.1",
   "sourceOfTruth": "brand/vector/PiChan_Icon_Master.svg",
   "wordmarkDesignChanged": false,
+  "messagingChanged": false,
+  "paletteChanged": false,
   "assets": {
     "iconMaster": "brand/vector/PiChan_Icon_Master.svg",
     "iconLightKeyline": "brand/vector/PiChan_Icon_LightBG_Keyline.svg",
@@ -27,10 +29,12 @@
     "singleMasterGeometry": true,
     "legacyBirdsForbidden": true,
     "wordmarkLocked": true,
+    "permanentMessagingLocked": true,
     "primaryLogoMinPx": 120,
     "preferredPrimaryLogoMinPx": 140,
     "iconMinPx": 24,
     "iconPreferredMinPx": 32,
-    "gradient": "linear-gradient(90deg, #153FE9 0%, #12B6F6 100%)"
+    "gradient": "linear-gradient(90deg, #153FE9 0%, #12B6F6 100%)",
+    "gradientOnLogo": false
   }
 }
