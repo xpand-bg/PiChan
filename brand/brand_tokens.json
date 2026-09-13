@@ -1,7 +1,7 @@
 {
-  "version": "1.1",
-  "logoMasterVersion": "2.0",
-  "date": "2026-09",
+  "brand": "PiChan",
+  "brandGuidelinesVersion": "1.0",
+  "assetRevision": "2.1",
   "status": "locked",
   "colors": {
     "navy": "#041F5F",
@@ -20,7 +20,8 @@
   "gradient": {
     "from": "#153FE9",
     "to": "#12B6F6",
-    "direction": "left-to-right 0deg"
+    "direction": "left-to-right 0deg",
+    "logoAllowed": false
   },
   "type": {
     "primary": "Plus Jakarta Sans",
@@ -35,20 +36,15 @@
   "messaging": {
     "tagline": "See what others miss.",
     "positioning": "Onchain intelligence & market discovery.",
+    "community": "PiChan | The Flock",
     "personality": "PiChan is watching.",
-    "community": "PiChan | The Flock"
+    "tone": "Curious. Data-driven. Independent. Forward-thinking."
   },
   "identity": {
-    "bird_direction": "Curious PiChan / Concept B — final refinement",
-    "bird_character": [
-      "curious",
-      "observant",
-      "intelligent",
-      "confident",
-      "distinctive"
-    ],
-    "bird_master": "brand/vector/PiChan_Icon_Master.svg",
-    "wordmark_changed": false,
-    "single_master_geometry": true
+    "birdMaster": "brand/vector/PiChan_Icon_Master.svg",
+    "wordmarkChanged": false,
+    "messagingChanged": false,
+    "paletteChanged": false,
+    "singleMasterGeometry": true
   }
 }
