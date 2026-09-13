@@ -2,13 +2,13 @@
 
 **Status:** DESIGN HQ — FOUNDATION LOCK  
 **Product version:** V1.0  
-**Design system revision:** 0.1  
+**Design system revision:** 0.2  
 **Date:** 2026-09-13  
 **Owner:** PiChan Design HQ
 
-This document defines the visual and interaction foundation for PiChan V1. It must be used together with `UI_DESIGN_REQUIREMENTS_V1.md`, the locked product specifications and the locked PiChan brand identity.
+This document defines the visual and interaction foundation for PiChan V1. Use it with `UI_DESIGN_REQUIREMENTS_V1.md`, `PRODUCT_UI_TOKENS_V1.md`, the locked product specifications and Production Assets 2.2.
 
-The goal is to create a product that feels like **an intelligence instrument**, not a generic crypto dashboard or trading terminal.
+The product must feel like **an intelligence instrument**, not a generic crypto dashboard or trading terminal.
 
 ---
 
@@ -26,36 +26,19 @@ PiChan should feel:
 
 The visual idea is **quiet intelligence with bright signals**.
 
-PiChan is not designed around hype, price movement or casino energy. It is designed around clarity:
+Core mental model:
 
 > **What is it? → What matters? → Why does PiChan believe it? → What changed? → What should I watch?**
 
-### Avoid
-
-- generic neon-Web3 styling
-- oversized glowing charts
-- glassmorphism everywhere
-- red/green trading-terminal language as the main visual system
-- excessive gradients
-- decorative data that looks meaningful but is not
-- mascot overuse
-- fake AI / cyberpunk effects
+Avoid generic neon-Web3 styling, glassmorphism everywhere, casino red/green language, excessive gradients, decorative fake data, mascot overuse and cyberpunk effects.
 
 ---
 
 ## 2. Visual direction
 
-### Default product mode
-
 PiChan V1 is **dark-first**.
 
-Primary product surfaces use Deep Navy / near-black neutral backgrounds because PiChan is a monitoring/intelligence product and dense evidence is easier to structure in a controlled dark environment.
-
-The system must remain tokenized so a future light product theme can be added without rebuilding components, but V1 does not require a theme switcher.
-
-### Product character
-
-Think:
+Product character:
 
 - intelligence lab
 - observatory
@@ -66,579 +49,332 @@ Not:
 
 - exchange terminal
 - meme coin scanner
-- cyberpunk game UI
+- game UI
 
-### Brand presence
-
-The PiChan bird appears selectively:
-
-- product logo / shell
-- PiChan Brief
-- purposeful empty states
-- onboarding / first-use moments
-- share assets
-
-Do not place the mascot inside every card or module.
+Use the bird selectively in the shell, PiChan Brief, purposeful empty/onboarding states and share assets.
 
 ---
 
-## 3. Core product palette
+## 3. Product-surface token source
 
-Locked brand colors remain unchanged:
+Concrete UI values live in:
 
-- Deep Navy — `#041F5F`
-- Cyan Blue — `#12B6F6`
-- Royal Blue — `#153FE9`
-- White — `#FFFFFF`
+`docs/PRODUCT_UI_TOKENS_V1.md`
 
-Existing semantic colors remain available:
+Brand anchors remain locked:
 
-- Success — `#22C55E`
-- Warning — `#F59E0B`
-- Error — `#EF4444`
-- Border / Divider — `#E5E7EB`
-- Muted Text — `#6B7280`
-- Surface — `#0B1220`
+- Deep Navy `#041F5F`
+- Cyan `#12B6F6`
+- Royal Blue `#153FE9`
+- White `#FFFFFF`
 
-### Dark product surface tokens
-
-The design system should use these roles, not raw colors directly in components:
-
-- `bg.canvas` — deepest page background
-- `bg.surface` — standard card/panel background
-- `bg.surfaceRaised` — raised/interactive panel
-- `bg.surfaceSelected` — selected/active panel
-- `border.subtle` — low-contrast separators
-- `border.default` — standard structural border
-- `border.strong` — active/focused border
-- `text.primary` — primary readable text
-- `text.secondary` — explanatory text
-- `text.muted` — low-priority metadata
-- `text.inverse` — text on bright surfaces
-- `accent.primary` — Cyan Blue
-- `accent.secondary` — Royal Blue
-
-Implementation values should be tuned during component construction for WCAG 2.2 AA contrast while preserving the locked brand colors as anchors.
-
-### Gradient
-
-The approved gradient remains:
+The official brand gradient remains:
 
 `linear-gradient(90deg, #153FE9 0%, #12B6F6 100%)`
 
-Use sparingly for:
-
-- selected accent moments
-- hero/introduction surfaces
-- subtle data emphasis
-- share assets
-
-Never use the gradient as a default card background or on the core logo.
+Use it sparingly; never on the logo and never as the default card background.
 
 ---
 
-## 4. Intelligence semantics
+## 4. Intelligence semantics — three visual grammars
 
-The three primary PiChan intelligence outputs must have different visual grammar.
-
-### 4.1 Reputation Grade
+### Reputation Grade
 
 Purpose: identity, transparency and observed history.
 
-Visual form:
+- letter grade / `Unrated`
+- neutral PiChan brand treatment
+- no green=A safe / red=F scam convention
+- meaning comes from grade + label + evidence coverage
 
-- large letter grade or `Unrated`
-- contained badge / score tile
-- neutral PiChan brand styling rather than traffic-light styling
-- supporting label: `Reputation`
-- optional short reason / evidence coverage note
-
-Rules:
-
-- do not use green to imply A = safe
-- do not use red to imply F = scam
-- grade color may use controlled brand-blue intensity, but meaning comes from the letter + label
-
-### 4.2 Risk Signals
+### Risk Signals
 
 Purpose: current technical/control/supply/liquidity conditions.
 
-Visual form:
+- explicit severity icon + label
+- Critical red
+- Warning amber
+- Info royal blue
+- Unknown neutral gray
+- only intelligence family with strong severity color
 
-- explicit severity icon
-- severity label
-- finding title
-- short evidence summary
-- provenance/freshness disclosure
-
-Severity tokens:
-
-- Critical — Error red
-- Warning — Warning amber
-- Info — Royal Blue
-- Unknown — neutral muted/gray
-
-Risk is the only intelligence family that uses strong severity color.
-
-### 4.3 Data Confidence
+### Data Confidence
 
 Purpose: completeness, freshness and consistency of evidence.
 
-Visual form:
+- High / Medium / Low
+- compact segmented coverage meter
+- cyan/blue + neutral empty segments
+- never green
 
-- `High / Medium / Low`
-- compact segmented meter or confidence bars
-- brand blue/cyan + neutral empty segments
-- no green
-
-Confidence should feel like **evidence coverage**, not safety.
+These outputs may share one structural Decision Strip, but they must never become one composite safety/trust score.
 
 ---
 
 ## 5. Evidence visual language
 
-Evidence is a first-class UI object.
+Evidence is a first-class object.
 
-Every important finding should be able to reveal:
+Every major finding can reveal:
 
 - source
-- source tier/type
+- source type/tier
 - observed time
 - freshness
-- direct / declared / provider / unverified state
-- conflict if present
+- direct / declared / provider / unverified status
+- conflicts
 
-### Evidence chips
+Standard evidence footer:
 
-Use compact labels such as:
+`[Source type] · [Freshness] · View evidence`
 
-- `Onchain`
-- `Authority`
-- `Provider`
-- `Declared by project`
-- `Unverified`
-- `Conflicting`
-- `Stale`
+Examples:
 
-### Freshness language
+- `Onchain · Checked 3m ago · View evidence`
+- `Provider · Checked 8m ago · View evidence`
+- `Declared by project · Observed Sep 13 · View evidence`
+- `Conflicting · Needs review · View evidence`
 
-Use plain text:
-
-- `Live`
-- `Checked 3m ago`
-- `Observed Sep 13`
-- `Historical`
-- `Needs refresh`
-
-Never use a tiny unlabeled dot as the only evidence/freshness indicator.
+This becomes a reusable signature pattern across Passport, Radar, Creator Intelligence and Flight Recorder.
 
 ---
 
 ## 6. Typography
 
-### Brand / interface
+Primary/UI: **Plus Jakarta Sans**  
+Data/technical: **JetBrains Mono**
 
-**Plus Jakarta Sans**
+Use Mono for addresses, hashes, prices, percentages, timestamps when useful and technical identifiers. Do not use Mono for normal body copy.
 
-### Data / technical values
-
-**JetBrains Mono**
-
-Use Mono selectively for:
-
-- addresses
-- hashes
-- timestamps where useful
-- prices / market values
-- percentages
-- chain IDs
-- code-like identifiers
-
-Do not render all body copy in Mono.
-
-### Product type scale
-
-#### Mobile
-
-- Display — 32 / 38, Bold
-- H1 — 28 / 34, Bold
-- H2 — 22 / 28, SemiBold
-- H3 — 18 / 24, SemiBold
-- Body L — 16 / 24, Regular
-- Body — 14 / 21, Regular
-- Label — 13 / 18, Medium
-- Small — 12 / 17, Regular
-- Micro — 11 / 15, Medium
-
-#### Desktop
-
-- Display — 44 / 52, Bold
-- H1 — 34 / 42, Bold
-- H2 — 26 / 34, SemiBold
-- H3 — 20 / 28, SemiBold
-- Body L — 16 / 24, Regular
-- Body — 14 / 21, Regular
-- Label — 13 / 18, Medium
-- Small — 12 / 17, Regular
-- Micro — 11 / 15, Medium
-
-Data values may use JetBrains Mono at equivalent optical sizes.
+Type scale and weights are defined in `PRODUCT_UI_TOKENS_V1.md`.
 
 ---
 
-## 7. Spacing system
+## 7. Layout and spacing
 
 Use a 4 px base grid.
 
-Core spacing tokens:
+Mobile-first, then expand density on desktop.
 
-- 4
-- 8
-- 12
-- 16
-- 20
-- 24
-- 32
-- 40
-- 48
-- 64
-- 80
+Key rules:
 
-Default component/card spacing should favor 16 / 20 / 24 rather than excessive empty space.
-
-PiChan should feel calm and premium but still information-dense.
+- mobile is never a compressed desktop mockup
+- desktop may use parallel context, but product semantics do not change
+- no primary horizontal scrolling
+- long addresses have truncation + copy/full reveal
+- tables become stacked/expandable records on mobile
 
 ---
 
-## 8. Radius, border and depth
+## 8. Surface philosophy
 
-### Radius
-
-- Small controls/chips — 8 px
-- Inputs/buttons — 10–12 px
-- Cards — 14–16 px
-- Large feature panels — 18–20 px
-- Pills — 999 px
-
-Avoid exaggerated 28–40 px SaaS-card rounding.
-
-### Borders
-
-Borders are important in dark mode to separate evidence/data surfaces.
+PiChan is **not** a page of cards.
 
 Use:
 
-- subtle 1 px structural borders
-- stronger focus/selected border when needed
-- no bright strokes around every card
+- open sections
+- separators
+- grouped rows
+- deliberate feature surfaces
 
-### Elevation
+Reserve elevation/cards for:
 
-Keep shadows minimal.
+- unified Decision Strip
+- PiChan Brief
+- material Risk Findings
+- interactive/contextual objects
+- modal/floating layers
 
-Use layer contrast + border before shadow.
-
-Modal / popover / floating command surfaces may use restrained shadow for separation.
-
----
-
-## 9. Iconography
-
-Use one consistent outline icon family with simple geometry and medium stroke weight.
-
-Rules:
-
-- do not mix filled, outline and illustrated icons randomly
-- use filled status icons only when semantic urgency benefits from it
-- network/project logos are content, not system icons
-- the PiChan bird is a brand asset, not a generic icon
-
-Recommended optical sizes:
-
-- 16 px metadata
-- 18–20 px controls
-- 24 px primary actions/navigation
+Use layer contrast + borders before shadows.
 
 ---
 
-## 10. App shell
+## 9. App shell
 
 ### Mobile
 
-Locked bottom navigation:
+Bottom navigation is locked:
 
 - Radar
 - Search
 - Watch
 - Me
 
-Top bar behavior:
-
-- compact PiChan mark / context title
-- contextual actions on the right
-- Alerts may surface through Watch/Me or notification indicator
+Top bar stays compact and contextual.
 
 ### Desktop
 
-Recommended shell:
+Recommended:
 
-- left navigation rail / sidebar
-- PiChan horizontal or compact logo at top
-- Radar
-- Search
-- Watch
-- Me
-- lower utility/account area
+- left rail/sidebar
+- PiChan logo at top
+- Radar / Search / Watch / Me
+- lower account/utility area
+- proper global search/command field in top product bar
 
-The rail may collapse at narrower desktop widths.
-
-Reasons:
-
-- leaves strong vertical scan path
-- supports dense Passport content
-- keeps global search and product sections predictable
-- avoids turning PiChan into a generic exchange header
-
-### Content width
-
-Use a centered product canvas with a deliberate max width for research content rather than full-bleed data across ultrawide screens.
-
-Passport desktop can use a primary column + contextual secondary rail where useful.
+The desktop search field must feel like a core entry point, not a tiny secondary control.
 
 ---
 
-## 11. Component personality
+## 10. Component personality
 
-PiChan components should feel:
+Components are:
 
 - compact
-- clear
-- slightly rounded
 - strongly aligned
-- data-aware
+- slightly rounded
 - quiet by default
-- bright only where information deserves attention
+- bright only when information deserves attention
 
-### Buttons
+Buttons:
 
-Primary action:
+- Primary: cyan with high-contrast navy text
+- Secondary: surface + border
+- Destructive: red only for destructive/system-danger actions
 
-- Cyan accent
-- high contrast label
-- no unnecessary gradient
+Chips communicate actual filter/status meaning; they are not decoration.
 
-Secondary:
+---
 
-- surface / border treatment
+## 11. Signature PiChan UI patterns
 
-Danger:
+### Unified Decision Strip
 
-- red only for destructive/system-danger actions
+One structural component containing three independent segments:
 
-### Chips
+- Reputation
+- Risk Signals
+- Data Confidence
 
-Chips should communicate filters/status, not decorate the screen.
+This becomes a recognizable PiChan pattern.
 
-### Cards
+### PiChan Brief
 
-Cards should have a clear reason to exist. Prefer grouping related evidence into one purposeful panel over creating many tiny floating cards.
+- small approved PiChan mark
+- concise evidence-based summary
+- 3–6 prioritized findings
+- calm blue/cyan emphasis
+- no AI-chat cliché
+
+### Evidence Trail
+
+The standard source/freshness/evidence disclosure pattern above.
+
+### Why on Radar
+
+Every organic Radar item visibly explains why PiChan surfaced it.
+
+### Watching state
+
+Clear state transition using observation/eye logic; no mascot decoration required.
 
 ---
 
 ## 12. Data display
 
-### Numbers
+Important values use JetBrains Mono with tabular numerals.
 
-Use JetBrains Mono for important values.
-
-Tabular numerals required where supported.
-
-### Market values
-
-Use compact formats when scanning:
+Compact scan formats:
 
 - `$1.24M`
 - `$328K`
 - `+4.2%`
 
-Full precision belongs in detail/tooltip where required.
+Full precision belongs in detail where needed.
 
-### Addresses
-
-Pattern:
-
-`0x90b4…e887` or equivalent Solana truncation
-
-Always provide:
-
-- copy
-- full reveal
-- explorer action where available
-
-### Tables on mobile
-
-Do not horizontally shrink desktop tables.
-
-Convert to:
-
-- stacked rows
-- expandable records
-- prioritized columns
-- horizontal scroll only for specialist secondary data where unavoidable
+Market data is context, not the product hero.
 
 ---
 
 ## 13. Motion
 
-Interaction motion:
+Use short motion only for orientation/state change:
 
-- 120–180 ms micro state changes
-- 180–240 ms sheets/modals/panels
-- ease-out entry / standard easing for controls
-
-Use motion for:
-
-- state confirmation
+- micro interactions
 - expanding evidence
 - filtering
+- sheets/modals
 - navigation continuity
 
-Do not animate live market data continuously just for effect.
+No continuously animated market data or decorative ambient motion in dense research surfaces.
 
-Respect `prefers-reduced-motion`.
-
----
-
-## 14. Signature PiChan UI moments
-
-PiChan should have a few ownable patterns rather than dozens of decorative motifs.
-
-### PiChan Brief
-
-A signature panel with:
-
-- small PiChan bird/mark
-- `PiChan Brief`
-- concise evidence-based findings
-- calm cyan/blue emphasis
-- no chat-bubble / AI-assistant cliché
-
-### Why on Radar
-
-Every Radar item visibly includes the reason PiChan surfaced it.
-
-This should become a recognizable visual pattern.
-
-### Evidence trail
-
-Expandable evidence/source rows should be consistent across Passport, Flight Recorder, Radar and Creator Intelligence.
-
-### Watching state
-
-Watch should have a clear state change using the eye/observation concept, without turning the UI into mascot illustration.
+Respect reduced motion.
 
 ---
 
-## 15. Passport flagship layout direction
+## 14. Passport flagship direction
 
-Passport is the first flagship screen to design because it contains most system primitives.
+The optimized Passport anatomy is now defined in:
 
-### Mobile structure
+`docs/PASSPORT_UI_SPEC_V1.md`
 
-1. compact product shell
-2. identity header
-3. Reputation / Risk / Confidence decision strip
-4. PiChan Brief
-5. Market Pulse
-6. official identity / links
-7. Risk Signals
-8. Supply & Holders
-9. Liquidity
-10. Creator preview
-11. Flight Recorder preview
-12. actions / Watch / Share / Report / Claim
+Key V0.2 corrections:
 
-### Desktop structure
+- unified Decision Strip
+- fewer nested cards
+- open research sections
+- sticky desktop context rail
+- stronger desktop global search
+- no contradictory Claim action states
+- no duplicated Watch blocks
+- standardized Evidence Footer
+- Risk displayed primarily as evidence rows rather than cards inside cards
 
-Recommended composition:
-
-- main research column: ~65–72%
-- secondary context rail: ~28–35%
-
-Main column:
-
-- identity
-- decision strip
-- PiChan Brief
-- Risk Signals
-- holders
-- liquidity
-- Flight Recorder
-
-Secondary rail:
-
-- Market Pulse
-- official links
-- verification states
-- Creator preview
-- Watch/share actions
-
-The information order remains semantically consistent even when desktop uses parallel layout.
+Passport is the first high-fidelity screen because it contains most reusable system primitives.
 
 ---
 
-## 16. First design-system component set
-
-Design these before full screen production:
+## 15. First reusable component set
 
 1. App shell
-2. Global search
-3. Project/token identity block
+2. Global search / command field
+3. Project identity block
 4. Chain badge
 5. Verification/status badge
-6. Reputation tile
-7. Risk summary
-8. Risk Finding card
-9. Data Confidence tile
-10. Evidence/source row
-11. Freshness label
-12. Metric tile
-13. PiChan Brief panel
-14. Radar card
-15. Timeline event
-16. Watch button/state
-17. Address row
-18. Filter chip / segmented control
-19. Empty/loading/error states
-20. Modal / bottom sheet
-
-This component set is enough to construct the first Passport and Radar designs without inventing one-off UI.
+6. Unified Decision Strip
+7. Reputation segment
+8. Risk summary segment
+9. Data Confidence segment
+10. Risk Finding row/card
+11. Evidence Footer / source row
+12. Freshness label
+13. Metric tile/row
+14. PiChan Brief
+15. Radar event card
+16. Timeline event
+17. Watch control
+18. Address row
+19. Filter/segmented control
+20. Loading/empty/error/partial states
+21. Modal/bottom sheet
+22. Crypto invoice/payment status components
 
 ---
 
-## 17. Design QA rules
+## 16. Design QA rules
 
-A screen fails Design HQ review if:
+A screen fails Design HQ if:
 
 - Reputation, Risk and Confidence look like one score
 - unknown data looks positive
-- evidence provenance is hidden or inaccessible
-- a critical finding is visually weaker than decorative information
-- brand cyan is used everywhere and loses meaning
-- cards are added purely for visual style
-- mobile is a compressed desktop mockup
-- PiChan mascot becomes decorative noise
-- the UI feels like an exchange/trading terminal
+- evidence provenance is inaccessible
+- critical findings are visually weaker than decorative data
+- cyan is used everywhere and loses meaning
+- the page becomes a collection of generic cards
+- mobile is compressed desktop
+- mascot usage becomes noise
+- UI resembles an exchange terminal
 - terminology differs from locked product language
+- logo assets are reconstructed instead of consuming Production Assets 2.2
 
 ---
 
-## 18. Current design decision
+## 17. Current lock and next step
 
-**Direction selected:** dark-first evidence intelligence product.
+**Direction:** dark-first evidence intelligence product.  
+**Visual character:** quiet intelligence, bright signals.  
+**Passport structure:** V0.2 structure-lock candidate.  
+**Product tokens:** V0.2 foundation locked.  
+**Brand assets:** Production Assets 2.2.
 
-**Visual character:** quiet intelligence, bright signals.
-
-**First flagship screen:** Project Passport.
-
-**Next Design HQ step:** create the Passport component anatomy and mobile/desktop wireframe using the system above, then refine the reusable component library from the screen rather than designing isolated components with no real context.
+Next Design HQ step: **build the first high-fidelity mobile Project Passport**, validate it against the state matrix, then derive desktop and finalize the component library.
