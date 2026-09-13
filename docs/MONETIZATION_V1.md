@@ -1,48 +1,144 @@
-# PiChan V1 Monetization
+# PiChan V1 — Monetization & Crypto Billing
 
-**Status:** LOCKED BUSINESS MODEL  
+**Status:** LOCKED — V1 business and billing source of truth  
+**Version:** 1.0  
 **Updated:** 2026-09-13  
 **Decision owner:** PiChan Product HQ
 
-## Core principle
+## 1. Core principle
 
-PiChan monetizes project tooling, analytics, monitoring, workflow and visibility. Payment must never change PiChan's independent intelligence.
+PiChan monetizes **project tooling, analytics, monitoring, workflow and clearly separated visibility**.
 
-Projects can pay for better tools and more reach. They cannot pay to improve Reputation, suppress Risk Signals, increase Data Confidence, remove Flight Recorder history, alter organic Radar ranking, or purchase a transparency status.
+Payment must never change PiChan's independent intelligence.
 
-## Payment rule
+Projects can pay for better operational tools and more reach. They cannot pay to:
 
-All paid PiChan products are settled in **crypto only**.
+- improve Reputation
+- suppress or downgrade Risk Signals
+- increase Data Confidence
+- remove or rewrite Flight Recorder history
+- alter canonical / authority-verification outcomes
+- alter transparency eligibility
+- alter organic Radar ranking
 
-V1 must not require card or fiat checkout as a primary payment method.
+> **Money can buy tools, speed and clearly labelled visibility. Money cannot buy trust.**
 
-Exact prices are **not locked yet**.
+## 2. Payment rule
 
-Accepted settlement assets and payment networks are also **not locked yet** and must remain configurable.
+All paid PiChan V1 products are settled in **crypto only**.
 
-The billing model must therefore separate:
+V1 does not require card or fiat checkout.
 
-- product / entitlement
-- quoted price
-- quote currency or pricing reference
+Exact prices are **TBD**.
+
+Accepted settlement assets and payment networks are **TBD** and must remain configurable.
+
+PiChan should be designed stablecoin-first for simple commercial pricing, but no specific token or network is locked by this document.
+
+## 3. Simple V1 billing model
+
+PiChan V1 does **not** use automatic recurring wallet withdrawals or subscription smart contracts.
+
+Passport Pro uses **fixed-duration access with manual crypto renewal**.
+
+Recommended selectable periods are configurable and may include:
+
+- 1 month
+- 3 months
+- 12 months
+
+The final commercial periods and prices may be changed without changing the entitlement architecture.
+
+Flow:
+
+```text
+Choose paid product / period
+          ↓
+PiChan creates invoice
+          ↓
+User pays supported crypto
+          ↓
+PiChan verifies onchain payment
+          ↓
+Invoice becomes PAID
+          ↓
+Entitlement becomes ACTIVE
+          ↓
+Expiry reminder
+          ↓
+Manual renewal or expiry
+```
+
+No automatic charge occurs when an entitlement expires.
+
+If Passport Pro expires, the project remains claimed/verified and its public evidence/history remains intact. Only Pro capabilities become unavailable.
+
+## 4. One universal payment engine
+
+All V1 paid products use the same billing primitives:
+
+```text
+Product
+   ↓
+Invoice
+   ↓
+Crypto Payment
+   ↓
+Confirmation
+   ↓
+Entitlement / Campaign / Queue Priority
+```
+
+Core billing objects:
+
+- `Product`
+- `Invoice`
+- `Payment`
+- `Entitlement`
+- `Campaign` where sponsored visibility is purchased
+
+The billing model must separate:
+
+- product / entitlement type
+- quoted commercial price
+- quote currency / pricing reference
 - accepted crypto asset
 - settlement network
 - settlement amount
-- payment address / invoice reference
+- payer wallet where known
+- destination / invoice reference
+- invoice expiry
 - payment status
 - transaction hash
 - confirmation state
-- entitlement start / end
+- entitlement start
+- entitlement end
 
-This allows PiChan to set stable commercial prices later while accepting one or more crypto settlement assets without hard-coding pricing to a volatile token.
+This prevents commercial pricing from being hard-coded to a volatile token.
 
-## V1 business model
+## 5. Renewal behavior
 
-### Free public intelligence
+Passport Pro is attached to the **Project**, not to one individual person/wallet.
+
+If an active entitlement is renewed early, the new duration extends from the existing expiry rather than shortening the existing paid period.
+
+Example:
+
+```text
+Current Pro expiry: October 13
+Renew one month on October 5
+New expiry: November 13
+```
+
+V1 reminders may be delivered in-app and through connected Telegram channels before expiry.
+
+## 6. Free public intelligence
 
 Research users receive PiChan's core public intelligence without payment.
 
-### Free claimed Passport
+V1 does not require a paid researcher subscription.
+
+## 7. Free claimed Passport
 
 Projects may claim their Passport and improve public truth without payment.
 
@@ -58,112 +154,184 @@ Free project actions include:
 - submit disputes
 - complete transparency disclosures
 - earn any objective transparency status
+- use the basic Project Inbox to receive and answer factual requests
 
-These must remain free because PiChan benefits from better public evidence and because projects must never need to pay to correct the public record or defend factual information.
+These remain free because PiChan benefits from better public evidence and because projects must never need to pay to correct the public record or respond to factual findings.
 
-### Passport Pro
+## 8. Passport Pro
 
-Recurring paid project subscription focused on operational value rather than reputation status.
+Passport Pro is the primary recurring V1 project product.
+
+It is a **Project Intelligence Console**, not a paid verification badge.
 
 Core direction:
 
 - Project Control Center
 - advanced Passport analytics
 - aggregated research-interest analytics
-- Watcher growth and engagement analytics
+- Passport views
+- search interest where available
 - Telegram scan analytics
+- Watch additions / watcher growth in aggregate
 - advanced project monitoring
 - configurable team alerts
 - historical project analytics
 - team members and roles
 - enhanced share assets
-- project workflow tools
+- advanced Project Inbox workflow
 - priority support
 
-Exact entitlements may be refined during implementation, but Pro must create recurring operational value.
+Analytics are aggregated and must not reveal individual researchers/watchers.
 
-### Priority Review
+Exact Pro price and package duration remain TBD.
 
-Optional paid review acceleration.
+## 9. Project Control Center
 
-Payment buys faster review handling only. It must never guarantee approval, canonical status, authority verification, a better Reputation Grade or any other positive intelligence result.
+Claimed projects access a project-side management experience showing, as relevant:
 
-### Launch Pack
+- current Reputation / Unrated state
+- current Data Confidence
+- current Risk Signal summary
+- public information completeness
+- project disclosures
+- recent PiChan observations
+- items requiring attention
+- Project Inbox
+- Passport/Telegram/Watch analytics for Pro projects
+- Pro entitlement status and renewal
 
-Optional one-time launch-oriented product that can bundle setup, faster review workflow, Pro access and launch assets.
+The Project Control Center never provides a mechanism to edit PiChan-generated intelligence conclusions.
 
-Exact contents and price remain TBD.
+## 10. Project Inbox
 
-### Sponsored Sighting
+Claimed projects receive factual workflow items such as:
 
-Paid visibility within a clearly separated sponsored surface.
+- new PiChan finding requiring project context
+- unresolved data question
+- community report
+- request to identify a project-associated wallet
+- claim / verification workflow message
 
-Sponsored placement must never alter organic Radar feeds such as Signals, Known Creators, Reputation changes or other evidence-driven rankings.
+Basic receive/respond capability is free.
 
-PiChan-generated intelligence shown beside sponsored content remains independent and cannot be edited by the advertiser.
+Advanced workflow, history, assignment and configurable notification controls may require Passport Pro.
 
-## Project-side product philosophy
+A project response becomes evidence/context; it does not automatically remove a finding or increase Reputation.
 
-PiChan serves two sides of the market:
+## 11. Priority Review
 
-### Researcher side
+Priority Review is an optional one-time paid product.
 
-> What should I know about this project?
+Payment buys faster handling only.
 
-### Project side
+It must never guarantee:
 
-> What does PiChan currently see about us, what requires attention, and how can we improve the completeness and transparency of our public information?
+- claim approval
+- canonical status
+- authority verification
+- Reputation improvement
+- Risk Signal removal
+- Data Confidence improvement
+- transparency eligibility
 
-PiChan remains the neutral evidence layer between the two.
+Priority Review uses the universal crypto invoice/payment engine.
 
-## Project Inbox
+## 12. Launch Pack
 
-Claimed projects should have an inbox for items requiring attention, such as:
+Launch Pack is an optional one-time launch-oriented product.
 
-- new PiChan findings
-- unresolved data questions
-- community reports
-- requests to identify project-associated wallets
-- claim / verification workflow messages
+It may bundle:
 
-Basic ability to receive and respond to factual items remains free.
+- priority review workflow
+- a fixed Passport Pro period
+- Project Control Center setup
+- official-wallet/transparency setup assistance
+- launch share assets
+- monitoring setup
 
-Advanced workflow, assignment, history and notification controls may be part of Passport Pro.
+Exact contents, duration and price remain TBD.
 
-## Privacy rule
+It uses the same crypto payment engine and creates explicit entitlements/services after confirmed payment.
 
-Project analytics must be aggregated.
+## 13. Sponsored Sighting
 
-Projects may see metrics such as Passport views, Telegram scans, Watch additions and aggregate engagement, but must not receive identities of individual users or wallets that researched or watched them unless a user explicitly shares that information through a separate future feature.
+Sponsored Sighting is paid visibility in a **clearly separated sponsored Radar surface**.
 
-## Transparency rule
+It is part of the V1 commercial model but is never mixed into organic evidence-driven ranking.
 
-Any PiChan transparency designation is earned through objective evidence and disclosure criteria.
+Rules:
+
+- always labelled `Sponsored`
+- organic `Signals`, `New`, `Verified`, creator/reputation/event logic remain independent
+- advertiser may provide approved creative/short message
+- PiChan-generated Reputation, Risk, Confidence and verification state remain independent and uneditable
+- minimum identity/eligibility policy is configuration/admin controlled
+- unresolved serious identity disputes may make a project ineligible
+- payment does not guarantee campaign approval
+
+Sponsored Sighting uses the same invoice/payment engine plus a campaign state such as:
+
+`pending_payment → paid → review → scheduled → live → complete`
+
+Exact campaign products/prices remain TBD.
+
+## 14. Transparency rule
+
+Any PiChan transparency designation is earned through objective evidence/disclosure criteria.
 
 It cannot be purchased.
 
 A free project that satisfies the criteria can earn it. A paying project that does not satisfy the criteria cannot.
 
-## Pricing
+Embeddable/public transparency badges may be offered without making transparency status itself paid.
 
-Prices are intentionally not defined in V1 product architecture.
+## 15. Privacy rule
 
-Product HQ will set pricing later using:
+Project analytics must be aggregated.
 
-- actual PiChan traffic
-- conversion rates
-- project demand
-- operating costs
-- competitive benchmarks
-- willingness-to-pay testing
+Projects may see metrics such as:
 
-Pricing changes must not require changes to the intelligence model.
+- Passport views
+- Telegram scans
+- Watch additions
+- aggregate engagement
+- aggregate conversion funnels
 
-## Development requirement
+They must not receive identities of individual users or wallets that researched/watched them unless a future user-controlled feature explicitly shares that information.
 
-Developer HQ must implement monetization so that commercial entitlements are separate from intelligence state.
+## 16. Pricing rule
 
-There must be no code path where a successful payment directly changes:
+No exact V1 price is locked in product architecture.
+
+Product HQ will set prices later using actual traffic, demand, conversion, operating cost and willingness-to-pay testing.
+
+Pricing changes must be configuration changes and must not require intelligence-model changes.
+
+## 17. Expiry and downgrade rule
+
+When Passport Pro expires:
+
+Remain intact:
+
+- claim state
+- authority/canonical verification
+- official links
+- declared wallets
+- project responses
+- transparency status
+- Reputation / Risk / Confidence
+- Flight Recorder
+- public Passport
+
+Paid-only operational capabilities become unavailable until renewed.
+
+No public trust state is revoked because a project stopped paying.
+
+## 18. Development requirement
+
+Developer HQ must implement commercial state separately from intelligence state.
+
+There must be no code path where successful payment directly changes:
 
 - Reputation
 - Risk Signals
@@ -173,4 +341,4 @@ There must be no code path where a successful payment directly changes:
 - transparency eligibility
 - organic Radar ranking
 
-All paid entitlements must be explicit product capabilities, not intelligence overrides.
+All paid capabilities must be explicit entitlements, service workflow state or labelled campaign state.
