@@ -1,9 +1,9 @@
 # PiChan Brand Guidelines
 
 **Version 1.0 | September 2026**  
-**Production asset revision 2.1 | Identity FINAL LOCKED**
+**Production asset revision 2.2 | Identity FINAL LOCKED**
 
-This document preserves the approved PiChan brand kit. The final production update replaces only the bird icon. The approved wordmark, permanent copy, palette, typography, gradient rules, spacing rules, supporting elements and brand-kit structure remain unchanged.
+This document preserves the approved PiChan brand kit. Production asset revision 2.2 is a technical vector cleanup only: it removes unintended white artifact contours at the bird's beak/head junction. The approved bird concept, wordmark, permanent copy, palette, typography, gradient rules, spacing rules, supporting elements and brand-kit structure remain unchanged.
 
 ## 1. Logo System
 
@@ -18,16 +18,18 @@ One consistent mark. All logo variations use the same PiChan bird geometry.
 
 All bird applications derive from `vector/PiChan_Icon_Master.svg`. Do not redraw, reshape or recreate the bird.
 
+The wordmark and custom `P` are locked and unchanged.
+
 ## 2. Minimum Size
 
-- Primary horizontal logo: **120-140 px** minimum digital width
-- Icon only: **24-32 px** minimum digital width
+- Primary horizontal logo: **120–140 px** minimum digital width
+- Icon only: **24–32 px** minimum digital width
 - Primary horizontal logo: **40 mm** minimum print width
 - Icon only: **8 mm** minimum print width
 
 ## 3. Clear Space
 
-Keep clear space around the logo equal to the height of the wordmark **i-dot (x)** on all sides.
+Keep clear space around the full logo equal to the height of the wordmark **i-dot (x)** on all sides.
 
 ## 4. Color Palette
 
@@ -61,13 +63,13 @@ Direction: **left to right (0deg)**.
 
 Use for backgrounds, accents, charts and hero sections.
 
-**Do not use gradients on the logo.** Do not change the approved colors, angle or application rules.
+**Do not use gradients on the logo.** Do not change the approved colors or angle.
 
 ## 6. Typography
 
 ### Plus Jakarta Sans
 
-Primary typeface for brand, UI and all text. Use a mix of weights.
+Primary typeface for brand, UI and all standard text.
 
 - Bold 700 — Headlines
 - SemiBold 600 — Subheadings
@@ -77,7 +79,7 @@ Primary typeface for brand, UI and all text. Use a mix of weights.
 
 ### JetBrains Mono
 
-Data / mono typeface for numbers, addresses, code and data elements.
+Data / mono typeface for numbers, addresses, code and technical values.
 
 - Regular 400 — Data
 - Medium 500 — Emphasis
@@ -85,18 +87,20 @@ Data / mono typeface for numbers, addresses, code and data elements.
 
 ## 7. Logo on Backgrounds
 
-- Dark background: use full color logo.
+- Dark background: use the approved full-color logo.
 - Light background: use the approved light-background treatment where required for visibility.
-- Image background: use full color logo with sufficient contrast.
+- Image background: use the full-color logo only with sufficient contrast and clear space.
+
+The normal full-color bird does **not** use a decorative white outline or halo.
 
 ## 8. App Icons & Favicons
 
-Optimized versions for all platforms, derived from the same master geometry.
+Optimized versions derive from the same master geometry.
 
-- App icon: 1024 x 1024
-- iOS icon: 180 x 180
-- Android icon: 512 x 512
-- Favicon: 32 x 32
+- App icon: 1024 × 1024
+- iOS icon: 180 × 180
+- Android icon: 512 × 512
+- Favicon: 32 × 32
 
 ## 9. Usage Examples
 
@@ -119,7 +123,9 @@ Do not:
 - change proportions
 - place on busy backgrounds without sufficient contrast
 - alter the bird
+- add white spikes/slivers/halos not present in the canonical master
 - use old versions
+- use AI-generated or raster recreations as master artwork
 
 ## 11. Design Elements
 
@@ -147,10 +153,16 @@ Official production delivery includes:
 - SVG — vector, recommended
 - PNG — transparent background
 - PNG — with background
-- JPG — social media
+- JPG — social media where required
 - ICO — favicon
 - PDF — brand guide
 
+## 14. Production Source of Truth
+
+Canonical bird: `vector/PiChan_Icon_Master.svg`.
+
+Revision **2.2** fixes only production-vector artifacts at the beak/head junction. All future raster/social exports must be rendered from the canonical vectors rather than generated or manually recreated.
+
 ---
 
-**PiChan Brand Guidelines | Version 1.0 | September 2026**
+**PiChan Brand Guidelines | Version 1.0 | Production Assets 2.2 | September 2026**
