@@ -1,26 +1,33 @@
 # PiChan Identity Lock
 
-**Locked:** September 2026  
-**Brand Guidelines:** v1.1  
-**Logo Master:** v2.0
+**Status:** FINAL LOCKED  
+**Brand Guidelines:** Version 1.0 — September 2026  
+**Production asset revision:** 2.1
 
-The PiChan identity is locked.
+The PiChan identity is closed.
 
 ## Final decision
 
-- Bird: **Curious PiChan / Concept B — final refinement**
-- Wordmark: unchanged from approved system
-- Palette: unchanged
-- Typography: unchanged
-- Messaging: unchanged
-- Gradient: unchanged
+The final refinement changes **only the PiChan bird icon**.
 
-## Source of truth
+Unchanged and locked:
+
+- wordmark and custom `P`
+- primary tagline: **See what others miss.**
+- positioning line: **Onchain intelligence & market discovery.**
+- community line: **PiChan | The Flock**
+- personality line: **PiChan is watching.**
+- core palette
+- typography
+- gradient rules
+- spacing and usage rules
+- supporting design elements
+- approved brand-kit structure and copy
+
+## Canonical source
 
 `brand/vector/PiChan_Icon_Master.svg`
 
-All bird applications must derive from this exact geometry.
+All bird applications must derive from this source. Do not redraw, restyle, recolor, rotate, add effects to, or substitute the bird.
 
-## Change policy
-
-Do not alter the identity as part of ordinary product implementation. Any future redesign must be an explicit brand decision with a new version and must replace the master assets, documentation and implementation tokens together.
+Any future identity redesign requires an explicit new brand version and coordinated replacement of the master assets, docs and implementation tokens.
