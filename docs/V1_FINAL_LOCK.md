@@ -235,16 +235,17 @@ Developer HQ and Design HQ must use these documents in this order where their do
 4. [`ADR-001-MULTICHAIN-FOUNDATION.md`](./ADR-001-MULTICHAIN-FOUNDATION.md) — multi-chain/domain architecture
 5. [`PRODUCT_ARCHITECTURE.md`](./PRODUCT_ARCHITECTURE.md) — high-level product/system architecture
 6. [`V1_BUILD_PLAN.md`](./V1_BUILD_PLAN.md) — Developer HQ implementation order
-7. [`UI_DESIGN_REQUIREMENTS_V1.md`](./UI_DESIGN_REQUIREMENTS_V1.md) — locked responsive UI/UX execution requirements and Design HQ → Developer HQ contract
-8. [`BRAND_SYSTEM.md`](./BRAND_SYSTEM.md) and locked brand masters — visual identity execution
+7. [`UI_DESIGN_REQUIREMENTS_V1.md`](./UI_DESIGN_REQUIREMENTS_V1.md) — locked responsive UI/UX execution contract
+8. [`UI_DESIGN_SYSTEM_V1.md`](./UI_DESIGN_SYSTEM_V1.md), [`PRODUCT_UI_TOKENS_V1.md`](./PRODUCT_UI_TOKENS_V1.md), [`UI_COMPONENT_LIBRARY_V1.md`](./UI_COMPONENT_LIBRARY_V1.md), [`UI_FEATURE_COMPONENTS_V1.md`](./UI_FEATURE_COMPONENTS_V1.md), [`UI_CORE_STATE_MATRIX_V1.md`](./UI_CORE_STATE_MATRIX_V1.md) and screen/state specs — Design HQ implementation system
+9. [`BRAND_SYSTEM.md`](./BRAND_SYSTEM.md) and locked brand masters — visual identity execution
 
 This file records that these decisions have completed Product HQ review.
 
 ## 13. UI / Design execution lock
 
-Product scope remains V1.0 frozen while Design HQ defines the reusable UI system.
+Product scope remains V1.0 frozen.
 
-The UI must preserve:
+The locked UI foundation must preserve:
 
 - the four-pillar information architecture
 - separate Reputation / Risk / Confidence outputs
@@ -254,13 +255,15 @@ The UI must preserve:
 - mobile-first responsive web behavior with desktop expansion
 - the final locked PiChan brand identity
 
-`UI_DESIGN_REQUIREMENTS_V1.md` resolves route/navigation and cross-cutting UI requirements without adding new V1 features.
+`UI_DESIGN_REQUIREMENTS_V1.md` is the mandatory Design HQ → Developer HQ contract.
+
+The reusable UI foundation and Project Passport reference screen are locked in the Design HQ V1 documents. Remaining V1 screen families are designed from that locked system and must not introduce a second component language.
 
 Design decisions that only improve hierarchy, responsiveness, accessibility or reusable component structure do not require Product HQ scope reopening as long as they preserve the locked semantics.
 
 ## 14. Change control
 
-V1 is now frozen.
+V1 is frozen.
 
 New ideas discovered in Design HQ or Developer HQ go to **V1.1/V2 backlog** unless they are required to:
 
@@ -273,6 +276,6 @@ Any material V1 scope change requires a new explicit Product HQ decision and cor
 ## 15. Handoff state
 
 **Product HQ:** V1 locked.  
-**Brand identity:** final locked — Brand Guidelines v1.0 / Production Asset Revision 2.1.  
-**Design HQ:** now defines and locks the V1 UI/design system against `UI_DESIGN_REQUIREMENTS_V1.md` and the product source-of-truth docs.  
-**Developer HQ:** audits current code against the final UI/design system + locked V1 product spec and implements according to `V1_BUILD_PLAN.md`.
+**Brand identity:** FINAL LOCKED — Brand Guidelines v1.0 / Production Asset Revision 2.2.  
+**Design HQ:** reusable UI foundation + Project Passport reference locked; subsequent screen families must reuse the locked tokens/components/state contracts.  
+**Developer HQ:** audits current code against the locked V1 product + UI contracts and implements according to `V1_BUILD_PLAN.md`; screen-specific public UI should not be considered final until its Design HQ screen spec is approved.
