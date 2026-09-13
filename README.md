@@ -6,15 +6,19 @@ PiChan is an onchain intelligence and market discovery product.
 
 ## Product source of truth
 
-PiChan V1 launches on **Robinhood Chain + Solana** and is **multi-chain by design**.
+PiChan V1 is **FINAL LOCKED** and launches on **Robinhood Chain + Solana**.
+
+Start here:
+
+- [`docs/V1_FINAL_LOCK.md`](./docs/V1_FINAL_LOCK.md) — final Product HQ lock and handoff state
 
 Implementation authority for V1:
 
 1. [`docs/PRODUCT_SPEC_V1.md`](./docs/PRODUCT_SPEC_V1.md) — locked V1 features, screens, user flows, launch boundaries and acceptance criteria
 2. [`docs/INTELLIGENCE_MODEL_V1.md`](./docs/INTELLIGENCE_MODEL_V1.md) — locked Reputation, Risk Signals, Data Confidence, evidence and event semantics
-3. [`docs/MONETIZATION_V1.md`](./docs/MONETIZATION_V1.md) — locked business model, claimed-project monetization and crypto-only payment rule
+3. [`docs/MONETIZATION_V1.md`](./docs/MONETIZATION_V1.md) — locked project monetization and crypto billing model
 4. [`docs/ADR-001-MULTICHAIN-FOUNDATION.md`](./docs/ADR-001-MULTICHAIN-FOUNDATION.md) — locked multi-chain/domain architecture decision
-5. [`docs/PRODUCT_ARCHITECTURE.md`](./docs/PRODUCT_ARCHITECTURE.md) — high-level product/system architecture
+5. [`docs/PRODUCT_ARCHITECTURE.md`](./docs/PRODUCT_ARCHITECTURE.md) — locked high-level product/system architecture
 6. [`docs/V1_BUILD_PLAN.md`](./docs/V1_BUILD_PLAN.md) — implementation sequence for Developer HQ
 
 ### V1 product pillars
@@ -25,6 +29,8 @@ Implementation authority for V1:
 - **Watch** — what changes next?
 
 Supporting drill-down: **Creator Intelligence**.
+
+Claimed projects also have a separate **Project Control Center** accessed from their managed projects; it is not a fifth public pillar.
 
 ### V1 launch scope
 
@@ -45,6 +51,7 @@ Supporting drill-down: **Creator Intelligence**.
 - Radar
 - project claims/authority verification
 - official links/wallet declarations
+- Project Inbox / claimed-project workflow
 - Telegram scan
 - share cards
 - report/dispute + admin review
@@ -52,15 +59,16 @@ Supporting drill-down: **Creator Intelligence**.
 ### V1 monetization
 
 - research users: free core intelligence
-- automatic Passport: free
+- automatic/unclaimed Passport: free
 - project claim and authority verification: free
-- official links/wallet declarations and factual corrections: free
-- Passport Pro: paid recurring project tools
+- official links/wallet declarations, corrections and project responses: free
+- Passport Pro: **fixed-duration paid project entitlement with manual crypto renewal**
 - Priority Review: paid faster review workflow, never guaranteed approval
 - Launch Pack: paid one-time project setup/bundle
 - Sponsored Sighting: paid visibility, always separated from organic Radar
 - all paid PiChan products: **crypto-only settlement**
-- exact prices and accepted crypto assets/networks: **TBD**
+- exact prices and accepted crypto assets/networks: **TBD/configurable**
+- no automatic recurring wallet withdrawal required in V1
 
 Payment can never directly improve Reputation, suppress Risk Signals, increase Data Confidence, alter Flight Recorder history, buy a transparency designation or change organic Radar ranking.
 
@@ -74,7 +82,7 @@ Payment can never directly improve Reputation, suppress Risk Signals, increase D
 
 Core PiChan systems must remain chain-agnostic. Network/provider-specific behavior belongs in adapters and evidence modules.
 
-New product ideas discovered during implementation go to V1.1/V2 unless required for correctness, security or a locked V1 acceptance criterion.
+New product ideas discovered during Design HQ or Developer HQ go to V1.1/V2 unless required for correctness, security or a locked V1 acceptance criterion.
 
 ## Brand source of truth
 
@@ -106,4 +114,4 @@ Do not redraw, reshape, recolor, rotate, add effects to, or recreate the PiChan 
 
 ---
 
-PiChan Product V1.0 · Brand Guidelines v1.1 · Logo Master v2.0 · September 2026
+PiChan Product V1.0 — FINAL LOCK · Brand Guidelines v1.1 · Logo Master v2.0 · September 2026
