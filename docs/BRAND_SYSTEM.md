@@ -1,14 +1,16 @@
 # PiChan Brand System
 
 **Brand Guidelines:** Version 1.0 — September 2026  
-**Production asset revision:** 2.1  
+**Production asset revision:** 2.2  
 **Status:** FINAL LOCKED
 
 This is the implementation reference for the approved PiChan identity.
 
 ## 1. Identity principle
 
-The final production refinement changes **only the bird icon**. The approved wordmark, custom `P`, permanent copy, palette, typography, gradient rules, spacing rules, supporting elements and visual brand-kit structure are unchanged.
+The approved wordmark, custom `P`, permanent copy, palette, typography, gradient rules, spacing rules, supporting elements and visual brand-kit structure are unchanged.
+
+Production asset revision **2.2** is a technical vector cleanup only. It removes unintended white artifact contours at the bird's beak/head junction while preserving the locked Curious PiChan identity.
 
 The bird should read as observant, curious, intelligent and confident — not angry, childish or overly cute.
 
@@ -91,15 +93,18 @@ For the full logo, preserve clear space equal to the wordmark `i` dot around the
 
 - redraw the bird
 - change its proportions
-- add white halos, strokes or decorative outlines not present in the approved master
+- add white halos, strokes, spikes, slivers or decorative outlines not present in the approved master
 - alter the eye, beak, feather rhythm, throat dots or wing
 - distort, rotate or apply shadows/glows/3D effects
 - change the wordmark construction or colors
 - rewrite permanent messaging
 - use legacy bird versions
+- use generated raster artwork as a logo master
 
 ## 11. Implementation rule
 
 Use `src/brand/tokens.ts` for brand tokens and exact files from `brand/vector/` for logo assets. Do not reconstruct the identity in CSS, canvas, text glyphs or generated artwork.
 
-Any future identity change requires an explicit new version. Until then, **Brand Guidelines Version 1.0 / Production Assets 2.1 is final and locked.**
+Raster/social exports must be rendered from the canonical vectors.
+
+Any future identity change requires an explicit new version. Until then, **Brand Guidelines Version 1.0 / Production Assets 2.2 is final and locked.**
