@@ -236,8 +236,9 @@ Developer HQ and Design HQ must use these documents in this order where their do
 5. [`PRODUCT_ARCHITECTURE.md`](./PRODUCT_ARCHITECTURE.md) — high-level product/system architecture
 6. [`V1_BUILD_PLAN.md`](./V1_BUILD_PLAN.md) — Developer HQ implementation order
 7. [`UI_DESIGN_REQUIREMENTS_V1.md`](./UI_DESIGN_REQUIREMENTS_V1.md) — locked responsive UI/UX execution contract
-8. [`UI_DESIGN_SYSTEM_V1.md`](./UI_DESIGN_SYSTEM_V1.md), [`PRODUCT_UI_TOKENS_V1.md`](./PRODUCT_UI_TOKENS_V1.md), [`UI_COMPONENT_LIBRARY_V1.md`](./UI_COMPONENT_LIBRARY_V1.md), [`UI_FEATURE_COMPONENTS_V1.md`](./UI_FEATURE_COMPONENTS_V1.md), [`UI_CORE_STATE_MATRIX_V1.md`](./UI_CORE_STATE_MATRIX_V1.md) and screen/state specs — Design HQ implementation system
-9. [`BRAND_SYSTEM.md`](./BRAND_SYSTEM.md) and locked brand masters — visual identity execution
+8. [`UI_FINAL_QA_LOCK_V1.md`](./UI_FINAL_QA_LOCK_V1.md) — final lock for the reusable UI foundation + Passport reference
+9. [`UI_DESIGN_SYSTEM_V1.md`](./UI_DESIGN_SYSTEM_V1.md), [`PRODUCT_UI_TOKENS_V1.md`](./PRODUCT_UI_TOKENS_V1.md), [`UI_COMPONENT_LIBRARY_V1.md`](./UI_COMPONENT_LIBRARY_V1.md), [`UI_FEATURE_COMPONENTS_V1.md`](./UI_FEATURE_COMPONENTS_V1.md), [`UI_CORE_STATE_MATRIX_V1.md`](./UI_CORE_STATE_MATRIX_V1.md) and screen/state specs — Design HQ implementation system
+10. [`BRAND_SYSTEM.md`](./BRAND_SYSTEM.md) and locked brand masters — visual identity execution
 
 This file records that these decisions have completed Product HQ review.
 
