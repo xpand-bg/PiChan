@@ -6,6 +6,33 @@
 
 This document defines the recommended implementation order for the locked V1 product. It does not expand scope; `PRODUCT_SPEC_V1.md` remains the product authority.
 
+## Parallel Design Gate — before public UI implementation
+
+Backend/domain/adapter work may proceed while Design HQ is active, but production public-surface implementation must consume the locked V1 UI/design system rather than invent screen-level styling independently.
+
+Before Passport/Radar/Watch/Me UI is considered implementation-ready, Design HQ must satisfy `UI_DESIGN_REQUIREMENTS_V1.md` and lock:
+
+- product design tokens
+- responsive app shell
+- typography/spacing/radius/border/elevation rules
+- semantic status colors
+- core component library
+- component state matrix
+- mobile + desktop screen specifications
+- loading/empty/error/stale/conflict/partial-data states
+- accessibility behavior
+- final approved brand asset references
+
+Implementation rules:
+
+- use exact assets from `brand/vector/`
+- use `src/brand/tokens.ts` / approved product design tokens rather than per-screen hard-coded values
+- never reconstruct the PiChan logo in CSS/canvas/text/generated artwork
+- preserve Reputation, Risk Signals and Data Confidence as separate UI concepts
+- preserve evidence/freshness visibility
+- preserve explicit organic vs sponsored separation
+- use reusable components first; do not style each product screen as a one-off
+
 ## Phase 0 — Foundation audit and migration plan
 
 Before feature work:
@@ -16,6 +43,7 @@ Before feature work:
 - create migration plan rather than rewriting working code blindly
 - verify Cloudflare Worker/D1/R2 deployment assumptions
 - establish feature flags/demo fixtures for incomplete chain adapters
+- audit any existing UI against the final brand assets and `UI_DESIGN_REQUIREMENTS_V1.md`; treat legacy mockup styling as replaceable unless explicitly approved by Design HQ
 
 Exit criterion: current code is mapped to the target architecture and no new feature work depends on obsolete RH-only assumptions.
 
@@ -137,6 +165,8 @@ Required states:
 - conflicting evidence
 - provider partial outage / stale evidence
 
+Use the locked Passport component/state patterns from the V1 UI/design system. Unknown/stale/conflicting states must be visible rather than silently omitted.
+
 Exit criterion: Passport is useful for real assets on both launch chains, with no mock values in production paths.
 
 ## Phase 5 — Flight Recorder and observation pipeline
@@ -195,7 +225,7 @@ Implement real-data organic feeds:
 
 Radar must derive from PiChan observations/events and never from fake/sample production data.
 
-Do not mix paid placement into organic ranking logic.
+Do not mix paid placement into organic ranking logic. Sponsored Sighting must use the separate approved sponsored component/treatment from the UI/design system.
 
 Exit criterion: each organic Radar card links to evidence-backed Passport data and explains its inclusion.
 
@@ -203,6 +233,8 @@ Exit criterion: each organic Radar card links to evidence-backed Passport data a
 
 Implement:
 
+- stable `/search` destination
+- global search entry from the app shell
 - address/mint search
 - name/ticker search
 - creator wallet search
@@ -310,6 +342,8 @@ Implement:
 
 V1 does not require automatic recurring withdrawal or subscription smart contracts.
 
+Payment UI must use the locked invoice/payment patterns from `UI_DESIGN_REQUIREMENTS_V1.md`, including explicit settlement asset, network, exact amount, destination, expiry and confirmation state.
+
 ### Passport Pro
 
 - fixed-duration Project entitlement
@@ -373,6 +407,9 @@ Required before launch:
 - analytics
 - SEO/OpenGraph/share metadata
 - mobile/browser QA
+- keyboard/focus/accessibility QA for core flows
+- reduced-motion behavior
+- Core Web Vitals checks on representative mobile hardware
 - load testing for scan/Radar paths
 
 ## Phase 17 — Launch calibration
@@ -391,11 +428,18 @@ Before public V1:
 - verify payment → entitlement paths
 - verify Pro expiry/downgrade behavior
 - verify sponsored/organic Radar separation
+- verify responsive mobile/desktop parity of product semantics
+- verify the production UI uses only the final approved PiChan identity assets
 
 Scoring/alert threshold changes during calibration are configuration changes, not scope expansion.
 
 ## V1 completion gate
 
-V1 is complete only when all acceptance criteria in `PRODUCT_SPEC_V1.md` pass on both Robinhood Chain and Solana and the enabled V1 commercial flows satisfy `MONETIZATION_V1.md`.
+V1 is complete only when:
+
+- all acceptance criteria in `PRODUCT_SPEC_V1.md` pass on both Robinhood Chain and Solana
+- enabled V1 commercial flows satisfy `MONETIZATION_V1.md`
+- the implemented UI satisfies the locked Design HQ handoff in `UI_DESIGN_REQUIREMENTS_V1.md`
+- final product surfaces use the locked PiChan brand system without reconstructed/legacy identity assets
 
 Anything else goes to V1.1/V2 backlog unless required for correctness, security or a locked acceptance criterion.
