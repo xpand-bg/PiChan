@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+<title>PiChan Icon Light Background Keyline</title>
+<defs>
+  <filter id="keyline" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="dilate"/>
+    <feFlood flood-color="#041F5F" result="navy"/>
+    <feComposite in="navy" in2="dilate" operator="in" result="outline"/>
+    <feMerge><feMergeNode in="outline"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+<image href="PiChan_Icon_Master.svg" x="0" y="0" width="1024" height="1024" filter="url(#keyline)"/>
+</svg>
