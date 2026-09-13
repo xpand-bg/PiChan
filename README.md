@@ -86,7 +86,13 @@ New product ideas discovered during Design HQ or Developer HQ go to V1.1/V2 unle
 
 ## Brand source of truth
 
-The locked **PiChan Brand Guidelines v1.1** and **Logo Master v2.0** live under [`brand/`](./brand/). The implementation reference is [`docs/BRAND_SYSTEM.md`](./docs/BRAND_SYSTEM.md).
+The PiChan identity is **FINAL LOCKED**.
+
+- Brand Guidelines: **Version 1.0 — September 2026**
+- Production asset revision: **2.1**
+- Canonical bird: [`brand/vector/PiChan_Icon_Master.svg`](./brand/vector/PiChan_Icon_Master.svg)
+- Implementation reference: [`docs/BRAND_SYSTEM.md`](./docs/BRAND_SYSTEM.md)
+- Identity lock: [`brand/LOCK.md`](./brand/LOCK.md)
 
 ### Core brand
 
@@ -106,12 +112,10 @@ The locked **PiChan Brand Guidelines v1.1** and **Logo Master v2.0** live under 
 
 ### Identity lock
 
-The final PiChan bird is the approved **Curious PiChan / Concept B** refinement: observant, intelligent, confident and distinctive — never angry, childish or overly cute.
+The final approved PiChan bird replaces the earlier bird only. The approved wordmark, custom `P`, permanent copy, palette, typography, gradient rules, spacing rules, supporting elements and brand-kit structure are unchanged.
 
-Only the bird geometry changed during the final refinement. The approved wordmark construction and colors, typography, palette, gradient, messaging and system rules remain unchanged.
-
-Do not redraw, reshape, recolor, rotate, add effects to, or recreate the PiChan bird. All approved logo variants derive from the locked master geometry at `brand/vector/PiChan_Icon_Master.svg`.
+Do not redraw, reshape, recolor, rotate, add effects to, or recreate the PiChan bird. Do not rewrite permanent brand copy. Any future identity redesign requires an explicit new brand version.
 
 ---
 
-PiChan Product V1.0 — FINAL LOCK · Brand Guidelines v1.1 · Logo Master v2.0 · September 2026
+PiChan Product V1.0 — FINAL LOCK · Brand Guidelines v1.0 · Production Assets 2.1 · September 2026
