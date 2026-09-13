@@ -2,10 +2,10 @@
 
 **Status:** DESIGN HQ — FOUNDATION LOCK  
 **Product version:** V1.0  
-**Design system revision:** 0.2  
+**Design system revision:** 0.4  
 **Date:** 2026-09-13
 
-This file defines the concrete product-surface tokens used by PiChan V1. Locked brand colors remain unchanged; these are derived UI roles for the dark-first product experience.
+This file defines the concrete product-surface tokens used by PiChan V1. The numeric/color values are unchanged from the v0.2 foundation; revision 0.4 synchronizes them with the refined Passport reference screen and state/component contracts.
 
 ## 1. Color roles
 
@@ -39,8 +39,6 @@ This file defines the concrete product-surface tokens used by PiChan V1. Locked 
 - `text.disabled` — `#64748B`
 - `text.inverse` — `#041F5F`
 
-These text roles are chosen to maintain strong contrast on the dark product surfaces.
-
 ### Semantic states
 
 - `status.critical` — `#EF4444`
@@ -53,12 +51,12 @@ Rules:
 
 - success green is for successful system actions, not investment safety
 - Critical/Warning color belongs to Risk and operational states, not Reputation
-- Unknown must always include a label/icon, never color alone
+- Unknown always includes label/icon; never color alone
 
 ### Intelligence roles
 
 - `intel.reputation` — brand-neutral navy/cyan treatment; grade meaning comes from text
-- `intel.risk` — severity tokens above
+- `intel.risk` — semantic severity tokens above
 - `intel.confidence.active` — `#12B6F6`
 - `intel.confidence.secondary` — `#153FE9`
 - `intel.confidence.empty` — `#24334A`
@@ -122,7 +120,7 @@ Default desktop content gap: 24 px.
 - `radius.feature` — 18 px
 - `radius.pill` — 999 px
 
-Cards should not become oversized rounded SaaS bubbles.
+Avoid oversized rounded SaaS bubbles.
 
 ## 5. Elevation
 
@@ -168,7 +166,7 @@ Respect `prefers-reduced-motion`.
 - tablet/compact desktop: `768–1099`
 - desktop: `>= 1100`
 
-Exact CSS breakpoints may be tuned during implementation, but component behavior must follow the same model.
+Exact CSS breakpoints may be tuned during implementation while preserving the component behavior model.
 
 ## 8. Core component dimensions
 
@@ -176,22 +174,22 @@ Exact CSS breakpoints may be tuned during implementation, but component behavior
 - compact button: 36 px
 - input/search: 48 px mobile / 44 px desktop
 - chip: 28–32 px
-- decision strip segment min height: 92 px mobile / 116 px desktop
+- Decision Strip segment min height: 92 px mobile / 116 px desktop
 - metric row/tile min height: 68 px
 - finding row min target: 72 px
-- app navigation icon: 22–24 px
+- primary navigation icon: 22–24 px
 - metadata icon: 16 px
 
 ## 9. Focus and interaction
 
-Keyboard focus must be visible using the cyan focus token plus sufficient separation from the component border/background.
+Keyboard focus uses the cyan focus token plus sufficient separation from border/background.
 
-Hover must never be the only indication of interactability.
+Hover is never the only indication of interactability.
 
-Pressed/selected states should use surface changes and borders before glow effects.
+Pressed/selected states use surface changes and borders before glow effects.
 
 ## 10. Brand asset use
 
-Consume the current locked Production Assets 2.2 directly from `brand/vector/`.
+Consume locked Production Assets 2.2 directly from `brand/vector/`.
 
 Do not redraw the bird, reconstruct the wordmark, add halos, or generate logo artwork inside the UI.
