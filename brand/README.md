@@ -2,7 +2,7 @@
 
 **Status:** FINAL LOCKED  
 **Brand Guidelines:** Version 1.0 — September 2026  
-**Production asset revision:** 2.1
+**Production asset revision:** 2.2
 
 This folder contains the approved PiChan identity for product, web, social, community and launch applications.
 
@@ -11,6 +11,8 @@ This folder contains the approved PiChan identity for product, web, social, comm
 `vector/PiChan_Icon_Master.svg`
 
 All bird-based assets must derive from that geometry. Do not redraw, reshape, rotate, add effects, recolor outside approved variants, or use legacy bird versions.
+
+Production asset revision **2.2** is a production-quality cleanup of the locked bird: unintended white artifact contours at the beak/head junction were removed. It does not redesign the bird or change the brand system.
 
 ## Logo hierarchy
 
@@ -62,4 +64,8 @@ Use for backgrounds, accents, selected UI surfaces and data visualization. Never
 - Light backgrounds: approved light-background treatment
 - Busy imagery: only where clear space and contrast are preserved
 
-The final update changed only the bird. Permanent copy, wordmark, colors, typography, gradient rules, layout rules and supporting brand system remain unchanged from the approved Brand Guidelines Version 1.0.
+## Production rule
+
+Use the exact vector assets in `brand/vector/`. Do not generate or trace replacement artwork. Raster/social exports must be rendered from these vectors.
+
+The final update changed no permanent copy, wordmark, colors, typography, gradient rules, layout rules or supporting brand system from Brand Guidelines Version 1.0.
