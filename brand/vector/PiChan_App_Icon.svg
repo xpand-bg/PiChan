@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
-<title>PiChan App Icon</title>
+<title>PiChan App Icon — Production 2.2</title>
+<desc>Locked app icon using the canonical production 2.2 bird master.</desc>
 <rect width="1024" height="1024" rx="220" fill="#041F5F"/>
 <image href="PiChan_Icon_Master.svg" x="130" y="118" width="768" height="768" preserveAspectRatio="xMidYMid meet"/>
 </svg>
