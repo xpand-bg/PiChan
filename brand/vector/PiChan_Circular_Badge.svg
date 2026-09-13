@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+<title>PiChan Circular Badge</title>
+<circle cx="512" cy="512" r="500" fill="#041F5F"/>
+<circle cx="512" cy="512" r="486" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+<image href="PiChan_Icon_Master.svg" x="132" y="118" width="758" height="758" preserveAspectRatio="xMidYMid meet"/>
+</svg>
