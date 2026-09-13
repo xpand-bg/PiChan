@@ -1,0 +1,20 @@
+{
+  "brand": "PiChan",
+  "version": "1.0",
+  "status": "locked",
+  "sourceOfTruth": "brand/vector/PiChan_Icon_Master.svg",
+  "assets": {
+    "iconMaster": "brand/vector/PiChan_Icon_Master.svg",
+    "wordmarkDark": "brand/vector/PiChan_Wordmark_DarkBG.svg",
+    "tokens": "brand/brand_tokens.json",
+    "productTokens": "src/brand/tokens.ts"
+  },
+  "rules": {
+    "singleMasterGeometry": true,
+    "primaryLogoMinPx": 120,
+    "preferredPrimaryLogoMinPx": 140,
+    "iconMinPx": 24,
+    "iconPreferredMinPx": 32,
+    "gradient": "linear-gradient(90deg, #153FE9 0%, #12B6F6 100%)"
+  }
+}
