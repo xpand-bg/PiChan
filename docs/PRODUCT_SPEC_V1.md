@@ -26,6 +26,8 @@ The V1 user should be able to answer, in roughly one minute:
 7. What has changed since launch?
 8. Can PiChan notify me when something material changes?
 
+PiChan also serves claimed project teams with a separate project-management workflow that improves transparency and creates paid operational tools without allowing payment to alter independent intelligence.
+
 ## 2. Launch networks
 
 V1 launches with **both**:
@@ -55,7 +57,7 @@ Not supported as first-class V1 Passport types:
 - protocol audits
 - wallets as general P&L/trading profiles
 
-Architecture must still use `Project → Asset → Deployment` so future asset types do not require a schema rewrite.
+Architecture must use `Project → Asset → Deployment` so future asset types do not require a schema rewrite.
 
 ## 4. Four public product pillars
 
@@ -65,13 +67,13 @@ Answers: **What should I investigate?**
 
 Radar is an intelligence feed, not a “top gainers” page.
 
-V1 feed groups:
+V1 organic feed groups:
 
 - **Signals** — material PiChan events (default)
 - **New** — newly discovered launches/deployments
 - **Verified** — recently claimed/authority-verified projects
 
-Each item must explain **why it is on Radar**.
+Each organic item must explain **why it is on Radar**.
 
 Examples:
 
@@ -82,7 +84,9 @@ Examples:
 - contract/token authority changed
 - a new canonical deployment was established
 
-Radar rankings/signals must never be changed by paid placement. Sponsored products are outside V1.
+Organic Radar rankings/signals must never be changed by payment.
+
+A separate, clearly labelled **Sponsored Sighting** surface is allowed in V1 under `MONETIZATION_V1.md`. Sponsored content must not be blended into organic ranking and PiChan-generated intelligence beside a sponsored item remains independent.
 
 Filters:
 
@@ -170,6 +174,9 @@ Passport V1 information order:
    - Share
    - external market/trading destination / Drones integration where available
    - Report incorrect information
+   - Claim this Passport when eligible/unclaimed
+
+A Passport existing in PiChan means PiChan has an observed record; it is not an endorsement. Most newly discovered assets may initially have an automatically generated **Unclaimed** Passport.
 
 ### 4.3 Flight Recorder
 
@@ -267,7 +274,7 @@ Rules:
 
 ### Impersonation / canonical check
 
-When several assets share a name/ticker, PiChan should show the candidate deployments and identify canonical/claimed deployments only when evidence supports that conclusion.
+When several assets share a name/ticker, PiChan should show candidate deployments and identify canonical/claimed deployments only when evidence supports that conclusion.
 
 “Verified” means identity/control evidence, never “safe investment”.
 
@@ -294,13 +301,15 @@ V1 distinguishes:
 - **Canonical** — strong authoritative evidence links this deployment to the project/asset identity
 - **Disputed** — material identity/claim dispute is unresolved
 
-These states may coexist where conceptually valid (for example a canonical deployment may also be authority verified).
+These states may coexist where conceptually valid.
 
 Wallet signatures prove control of a wallet, not automatically ownership of an entire project.
 
+Claiming and authority verification are **free**. Payment must never be required to establish or correct factual identity.
+
 ## 9. Official links and declared wallets
 
-Claimed/verified projects may submit:
+Claimed/verified projects may submit for free:
 
 - website
 - X
@@ -347,13 +356,72 @@ Primary mobile navigation:
 
 - Watches
 - Alerts
-- Claims
+- Claims / managed projects
 - Telegram connection
 - notification settings
 
 Wallet-first identity is preferred. Public browsing/search does not require login.
 
-## 12. Telegram bot
+Claimed-project management and paid project tools are accessed through a managed project; they do not add another primary public navigation pillar.
+
+## 12. Claimed-project experience
+
+PiChan serves a second workflow for project teams.
+
+Every claimed project receives free access to:
+
+- claim/verification status
+- official project information management
+- official wallet declarations
+- transparency disclosures
+- correction/dispute workflow
+- project responses to PiChan findings
+- basic Project Inbox
+
+A project response is contextual evidence. It does not automatically remove a PiChan finding or improve Reputation.
+
+### Project Control Center
+
+Claimed projects have a management screen containing the project's current public state and items requiring attention.
+
+V1 may show:
+
+- Reputation / Unrated
+- Data Confidence
+- Risk Signal summary
+- information/transparency completeness
+- recent PiChan observations
+- Project Inbox
+- current Passport Pro entitlement
+- aggregate project analytics for Pro projects
+
+Payment never unlocks the ability to alter independent PiChan conclusions.
+
+## 13. V1 monetization
+
+Commercial behavior is governed by [`MONETIZATION_V1.md`](./MONETIZATION_V1.md).
+
+V1 business products:
+
+- **Passport Pro** — fixed-duration project entitlement with manual crypto renewal
+- **Priority Review** — one-time paid faster handling; no approval guarantee
+- **Launch Pack** — one-time launch-oriented bundle
+- **Sponsored Sighting** — clearly labelled paid visibility separated from organic Radar
+
+Core rules:
+
+- all V1 payments are crypto-only
+- exact prices are TBD
+- accepted settlement assets/networks are configurable/TBD
+- no automatic recurring wallet withdrawal is required in V1
+- claims, authority verification, corrections, project responses, transparency disclosures and transparency status remain free
+- payment never changes Reputation, Risk, Confidence, Flight Recorder, verification outcomes or organic Radar ranking
+
+Passport Pro belongs to the **Project**, not an individual team member.
+
+If Pro expires, all public truth/verification/history remains intact; only paid operational capabilities are disabled until renewed.
+
+## 14. Telegram bot
 
 V1 Telegram behavior:
 
@@ -365,7 +433,7 @@ V1 Telegram behavior:
 
 Group-command support may use `/pichan {address}`.
 
-## 13. Share cards
+## 15. Share cards
 
 V1 cards may include:
 
@@ -379,7 +447,9 @@ V1 cards may include:
 
 Cards must not use “safe”, “guaranteed”, buy/sell language or imply PiChan endorsement.
 
-## 14. Report / dispute
+Pro may unlock enhanced share assets, but PiChan-generated intelligence shown on them remains independent.
+
+## 16. Report / dispute
 
 Every Passport provides **Report incorrect information**.
 
@@ -394,7 +464,9 @@ V1 report categories:
 
 Reports enter the private admin review queue. V1 has no public comments, voting or review scores.
 
-## 15. Explicitly outside V1
+Reporting/correcting factual information is free.
+
+## 17. Explicitly outside V1
 
 - Base / BNB Chain / Ethereum support
 - native trading/execution
@@ -407,16 +479,20 @@ Reports enter the private admin review queue. V1 has no public comments, voting 
 - arbitrary wallet P&L/smart-money terminal
 - KOL/social sentiment scoring
 - public comments/social network
-- sponsored Radar ranking
+- paid manipulation of organic Radar ranking
+- user/researcher paid subscription
 - public developer API
 - native mobile app
 - autonomous AI investigator
+- automatic recurring wallet withdrawal / subscription smart contract
 - PiChan token
 - NFTs and broad arbitrary-contract analysis
 
 These may be considered only after V1 proves the core loop.
 
-## 16. V1 success loop
+## 18. V1 success loops
+
+### Research loop
 
 ```text
 Radar / Telegram / external share
@@ -436,7 +512,27 @@ Radar / Telegram / external share
        Return to PiChan
 ```
 
-## 17. Launch acceptance criteria
+### Claimed-project loop
+
+```text
+PiChan discovers project
+        ↓
+Automatic Unclaimed Passport
+        ↓
+Project claims for free
+        ↓
+Project adds verified/declarative context
+        ↓
+Public PiChan data becomes more complete
+        ↓
+Project may upgrade to paid operational tools
+        ↓
+More monitoring / analytics / sharing
+        ↓
+More users reach PiChan
+```
+
+## 19. Launch acceptance criteria
 
 V1 is not launch-ready until:
 
@@ -451,10 +547,14 @@ V1 is not launch-ready until:
 9. Telegram can return a useful scan for both chains
 10. claim/authority verification and admin review are functional
 11. all major factual claims expose provenance internally and key UI claims expose it to users
-12. mobile Passport/Radar/Watch flows are production-ready
-13. rate limiting, abuse protection, monitoring and production migrations are in place
+12. claimed projects can manage free public declarations/responses without payment
+13. the universal crypto invoice/payment/entitlement path works for at least the enabled V1 paid product(s)
+14. Passport Pro expiry does not alter public trust/intelligence state
+15. sponsored content, if enabled at launch, is visually and logically separate from organic Radar
+16. mobile Passport/Radar/Watch/Me flows are production-ready
+17. rate limiting, abuse protection, monitoring and production migrations are in place
 
-## 18. Scope lock rule
+## 20. Scope lock rule
 
 New ideas discovered during implementation go to a **V1.1/V2 backlog** unless they are required to satisfy a locked V1 acceptance criterion or fix a correctness/security issue.
 
